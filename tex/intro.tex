@@ -6,3 +6,5 @@ d _i &= K \ast \left( n_i + g_i \int d \nu A_\mathrm{e} (\nu) F(\nu) \int d\Omeg
 \end{split}
 \end{equation}
 where $K \ast$ represents a convolution with the detector time response, $n_i$ is the noise, which we assume is uncorrelated with signal, $A_{\mathrm{e}} (\nu)$ represents the effective area of the telescope, $F(\nu)$ is the spectral responsivity, and $\tilde{n}_i$ represents noise terms that are not convolved by the detector response, including readout noise. 
+
+The above expression is in many ways incomplete. For example, it does suggest that the Stokes $I$, $Q$, and $U$ parameters are frequency independent, which is certainly incorrect. The sky signal is generally composed of astrophysical signals with varying frequency dependence. This includes the CMB itself, thermal emission from dust, and synchrotron radiation. A CMB telescopes will observe the sky convolved with its beam function, $P(\theta, \phi)$.

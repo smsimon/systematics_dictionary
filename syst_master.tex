@@ -10,6 +10,8 @@ BCOR5mm, % Binding correction
 
 \input{structure.tex} % Include the structure.tex file which specified the document structure and layout
 \usepackage[top=0.75in, bottom=0.75in, left=0.75in, right=0.75in]{geometry}
+\usepackage{hyperref}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 \hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
 
@@ -87,7 +89,9 @@ A summary of systematics.
 
 \section{Atmospheric Effects}
 
+\section{Papers on systematics}
 
+\input{tex/papers.tex}
 
 
  
