@@ -1,0 +1,22 @@
+\subsection{Bandpass mismatch}
+
+\paragraph{Description:}
+Different detectors might have different bandpasses. The total power received by a detector is the sum of each component coming from the sky integrated over the bandpass of the detector. Given that each component have a different spectrum, the calibration of the detectors are component dependent. For each component $k$ and bolometer $b$, we can define a transmission coefficient
+\begin{equation}
+C_k^b = \frac{\int S_k(\nu) F(\nu)}{\int S_{CMB}(\nu) F(\nu)}.
+\end{equation}
+These corrections factors to the gain should be applied whenever the signal has a different frequency dependance than the CMB.
+In practice, this will result in a mis-calibration like effect for all the foregrounds, producing temperature-to-polarization and polarization-to-polarization leakage. 
+
+
+\paragraph{Plan to model and/or measure:}
+Spectral measurements for each detector should be performed in the laboratory and in the field once the telescope is installed. Using external foregrounds maps as templates, the leakage maps can be computed and subtracted. However, this method is limited by our knowledge of the foregrounds, and the external available data. Simulations to estimate the level of leakage and set a constraint on the differential bandpasses should be performed.
+
+
+\paragraph{Uncertainty/Range:}
+This section should include the uncertainty of
+known parameters and/or the expected range of parameters for consideration
+
+\paragraph{Parameterization:}
+This section should include the parameterization of figures of
+merit and the output to the SWGs.
