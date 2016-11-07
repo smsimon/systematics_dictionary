@@ -7,12 +7,22 @@ P (\mathbf{x}) \propto \exp (-\mathbf{x} ^2/2\sigma ^2),
 \end{equation}
 where $\sigma$ represents the width of the beam. Optical aberrations will lead to asymmetries in the angular sensitivity which can often be captured by assuming that the Gaussian beam width is different along the two axis of a Cartesian coordinate system centered on the peak response
 \begin{equation}
-P (x,y) = \exp (-\frac{1}{2}[x^2/\sigma ^2_x + y^2/\sigma ^2_y]).
+P (x,y) = \frac{1}{2\pi \sigma_x \sigma_y} \exp (-\frac{1}{2}[x^2/\sigma ^2_x + y^2/\sigma ^2_y]).
 \end{equation}
-This is referred to as an elliptical Gaussian function. Let's try \cite{Takahashi2010}.
+This is referred to as an elliptical Gaussian function. The $\sigma_x$ and $\sigma_y$ parameters are the widths of the elliptical Gaussian beam along its two principal axes. The beam full width at half maximum (FWHM) can be defined 
+\begin{equation}
+\theta _\mathrm{FWHM} = \sqrt{8\sigma_x \sigma_y\log{(2)}}. 
+\end{equation}
+We define beam ellipticity as 
+\begin{equation}
+e = (\sigma_x-\sigma_y)/(\sigma_x+\sigma_y)
+\end{equation}
+The beam ellipticity quantifies the extent to which the symmetry of the detector spatial response is broken. A highly elliptical beam response suggests that the detector signal response at any given time is dependent on the orientation of your detector relative to the signal on the sky; in other words, your scan strategy.
+
+The spherical harmonic transform of an elliptical Gaussian beam is discussed in \cite{Souradeep2001}. Let's try \cite{Takahashi2010}.
 
 \paragraph{Plan to model and/or measure:}
-Beam ellipticities are extracted from beam maps which are acquired through scanning of a terrestrial source placed in the far-field of the optical system or by observing astrophysical point-sources such as the planets in our solar system.
+Beam widths and ellipticities are extracted from beam maps which are acquired through scanning of a terrestrial source placed in the far-field of the optical system or by observing astrophysical point-sources such as the planets in our solar system.
 
 \paragraph{Uncertainty/Range:}
 Insert text
