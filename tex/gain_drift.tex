@@ -1,0 +1,16 @@
+\subsection{Time variation}
+
+\paragraph{Description:}
+Depending on the technique used to calibrate the thermal-response of the timestream, there might be several science scans taken in between two calibration measurements. 
+In between two calibration measurements, the thermal calibration of each detector might drift (\emph{time variation}) from its initial value, and significantly.
+A possible procedure to correct for time variation over the duration of a science scan is to interpolate our gains between measurements of the thermal calibration source taken at the beginning and end of the observation periods.
+Obviously this technique is not perfect and will lead to some residual.
+
+\paragraph{Plan to model and/or measure:}
+In order to understand the impact of potential errors in this interpolation, we can for example construct a set of gains based only on the initial (or final) calibration measurement thus use no interpolation.
+Say now that a simulated map with no $B$-modes is ``observed,'' producing timestreams using the non-interpolated gain model, and then reconstructed using the interpolated analysis gain model. 
+The level of resulting \clbb\ (null to start with) quantifies the difference in these gain models in power spectrum space, and thus puts an upper limit on the impact of the drifts.
+
+\paragraph{Uncertainty/Range:}
+
+\paragraph{Parameterization:}

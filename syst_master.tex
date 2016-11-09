@@ -13,6 +13,8 @@ BCOR5mm, % Binding correction
 \usepackage{hyperref}
 \usepackage{aastex}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\pb}{\textsc{Polarbear}}
+\newcommand{\clbb}{$C_\ell^{BB}$}
 
 \hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
 
@@ -78,16 +80,19 @@ A summary of systematics.
 \section{Spectral Response Function}
 \input{tex/bandpass_mismatch.tex}
 
-
 \section{Polarization Modulators}
-
 
 \section{Time Constants}
 \input{tex/tc_intro.tex}
 
+\section{Crosstalk}
+\input{tex/crosstalk}
+
+\section{Gain mismatch}
+\input{tex/gain_drift}
+\input{tex/differential_gain}
 
 \section{Spurious Signal and Noise}
-
 
 \section{Atmospheric Effects}
 
