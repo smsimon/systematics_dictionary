@@ -1,0 +1,64 @@
+\subsection{Polarization Angle}
+
+\paragraph{Description:}
+% Description of systematic effect, including relevant equations and
+% parameterization for TWGs. Note that each variable in each equation should be
+% defined. This should include where we expect to get the value of this variable
+% from (TWG, literature, etc.)
+
+Sources of polarization angle systematics are varied and can be introduced
+several places in the instrument. To name a few examples, 1) a rotating elliptical beam (say
+in the case of a design incorporating bore-sight rotations) can cause T to P
+leakage, 2) off axis refractive optics influence the propagation of the
+polarization vectors according to their Fresnel coefficients leading to an
+instrumental polarization angle rotation and 3) in the presence of a HWP an
+apparent polarization angle rotation can arise from the detector time
+constants. 
+
+Perhaps 1) and 3) are best left to their respective sections on beams and time
+constants. Here we focus on 2), namely instrumental polarization errors and
+detector polarization angle rotations. Understanding this instrumental
+polarization error has implications not only for measuring CMB polarization,
+but for placing constraints on Cosmic Polarization Rotation (CPR).
+
+A global polarization rotation is degenerate with a CPR angle and affects the
+power spectra as described in \cite{2013ApJ...762L..23K}. Analytic description
+of instrumental rotation is challenging, necessitating the use of optical
+modeling and experimental techniques for calibration of final detector angles
+(absolute and relative) and systematic rotations from the optics.
+
+\paragraph{Plan to model and/or measure:}
+%Plan to model/measure effect
+We should plan to both model and measure the detector polarization angles.
+Calibration should be performed before deployment and during observations. This
+can be done with a man-made calibrator as well as an astrophysical polarized
+source. Polarized sources already used as references include Tau A (the Crab
+Nebula) and Cen A.
+
+When considering a man-made source, placing a well known polarization
+calibrator in the far field is preferred, though difficult in practice.
+Proposed ideas include flying a source (whether tunable or wide band) on a
+drone or on a CalSat to place it in the far field. Alternative calibrators
+require placement in the near field and include sparse/dense wire grid
+polarizers or dielectric sheets \cite{Takahashi2010, 2016arXiv160701825K}.
+
+Modeling of the polarization rotation angle appears feasible and has been used
+on ACTPol using Code V \cite{2016arXiv160701825K}. This should be checked with
+physical optics calculations, but can be performed on a proposed telescope
+design.
+
+\paragraph{Uncertainty/Range:}
+%This section should include the uncertainty of
+%known parameters and/or the expected range of parameters for consideration
+
+Angle offsets $\sim 1^{\circ}$ produce spurious B-mode signal at the same level
+as primodial B-modes for a tensor to scalar ratio $r \sim 0.005$ as well as
+nonzero $EB$ and $TB$ cross-correlations \cite{doi:10.1142/S0218271816400125}.
+Currently employed calibration methods provide calibration to at best
+$0.5^{\circ}$ \cite{2016MNRAS.455.1981K}. Calibration to better than
+$0.05^{\circ}$ would allow for constraints on CPR of order one degree to
+greater than $15\sigma$ \cite{2016MNRAS.455.1981K}.
+
+\paragraph{Parameterization:}
+%This section should include the parameterization of figures of
+%merit and the output to the SWGs.
