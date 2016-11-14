@@ -11,6 +11,15 @@ In order to understand the impact of potential errors in this interpolation, we 
 Say now that a simulated map with no $B$-modes is ``observed,'' producing timestreams using the non-interpolated gain model, and then reconstructed using the interpolated analysis gain model. 
 The level of resulting \clbb\ (null to start with) quantifies the difference in these gain models in power spectrum space, and thus puts an upper limit on the impact of the drifts.
 
+
+(Sean Bryan Addition)
+
+For Spider TES camera, and maybe Keck/BICEP I'm not sure, we would inject small electrical signals into the detectors regularly. We called this Bias Steps, it's written up in peoples' theses, but they might be embargoed, but if there's interest I'm sure that bit can be released. This, combined with lab measurements proving that it correlated well with actual gain, was very convienient.
+
+For the NIKA LEKID camera, the NIKEL readout electronics monitored both on and near-resonance frequencies. That way when the DC loading, and therefore the gain, would change, this was monitored in realtime. Every single TOD sample had a corresponding gain measurement, which was nice because there didn't need to be interpolation. If SO uses LEKIDs, we should implement something like this. If we use DfMUX bolometers, we should see if a complimentary technique can be invented.
+
+(End Sean Bryan Addition)
+
 \paragraph{Uncertainty/Range:}
 
 \paragraph{Parameterization:}
