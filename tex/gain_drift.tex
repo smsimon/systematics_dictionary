@@ -20,6 +20,15 @@ For the NIKA LEKID camera, the NIKEL readout electronics monitored both on and n
 
 (End Sean Bryan Addition)
 
+(Loic Maurin Addition)
+
+Bias Steps (described by Sean) are currently used in ACTPol for calibration. They can be performed quite often and do not perturb the detectors much (limited loss of data). Nevertheless, they do not provide an accurate responsivity for all detectors, so we identify a set of detectors for which the BS are accurate to set the gain, and flat-field the other detectors using the atmospheric signal.
+
+Atmospheric signal is strongly dominant at low frequency and provide a real time relative calibrator. Difficulties arise from its modeling (at 1st order, the atmosphere is seen as homogeneous by the array; substructures should be taken into account to improve accuracy of the method though) and from the degeneracy between the atmosphere signal and thermal fluctuations in the cryostat.
+
+(Loic Maurin Addition)
+
+
 \paragraph{Uncertainty/Range:}
 
 \paragraph{Parameterization:}
