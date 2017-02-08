@@ -1,0 +1,19 @@
+\subsection{Detector Nonlinearity}
+\label{det_nonlinearity}
+
+\paragraph{Description:}
+Assuming transition-edge sensors:
+
+Inherent detector nonlinearity is masked by the formalism of Irwin & Hilton \cite{IrwinHilton:2008}. Since a detailed picture of the transition is not required to operate the TES in the strong feedback limit, we can treat the small-signal, strong-feedback case with explicitly linear equations. The strongly nonlinear detector response to changing temperature and current is parametrized with the parameters $\alpha$ and $\beta$.
+
+However, it is well-known that the small-signal expansion around a ``bias point" (labeled with percent of normal resistance, bias current, and/or bath temperature) can be invalid in the field. Low-frequency modulation of the detector position in the transition (i.e. the bias point) can be caused by atmospheric or instrumental loading changes predominantly, and to a lesser extent by fluctuations in the cryogenic bath. This is the focus of the systematics entry on \ref{gain_drift}. In some sense, gain drift refers to the walk through the detector transition during observation and the multiple bias points around which the detector can be treated as linear.
+
+Nonlinear response to large signals is a different topic, where the driving signal may swamp the feedback effect and drive the detector to different points on the transition \cite{Rostem}. Careful study of this effect could allow handling failures of the linear-gain, small-signal model. Doing so on a per detector-observation basis would be excessive. However, understanding nonlinear response may improve noise models used in maximum-likelihood mapmaking, analysis of calibrating signals from planets, and handling of modulator signals (i.e. improving demodulated performance at low frequency).
+
+\paragraph{Plan to model and/or measure:}
+
+Should be understood in terms of basic TES ($\alpha$, $\beta$) and bias condition ($P_o$, $I_o$) parameters, with a question about whether additional parameters are needed to handle the clipping effects of large-signal input. Frequency dependence is also an important factor, even in the definition of the problem.
+
+\paragraph{Uncertainty/Range:}
+
+\paragraph{Parameterization:}
