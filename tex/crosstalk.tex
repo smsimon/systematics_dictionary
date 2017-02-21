@@ -2,9 +2,62 @@
 The frequency multiplexing readout has crosstalk due to the finite width of the LC resonators.
 Crosstalk from one bolometer to another due to coupling in the multiplexed readout will lead to polarization and temperature leakage from a point outside the main beam, creating a localized, polarized near side lobe. Crosstalk is strongest in bolometer channels that share a SQUID in the frequency-domain multiplexed readout, and are closest together in bias frequency.
 
+\subsection{Crosstalk for DfMux}
+In the DfMux system we put each TES in series with an inductor and capacitor and tile these RLC ($R=R_{TES}$ + stray series resistance) units together in parrallel with one bias resistor in parrallel to set the voltage bias across the "comb" of RLC's. This results in each TES having a characteristic AC bias frequency set by it's respective LC (L fixed, C varied) series pair between 1 and 6 MHz. A set of LC's (currently up to 68x for SPTpol) is readout by a series array SQUID which has a per channel feedback to linearize, minimize noise, and maximize the dynamic range of the SQUID called Digital Active Nulling (DAN). The DfMux warm readout sets a bias and demodulation channel at each of the comb frequencies and monitors the amplitude at each demodulation channel. As the TES experiences resistance changes with changes in incoming power it amplitude modulates it's respective lorentzian peak height and this change in current amplitude is the signal readout on the demodulation channel. 
+
+There are three primary modes of crosstalk present in the DfMux system: bias carrier leakage, non-zero wiring impedance (cold wiring), inductive/capacitive wiring crosstalk (in warm cables or from physically close conductors in the system). These three types of crosstalk are discussed below with some discussion of how to minimize them. We then discuss briefly what sorts of systematic effects on our measurements these forms of crosstalk will have.
+
+\subsubsection{Types of Crosstalk}
+\setcounter{equation}{0}
+\paragraph{Bias Carrier Leakage}
+This variety of cross talk involves the lorentzian tail of the LRC resonance in frequency space overlapping with neighboring peaks such that some amount of current meant to bias TES $n$ at frequency $\omega_n$ is biasing TES $n\pm1$ at frequency $\omega_{n\pm1}$. The current seen by neighboring channels from channel n, $I^{\omega_n}_{n\pm1}$, is given by (1)
+\begin{equation}
+I^{\omega_n}_{n\pm1} = \frac{V^{\omega_n}_{bias}}{R_{TES}+i\omega_nL+(i\omega_nC_{n\pm1})^-1} \simeq \frac{V^{\omega_n}_{bias}}{2i\Delta\omega L}\left(1+\frac{iR_{TES}}{2\Delta\omega L}\right)
+\end{equation}
+By taking the ratio of the current modulation on neighboring channels compared to on a given channel as given in (2) and (3) we can get  the approximate level of crosstalk $|R^2_{TES}/(2\Delta \omega L)^2|$. This comes out to $\sim0.25\%$ for POLARBEAR.
+\begin{equation}
+\frac{\Delta I^{\omega_n}_{n\pm1}}{\Delta R_{TES}} \simeq \frac{V^{\omega_n}_{bias}}{2\Delta\omega L}
+\end{equation}
+\begin{equation}
+\frac{\Delta I^{\omega_n}_{n}}{\Delta R_{TES}} \simeq \frac{-V^{\omega_n}_{bias}}{R^2_{TES}}
+\end{equation}
+
+\paragraph{Non-zero Wiring Impedance}
+Non-zero impedance in the cold wiring can come from stray impedances in between the bias resistor due to leads, stray series resistance and the SQUIDs input coil. In our system the stray impedance, $Z_{stray}$, is dominated by stray inductances, $L_{stray}$. This creates a modification of the combs voltage bias proportional to the current through a given channel which in turn modulates the current in neighboring channels. With a constant $V_{bias}$ the total change in voltage across the comb is given by (4)
+\begin{equation}
+dV_{tot}=-dV_{stray}\simeq dI^{\omega_n}_{n}i\omega_nL_{stray}
+\end{equation}
+This voltage induces a current in the nearest neighbor channels as defined by (5)
+\begin{equation}
+dI^{\omega_n}_{n\pm1}=\frac{dV_{tot}}{Z^{LCR}_{n\pm1}}\simeq \frac{-dI^{\omega_n}_{n}\omega_nL_{stray}}{2\Delta \omega L}
+\end{equation}
+The ratio of power changes in a channel compared to its neighbors, given in (6), quantifies this level of crosstalk. For POLARBEAR this is $\sim0.3\%$.
+\begin{equation}
+\frac{dP^{\omega_n}_{n\pm1}}{dP^{\omega_n}_{n}}\simeq \frac{-dI^{\omega_n}_{n\pm1}\omega_nL_{stray}}{dI^{\omega_n}_{n}\Delta\omega L}
+\end{equation}
+\paragraph{Other Crosstalk}
+\begin{itemize}
+\item Inductors are fabricated on the same board and there is some finite mutual inductance between physically close inductors. This crosstalk is minimized by keeping the mutual inductance coupling coefficient low ($\sim$ 0.01 for POLARBEAR) and physically separating inductors that are close in frequency space. 
+\item Crosstalk in the warm cabling between the SQUID and the warm electronics where demodulation and DAN feedback computation occurs can create imperfect nulling which produces excess loading and noise on the SQUIDs. Shielded cables were developed that kept crosstalk between twisted pairs at 60dB between 0.1-10 MHz for POLARBEAR.
+\item Crosstalk has been seen between LC boards. Specifically ones that share a PCB board. There have been some ongoing studies about possible inductive coupling between LC boards. John Groh, \& Darcy Barron on POLARBEAR and many SPT-3G members have been studying this.
+
 \paragraph{Plan to model and/or measure:}
 Planet observations (beam maps). \pb\ assumed constant level of crosstalk between neighbour bolometers. We may want to have a spatial distribution across the focal plane for more realism.
+\subsubsection{Systematics Mitigation}
+Design/fabrication guidelines to minimize these effects. Maybe add some discussion about ways we can do some calibration in the data processing. SPT-3G has figured this out and will publish on it soon. Nathan will advise on this.
 
 \paragraph{Uncertainty/Range:}
-
+\textbf{To be filled}
 \paragraph{Parameterization:}
+\textbf{To be filled}
+
+\subsubsection{References}
+\begin{itemize}
+\item Barron, D., "Precision measurements of cosmic microwave background polarization
+to study cosmic inflation and large scale structure," UCSD Dissertation, (2015).
+\item Dobbs M., "DAN Cable Crosstalk," McGill Memo, (2012). - Not published ask to share.
+\item Montgomery, J., "Cable and Mezzanine Crosstalk," McGill Memo, (2013). - Not published ask to share.
+\item Bender, A. N., "Integrated Performance of a Frequency Domain Multiplexing
+Readout in the SPT-3G Receiver," SPIE, (2016).
+\item Rotermund, K., "Planar Lithographed Superconducting LC Resonators for Frequency-Domain Multiplexed Readout Systems," Journal of Low Temp Phys, (2016).
+\end{itemize} 
