@@ -3,7 +3,7 @@ The frequency multiplexing readout has crosstalk due to the finite width of the 
 Crosstalk from one bolometer to another due to coupling in the multiplexed readout will lead to polarization and temperature leakage from a point outside the main beam, creating a localized, polarized near side lobe. Crosstalk is strongest in bolometer channels that share a SQUID in the frequency-domain multiplexed readout, and are closest together in bias frequency.
 
 \subsection{Crosstalk for DfMux}
-In the DfMux system we put each TES in series with an inductor and capacitor and tile these RLC ($R=R_{TES}$ + stray series resistance) units together in parrallel with one bias resistor in parrallel to set the voltage bias across the "comb" of RLC's. This results in each TES having a characteristic AC bias frequency set by it's respective LC (L fixed, C varied) series pair between 1 and 6 MHz. A set of LC's (currently up to 68x for SPTpol) is readout by a series array SQUID which has a per channel feedback to linearize, minimize noise, and maximize the dynamic range of the SQUID called Digital Active Nulling (DAN). The DfMux warm readout sets a bias and demodulation channel at each of the comb frequencies and monitors the amplitude at each demodulation channel. As the TES experiences resistance changes with changes in incoming power it amplitude modulates it's respective lorentzian peak height and this change in current amplitude is the signal readout on the demodulation channel. 
+In the DfMux system we put each TES in series with an inductor and capacitor and tile these RLC ($R=R_{TES}$ + stray series resistance) units together in parrallel with one bias resistor in parrallel to set the voltage bias across the "comb" of RLC's. This results in each TES having a characteristic AC bias frequency set by it's respective LC (L fixed, C varied) series pair between 1 and 6 MHz. A set of LC's (currently up to 68x for SPT-3G) is readout by a series array SQUID which has a per channel feedback to linearize, minimize noise, and maximize the dynamic range of the SQUID called Digital Active Nulling (DAN). The DfMux warm readout sets a bias and demodulation channel at each of the comb frequencies and monitors the amplitude at each demodulation channel. As the TES experiences resistance changes with changes in incoming power it amplitude modulates it's respective lorentzian peak height and this change in current amplitude is the signal readout on the demodulation channel. 
 
 There are three primary modes of crosstalk present in the DfMux system: bias carrier leakage, non-zero wiring impedance (cold wiring), inductive/capacitive wiring crosstalk (in warm cables or from physically close conductors in the system). These three types of crosstalk are discussed below with some discussion of how to minimize them. We then discuss briefly what sorts of systematic effects on our measurements these forms of crosstalk will have.
 
@@ -43,9 +43,45 @@ The ratio of power changes in a channel compared to its neighbors, given in (6),
 \end{itemize}
 
 \paragraph{Plan to model and/or measure:}
-Planet observations (beam maps). \pb\ assumed constant level of crosstalk between neighbour bolometers. We may want to have a spatial distribution across the focal plane for more realism.
+
+Crosstalk appears as a beam effect and is best understood in map space as a convolution with some crosstalk kernel and in timestream space as a mixing matrix applied to the timestreams of all the detectors.
+If the pixel-pixel separation scale is substantially larger than the beam width (i.e. the beams do not overlap), this just looks like a multi-modality of the beam of the receiving detector.
+Since the secondary mode(s) of the beam are spatially colocated with the beams of another detector, and share an identical temperature and polarization pattern, the crosstalk mixing matrix can be easily measured from beam maps on point sources.
+Most of the effects outlined above are not time-variable, so the values hold permanently and do not need frequent calibration.
+This is especially true if one crosstalk mechanism dominates, in which case an appropriate choice of units will remove dependence on bias point.
+The efficacy of this technique depends on the available point-source signal-to-noise and is thus easier on large-aperture instruments than small-aperture ones.
+
+\pb\ assumed constant level of crosstalk between neighbour bolometers, which is not realistic and leads to underestimates of crosstalk-induced bias.
+We may want to have a spatial distribution across the focal plane for more realism, with substantial scatter; the effects of crosstalk on calibration measurements must also be taken into account.
+
 \subsubsection{Systematics Mitigation}
-Design/fabrication guidelines to minimize these effects. Maybe add some discussion about ways we can do some calibration in the data processing. SPT-3G has figured this out and will publish on it soon. Nathan will advise on this.
+
+There are a few primary pernicious effects of crosstalk on analysis:
+\begin{enumerate}
+\item{Because the dominant mechanisms have uniform signs, it suppresses the apparent temperature response of the detector. This leads to overestimated polarization efficiencies and a multiplicative bias in polarization power spectra.}
+\item{It causes a beam distortion, changing the high-$\ell$ temperature spectra.}
+\item{It mixes polarizations together with some spatial pattern, leading to apparent polarized sidelobes. This causes T$\rightarrow$P leakage as well as E$\rightarrow$B leakage.}
+\item{It can mix frequencies together on multichroic focal planes, which thwarts foreground cleaning.}
+\end{enumerate}
+
+By measuring the crosstalk matrix as described above, most of these effects can be eliminated.
+The matrix is, in general, time-invariant and so can simply be inverted and applied to the detector TOD to remove crosstalk entirely.
+This approach is being used for all current SPTpol analyses and is extremely effective (2 or more orders of magnitude suppression) if applied at the earliest possible moment in data processing.
+
+The beam map approach is limited, however, in that it can only identify the correct pixel for the origin of crosstalk and not, in general, the correct source polarization or band.
+
+In the polarization case, this does not matter that much in the end.
+Intra-pixel polarization crosstalk just appears as reduced polarization efficiency and will be fully calibrated, if not removed, by whatever technique is applied to measure polarization efficiency.
+Inter-pixel cross-polarization crosstalk is trickier, but is mitigated by several factors.
+First, for the dominant concern of T$\rightarrow$P leakage, the apparent polarization angle of the \emph{receiving} detector matters much more than the \emph{sending} detector, since the source is by definition unpolarized and so the signal to be removed will be the same no matter the identity of the sending detector.
+In the event that we deploy a rapid polarization modulator, it also immediately eliminates this source of T$\rightarrow$P, just as it does for all beam effects.
+Second, for E$\rightarrow$B leakage, there is little issue so long as the leakage is random.
+Unlike the bias in temperature caused by the preferred sign of the off-diagonal crosstalk matrix elements, there is in general no preferred polarization rotation unless unfortunate choices are made in frequency scheduling.
+Such choices should be avoided.
+
+The most dangerous of these is inter-band cross-talk, as that is the hardest to calibrate out.
+Figuring out the source band requires a suite of point sources with different spectra and is subject to large uncertainties; measuring it in detail requires detailed wideband FTS scans of every detector, which are substantially more time and labor intensive than planet observations.
+This is best avoided by scheduling the different bands far apart in frequency or, ideally, on different SQUIDs altogether.
 
 \paragraph{Uncertainty/Range:}
 \textbf{To be filled}
