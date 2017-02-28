@@ -1,0 +1,11 @@
+There are several techniques used to calibrate the thermal-response of the timestream. Two popular techniques are 
+\begin{enumerate}
+\item{using a ground-based calibrator in combination with planet measurements}
+\item{using measurement of the atmosphere.}
+\end{enumerate}
+1. is primarily used by POLARBEAR (with cross-checks using 2.), while 2. is the technique used by ACT. Each technique has pros and cons, but ideally one would like to capture time variations and avoid differential gain (mismatch in focal-plane relative calibration of the TOD, or flat-fielding).
+
+Concerning the technique 1., the ground-based calibrator is rarely itself source of large time fluctuations\footnote{source: POLARBEAR analyses, but that needs to be quantified better.}, but one must take into account spatial variation of the signal in the focal plane, and the fact that individual detectors may have a polarized response to the ground-based calibrator.
+On the planet measurement side, one must take great care as it is often difficult to model and propagate astrophysical details with precision (example: Saturn measurements show non-negligible flux variability due to the change of the ring opening angle over time).
+
+Concerning the technique 2., ...

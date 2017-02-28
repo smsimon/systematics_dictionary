@@ -14,7 +14,7 @@ This variety of cross talk involves the lorentzian tail of the LRC resonance in 
 \begin{equation}
 I^{\omega_n}_{n\pm1} = \frac{V^{\omega_n}_{bias}}{R_{TES}+i\omega_nL+(i\omega_nC_{n\pm1})^-1} \simeq \frac{V^{\omega_n}_{bias}}{2i\Delta\omega L}\left(1+\frac{iR_{TES}}{2\Delta\omega L}\right)
 \end{equation}
-By taking the ratio of the current modulation on neighboring channels compared to on a given channel as given in (2) and (3) we can get  the approximate level of crosstalk $|R^2_{TES}/(2\Delta \omega L)^2|$. This comes out to $\sim0.25\%$ for POLARBEAR.
+By taking the ratio of the current modulation on neighboring channels compared to on a given channel as given in (2) and (3) we can get  the approximate level of crosstalk $|R^2_{TES}/(2\Delta \omega L)^2|$. This comes out to $\sim0.25\%$ for \pb.
 \begin{equation}
 \frac{\Delta I^{\omega_n}_{n\pm1}}{\Delta R_{TES}} \simeq \frac{V^{\omega_n}_{bias}}{2\Delta\omega L}
 \end{equation}
@@ -37,9 +37,9 @@ The ratio of power changes in a channel compared to its neighbors, given in (6),
 \end{equation}
 \paragraph{Other Crosstalk}
 \begin{itemize}
-\item Inductors are fabricated on the same board and there is some finite mutual inductance between physically close inductors. This crosstalk is minimized by keeping the mutual inductance coupling coefficient low ($\sim$ 0.01 for POLARBEAR) and physically separating inductors that are close in frequency space. 
-\item Crosstalk in the warm cabling between the SQUID and the warm electronics where demodulation and DAN feedback computation occurs can create imperfect nulling which produces excess loading and noise on the SQUIDs. Shielded cables were developed that kept crosstalk between twisted pairs at 60dB between 0.1-10 MHz for POLARBEAR.
-\item Crosstalk has been seen between LC boards. Specifically ones that share a PCB board. There have been some ongoing studies about possible inductive coupling between LC boards. John Groh, \& Darcy Barron on POLARBEAR and many SPT-3G members have been studying this.
+\item Inductors are fabricated on the same board and there is some finite mutual inductance between physically close inductors. This crosstalk is minimized by keeping the mutual inductance coupling coefficient low ($\sim$ 0.01 for \pb) and physically separating inductors that are close in frequency space. 
+\item Crosstalk in the warm cabling between the SQUID and the warm electronics where demodulation and DAN feedback computation occurs can create imperfect nulling which produces excess loading and noise on the SQUIDs. Shielded cables were developed that kept crosstalk between twisted pairs at 60dB between 0.1-10 MHz for \pb.
+\item Crosstalk has been seen between LC boards. Specifically ones that share a PCB board. There have been some ongoing studies about possible inductive coupling between LC boards. John Groh, \& Darcy Barron on \pb\ and many SPT-3G members have been studying this.
 \end{itemize}
 
 \paragraph{Plan to model and/or measure:}
@@ -84,9 +84,25 @@ Figuring out the source band requires a suite of point sources with different sp
 This is best avoided by scheduling the different bands far apart in frequency or, ideally, on different SQUIDs altogether.
 
 \paragraph{Uncertainty/Range:}
-\textbf{To be filled}
+As a first start, we define two cases.
+Each bolometer draws a leakage coefficient from a normal distribution with G1 = ($\mu=-0.3\%,\, \sigma=0.1\%$) or G2 = ($\mu=-3\%,\, \sigma=1\%$).
 \paragraph{Parameterization:}
-\textbf{To be filled}
+The instrument systematic pipeline developed for SO aims at more realism than what was done originally for \pb. 
+Here is the setup put in place to study the impact of having crosstalk (in a generic way, i.e. leakage from one detector to another(s)):
+\begin{enumerate}
+\item{We assume a fix total number of detectors for the focal plane.}
+\item{Using this total number of detectors, we assume different focal plane configurations (see Table 1) according to the MUX factor (number of bolometers/SQUID)}
+\item{We generate corresponding TODs.}
+\item{Each bolometer draws a leakage coefficient from a range of values defined above (G1 or G2).}
+\item{This distribution is the same then for all CES (i.e. leakage is constant in time). Note that time-varying crosstalk is also available in the pipeline, but not used here.}
+\item{According to the Friend Factor (FF), which defines the nearest bolometer indices B communicating with bolometer b in its SQUID: 
+\begin{equation}
+B = \{ b2\, |\, 0 < |b-b2| \leq FF \},
+\end{equation} 
+we propagate the crosstalk effect in all the TODs. We chose FF to be either 1, 3, or total number of bolometers in the SQUID.}
+\item{We estimate the sky maps from contaminated TODs, and compute angular power-spectra.}
+\end{enumerate}
+\textit{Feel free to comment and propose improvement. More informations available at \url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule}.}
 
 %\subsubsection{References}
 %\begin{itemize}
