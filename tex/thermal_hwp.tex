@@ -1,7 +1,7 @@
 \subsection{Thermal Variation in HWP Temperature}
 
 \paragraph{Description:}
-HWP thermal gradient and thermal fluctuations. A not uniform HWP temperature and its temporal fluctuations create a spatial and time dependent 2$f$ signal.
+HWP thermal gradient and thermal fluctuations. A not uniform HWP temperature and its temporal fluctuations create a spatial and time dependent 0$f$, 1$f$, 2$f$, 4$f$ signals, etc. depending on the amplitude of harmonic decomposition of the temperature profile of the HWP. 
 
 \paragraph{Plan to model and/or measure:}
 Model: thermal finite element analysis of a HWP thermalized with a suitable heat sink and with a realistic time variable loading.
@@ -11,6 +11,24 @@ Measure: cryogenic measurements of the thermal gradients.
 \paragraph{Uncertainty/Range:}
 Realistic model of the time variation of the loading.
 
+For a sapphire HWP, we expect this time variation effect to be small, as sapphire has a large thermal conductivity and large heat capacity, giving it both good thermalization properties and a large time constant.
+
 
 \paragraph{Parameterization:}
 HWP thermal fluctuations: $\Delta_{HWP}(x,y,t)$ with $(x,y)$ the spatial coordinates of the HWP and $t$ the time.
+
+HWP thermal fluctuation time constant: 
+
+\begin{equation}
+\tau_{T_{HWP}} = C(T_{HWP})/G(T_{HWP}, T_{BCK})
+\end{equation}
+
+where $C$ is the HWP heat capacity as a function of its temperatue $T_{HWP}$, and $G$ is the thermal link between the HWP at $T_{HWP}$ and the surrounding environment at $T_{BCK}$. 
+
+Then we expect the HWP temperature to fluctuate, assuming a fluctuating background at frequency $\omega_{BCK}$, as
+
+ \begin{equation} 
+ T_{HWP} \propto \frac{e^{i \omega_{BCK} t}}{i \omega_{BCK} + 1/\tau_{T_{HWP}}}
+ \end{equation}
+ 
+ Because the time constant is large, expect the thermal fluctuation to manifest at very low frequencies $\omega_{BCK}$.
