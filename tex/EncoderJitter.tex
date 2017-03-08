@@ -17,7 +17,22 @@ Below are a few sources of this timestamp jitter:
  \item \textbf{An inadequate encoder sampling rate} prevents precise identification of the encoder ticks. If your encoder readout is sampling the encoder slowly, inerpolation must be used to estimate the HWP angle. Interpolation relies on the smoothness of the HWP rotation and therefore can be noisy if the HWP is vibrating or wobbling.
  \item \textbf{An inadeqaute encoder tick frequency}, in a similar way to an inadequate sampling rate, requires a reliance on interpolation to retrive the HWP angle and therefore can be noisy.
  \end{itemize}
- 
+  
+\paragraph{Plan to model and/or measure:}
+%Plan to model/measure effect
+
+Expected instrumental polarization from optical elements in front of your HWP must be modeled in order to make estimates of the expected power at 4f. This should be modeled using a physical optics simulator with realistic emissivities. Additionally, HWP differential emission and differential reflection should be measured prior to deployment to make estimates of the expedted power at 2f. Then, given these expected weights, you can set a requirement on the acceptable white noise for your amplifiers, on the well-behavedness of your encoder waveform, etc.
+
+\paragraph{Uncertainty/Range:}
+%This section should include the uncertainty of
+%known parameters and/or the expected range of parameters for consideration
+
+This systematic is driven by the size of the 2f and 4f signal of the HWP, which in turn is dependant on the instrumental polarization sky-side of the modulator. So, for a HWP at prime focus in the Cross-Dragone scenario, (POLARBEAR), the requirement is quite tight--less than 1 arcsecond--where as for a modulator at the stop of a small-aperture telescope (e.g. ABS), the requirement becomes looser.
+
+This effect can be averaged down in analysis with interpolation schemes, and is hence improved if the HWP rotational stability is very good over long timescales.
+
+\paragraph{Parameterization:}
+
 The NET induced by this angle jitter is set by the size of the HWP-synchronous signal:
  
  \begin{equation}
@@ -45,18 +60,3 @@ To convert this angle requirement into a timestamp jitter, which is often more u
 \end{equation}
 
 Again, the requirement on the HWP timestamp accuracy is made tighter as the HWP is spun faster.
-  
-\paragraph{Plan to model and/or measure:}
-%Plan to model/measure effect
-
-Expected instrumental polarization from optical elements in front of your HWP must be modeled in order to make estimates of the expected power at 4f. This should be modeled using a physical optics simulator with realistic emissivities. Additionally, HWP differential emission and differential reflection should be measured prior to deployment to make estimates of the expedted power at 2f. Then, given these expected weights, you can set a requirement on the acceptable white noise for your amplifiers, on the well-behavedness of your encoder waveform, etc.
-
-\paragraph{Uncertainty/Range:}
-%This section should include the uncertainty of
-%known parameters and/or the expected range of parameters for consideration
-
-This systematic is driven by the size of the 2f and 4f signal of the HWP, which in turn is dependant on the instrumental polarization sky-side of the modulator. So, for a HWP at prime focus in the Cross-Dragone scenario, (POLARBEAR), the requirement is quite tight--less than 1 arcsecond--where as for a modulator at the stop of a small-aperture telescope (e.g. ABS), the requirement becomes looser.
-
-This effect can be averaged down in analysis with interpolation schemes, and is hence improved if the HWP rotational stability is very good over long timescales.
-
-\paragraph{Parameterization:}
