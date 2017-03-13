@@ -1,18 +1,13 @@
-\subsection{Feedhorn Crosspol}
+\subsection{Cross Polarization from Feedhorn}
 
 \paragraph{Description:}
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+The cross polarization describes how much leakage there is between orthogonal polarization modes. If not properly accounted for, this can cause leakage between E-modes and B-modes.
 
 \paragraph{Plan to model and/or measure:}
-Plan to model/measure effect. Use TRLs to describe how well we understand/can model the effect. Is there a good null test that we could use to catch this effect?
+The cross polarization is determined from the polarized ($rEL3X$ and $rEL3Y$) beam parameters in dB from HFSS. The E-plane beam is then given by $rEL3X$ at $\phi=0^{\circ}$, where $\phi$ is the angular coordinate of the beam, and the H-plane beam is given by $rEL3X$ at $\phi=90^{\circ}$. The cross polarization beam is given by $rEL3Y$ at $\phi=45^{\circ}$. All beams are normalized by the maximum value of the E-plane beam, such that the maximum value of the E-plane beam is equal to one. The cross polarization is then the maximum value of the cross polarization beam.
 
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+The typical allowable ranges for this value are $<-15$~dB to $<-30$~dB in power, but this needs to be further constrained by the SWG for this specific project. The crosspol for the AdvACT 90/150~GHz feedhorns is $1.74\%$ in the low band and $0.3\%$ in the high band, while the crosspol for the AdvACT 150/230~GHz feedhorns is $1\%$ in the low band and $0.4\%$ in the high band.
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+We can parameterize this effect with the cross-polar beam from HFSS.
