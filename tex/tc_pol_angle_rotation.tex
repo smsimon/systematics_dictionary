@@ -1,0 +1,30 @@
+\subsection{Polarization Angle Rotation with Time Constant}
+
+\paragraph{Description:}
+In an experiment that employs a continuously-rotating HWP, fluctuations in the time constants of the detectors between observations can cause apparent shifts in the polarization angles of the detectors. This effect is of particular importance when calibrating the polarization angles of the detectors. The magnitude of the angle shift from the detector time constant is half the offset in phase, which is given by Equation~\ref{eqn:phi_shift}. In the case where $f_{3dB}$ is constant throughout all CMB observations, the angle shift can be neglected, so the primary concern is the secondary effect of fluctuations in the angle shift between CMB measurements~\cite{Simon_Thesis_2016}.
+
+The direction of the angle shift is dependent on the coordinate system of the polarization angle definition and the rotation direction of the HWP. In all cases, the shift in phase is in the direction of the HWP rotation. The Healpix convention defines the coordinate system such that the vertical polarization angle is $\psi=0^{\circ}$ and the horizontal polarization angle is $\psi=90^{\circ}$. The sign in this treatment assumes that HWP rotates in the positive direction in this coordinate system. Using a wire grid to measure the polarization angle as described in~\cite{Tajima_2012}, the measured angle $\psi_{meas}$ is defined as
+\begin{equation}
+\psi_{meas} \equiv 1/2 \arctan{(U/Q)}=1/2\mathrm{arg(demod)}=\psi_{WG}-\psi_{det},
+\end{equation}
+where $Q$ and $U$ are the Stokes parameters, arg(demod) is the phase argument of the demodulated timestream, $\psi_{WG}$ is the angle of the polarized signal from the wire grid, and $\psi_{det}$ is the polarization angle that the detector is sensitive to when the HWP encoder value is zero. The phase $\phi$ is equal to arg(demod), which gives
+\begin{equation}
+\psi_{det}=-\frac{1}{2}\phi + \psi_{WG}.
+\end{equation}
+Expanding the phase into $\phi=\phi_{0}+2\Delta \psi$ and using Equation~\ref{eqn:phi_shift}, we can then write the detector angle as
+\begin{equation}
+\psi_{det}=-1/2\phi_{0}-\Delta \psi+ \psi_{WG}=\psi_{det,0}-\Delta \psi + \psi_{WG}=\psi_{det,0}-1/2\arctan{\left(\frac{4f_{m}}{f_{3dB}}\right)} + \psi_{WG}\,\, ,
+\end{equation}
+where $\psi_{det,0}$ is the intrinsic polarization angle of the detector~\cite{Simon_Thesis_2016}
+
+\paragraph{Plan to model and/or measure:}
+
+In this case, the angle shift is in the negative direction, so $\Delta \psi$ must be added to the polarization angles of the detectors for all observations and polarization angle measurements to correct for this effect. For each observation, $\Delta \psi$ can be determined using the HWP rotation frequency $f_{m}$ from the HWP encoder and the optical $f_{3dB}$ for the detector timestream. When taking IV curves for wire grid polarization angle measurements, the wire grid should be in place to get a more accurate time constant estimation. The dependence of this effect on $f_{3dB}$ means that we must have an understanding or measurement of the time constants for each CMB observation. A null test that splits the detectors based on their median $f_{3dB}$ values could catch this systematic. One could also run the analysis with and without this effect accounted for to determine the level of systematics as was done in ABS.
+
+This effect is not present with no HWP.
+
+\paragraph{Uncertainty/Range:}
+The size of this effect depends on the modulation frequency of the HWP $f_{m}$ and the optical $f_{3dB}$ of the detectors. Faster time constants and slower $f_{m}$ have a smaller effect. To first order, these effects are on the order of degrees, but if the $f_{3dB}$ is constant this effect can be easily corrected. However, the secondary effect of the polarization angle fluctuating with fluctuating $f_{3dB}$ is the primary concern. For a low 3dB frequency of 30~Hz and a modulation frequency of 10.2~Hz, a 10\% shift to a lower $f_{3dB}$ results in a $0.96^{\circ}$ shift in polarization angle. ABS has shown that this can be successfully corrected to a few percent, but this requires a good understanding of the optical $f_{3dB}$, which is the main source of uncertainty.
+
+\paragraph{Parameterization:}
+This effect is parameterized with $\Delta \psi=-1/2\arctan{\left(\frac{4f_{m}}{f_{3dB}}\right)}$. Note that the sign of the effect depends on the coordinate system and the direction of the HWP rotation.
