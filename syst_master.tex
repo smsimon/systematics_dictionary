@@ -50,9 +50,9 @@ BCOR5mm, % Binding correction
 
 \tableofcontents % Print the table of contents
 
-\listoffigures % Print the list of figures
+%\listoffigures % Print the list of figures
 
-\listoftables % Print the list of tables
+%\listoftables % Print the list of tables
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
@@ -72,12 +72,14 @@ A summary of systematics.
 \input{tex/intro.tex}
 
 \section{Optics}
-\input{tex/template.tex}
+%\input{tex/template.tex}
 \input{tex/pointing.tex}
 \input{tex/beam_ellipticity.tex}
 \input{tex/beam_cross_polar.tex}
 \input{tex/polarization_angle.tex}
 \input{tex/PolWobble.tex}
+\input{tex/feedhorn_crosspol.tex}
+\input{tex/feedhorn_pol_leakage.tex}
 
 
 \section{Spectral Response Function}
@@ -88,14 +90,21 @@ A summary of systematics.
 \input{tex/HWP_differential_optical_properties.tex}
 \input{tex/thermal_hwp.tex}
 \input{tex/hwp_beam_systematics.tex}
+\input{tex/EncoderJitter.tex}
+\input{tex/HWPDegredation.tex}
+\input{tex/si_hwp_degradation.tex}
+\input{tex/hwp_pol_ang_v_freq.tex}
 
 \section{Time Constants}
 \input{tex/tc_intro.tex}
+\input{tex/tc_pol_angle_rotation.tex}
+\input{tex/tc_beam_pointing.tex}
 
 \section{Crosstalk}
 \input{tex/crosstalk}
 
 \section{Gain mismatch}
+\input{tex/gain_intro}
 \input{tex/gain_drift}
 \input{tex/differential_gain}
 

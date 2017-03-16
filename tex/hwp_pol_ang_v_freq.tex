@@ -1,0 +1,35 @@
+\subsection{Polarizatoin Angle Frequency Dependence of HWP}
+
+\paragraph{Description:}
+%Description of systematic effect, including relevant equations and
+%parameterization for TWGs. Note that each variable in each equation should be
+%defined. This should include where we expect to get the value of this variable
+%from (TWG, literature, etc.)
+
+Let's define polarization angle as the angle betweeen the light and the HWP, with incident light being rotated by the HWP to a different, transmitted angle.  This rotation angle has a dependence on the freqeuncy of light, as well as the precise properties of the HWP
+
+It should be noted that there is a paper which proposes a way to mitigate this process\cite{Matsumura14}.  It places an additional, stationary HWP behind the rotating one.  This counteracts the frequency polarization angle dependence while maintianing broadband polarization modulation. 
+
+\paragraph{Plan to model and/or measure:}
+%Plan to model/measure effect. Use TRLs to describe how well we understand/can model the effect.
+A Muller Matrix paramaterization should be sufficient to model this effect, although it also could be modeled using a full transmission line model.  The transmission line model may more accuratly capture the behavior since it takes the multiple relfections between the various layers into account.
+
+For a silicon metamaterial HWP, the HWP in its entirity can be modeled in HFSS, and this dependence can be derived from the simulation.
+
+The collaboration has several HWPs that can be used in lab to measure this effect, such as by using a vector network analyzer set up.
+
+\paragraph{Uncertainty/Range:}
+%This section should include the uncertainty of
+%known parameters and/or the expected range of parameters for consideration
+Discussion in \cite{Matsumura09} show this can be up to about 20 degrees for some HWPs.
+
+
+
+
+\paragraph{Parameterization:}
+%This section should include the parameterization of figures of
+%merit and the output to the SWGs.
+
+As discussed in \cite{Matsumura09}, a Muller Matrix representation of the HWP stack can give the frequency dependence of the polarization angle effectively.
+
+
