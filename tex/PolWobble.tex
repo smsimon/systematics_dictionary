@@ -1,12 +1,12 @@
-\subsection{Polarization Wobble:Sinuous Antenna}
+\subsection{Polarization Wobble : Sinuous Antenna}
 
 \subsubsection{Description of Effect}
-A sinuous antenna is part of a class of planar antenna geometries called log-periodic antennas due to a log-periodic winding of the antenna arms. The benefit of log periodic antennas is the fact that their properties such as impedance, and beam properties stay consistent over a wide bandwidth and repeat every $ln(\tau)$ where $\tau$ is the characteristic length scale over which the antenna arm pattern repeats. The maximum and minimum bandwidth of these antennas are in theory just set by their inner and outer radii. One characteristic of log periodic antennas that is problematic for polarization measurements of the CMB is polarization wobble. This is a rotation of the polarization axis that oscillates between a maximum and minimum value every $\ln(\tau)$. Within the class of log-periodic antennas the sinuous antenna has the lowest amount of polarization wobble and the amount of antenna wobble is set by $\tau$: lower $\tau$ corresponds to smaller max to min deviation in polarization axis.
+A sinuous antenna is part of a class of planar antenna geometries called log-periodic antennas due to a log-periodic winding of the antenna arms. The benefit of log periodic antennas is the fact that their properties such as impedance, and beam properties stay consistent over a wide bandwidth and repeat every $ln(\tau)$ where $\tau$ is the characteristic length scale over which the antenna arm pattern repeats. The maximum and minimum bandwidth of these antennas are in theory just set by their inner and outer radii. One characteristic of log periodic antennas that is problematic for polarization measurements of the CMB is polarization wobble. This is a rotation of the polarization axis that oscillates between a maximum and minimum value every $\ln(\tau)$. Within the class of log-periodic antennas the sinuous antenna has the lowest amount of polarization wobble and the amount of antenna wobble is set by $\tau$: lower $\tau$ corresponds to smaller max to min deviation in polarization axis. A detailed studies of the PB2 sinuous antennas can be found in \cite{Obrient2008},\cite{Edwards2012}.
 \subsubsection{Associated Systematics}
-Polarization wobble is primarily a problem because is creates cross polarization or Q -> U leakage.
+Polarization wobble is primarily a problem because is creates cross polarization or Q -> U leakage. Systematics from PB2 antennas as well as detectors and lenslets can be found in some details in Toki's thesis \cite{TokiThesis}.
 
 \paragraph{Plan to model and/or measure:}
-Minimizing $\tau$ minimizes cross polarization but smaller $\tau$ also sets the required linewidths of your traces. For POLARBEAR a $\tau$ of 1.3 was chosen to minimize $\tau$ but still allow for fabricate-able trace widths. To further null the effect of cross polarization from polarization wobble a 4 pixel differencing scheme has been proposed which will return Q and U values independent of the polarization wobble angle. This procedure requires two sets of two pixels each (A and B as shown in fig. 1) with each set having one antenna with one linear polarization oriented at 0 degrees and the second pixel rotated by 45 degrees. The polarization wobble angle is denoted as $\phi(\nu)$, the angle of incident light is $\theta(\nu)$, the detectors efficiency is $\eta(\nu)$, and the electric field amplitude is $E(\nu)$. This setup is depicted in figure 1. The steps to extract Q and U values for the 4 pixels with the dependence on $\phi(\nu)$ removed is described below. First (3) show the relative power on the the 90 and 45 pixels of the A and B sets.
+Minimizing $\tau$ minimizes cross polarization but smaller $\tau$ also sets the required linewidths of your traces. For POLARBEAR a $\tau$ of 1.3 was chosen to minimize $\tau$ but still allow for fabricate-able trace widths. To further null the effect of cross polarization from polarization wobble a 4 pixel differencing scheme has been proposed \cite{TokiThesis},\cite{TokiMemo1},\cite{TokiMemo2}, which will return Q and U values independent of the polarization wobble angle. This procedure requires two sets of two pixels each (A and B as shown in fig. 1) with each set having one antenna with one linear polarization oriented at 0 degrees and the second pixel rotated by 45 degrees. The polarization wobble angle is denoted as $\phi(\nu)$, the angle of incident light is $\theta(\nu)$, the detectors efficiency is $\eta(\nu)$, and the electric field amplitude is $E(\nu)$. This setup is depicted in figure 1. The steps to extract Q and U values for the 4 pixels with the dependence on $\phi(\nu)$ removed is described below. First (3) show the relative power on the the 90 and 45 pixels of the A and B sets.
 \begin{figure}
 \centering
 \includegraphics[width=2.5in]{4pixelremovewobble.png}
@@ -68,15 +68,15 @@ Where $\eta(\nu)$ is measured using an FTS.
 \paragraph{Parameterization:}
 \textbf{To be filled}
 
-\subsubsection{References}
-\begin{itemize}
-\item O'Brient, B. \textit{et.al.}, "Sinuous-Antenna coupled TES bolometers for Cosmic Microwave Background
-Polarimetry," LTD13 Proceedings (2009).
-\item Edwards, J.M. \textit{et.al.}, "Dual-Polarized Sinuous Antennas on Extended
-Hemispherical Silicon Lenses," IEEE Trans Antennas and Propagation, Vol 60, No 9 (2012).
-\item Suzuki, A. "Lenslet Coupled Sinuous Antenna Systematic Study", Berkeley Memo (2015). - Ask for this, its not published.
-\item Suzuki, A. "Sinuous Antenna Wobble Cancellation", Berkeley Memo (2012). - Ask for this, its not published.
-\item O'Brient, B. \textit{et.al.}, "Sinuous Antennas for Cosmic Microwave Background
-Polarimetry," SPIE, Vol 7020 70201H-1 (2008).
-\item Suzuki, A. "Multichroic Bolometric Detector Architecture for Cosmic Microwave Background Polarimetry Experiments," Berkeley Dissertation (2013).
-\end{itemize} 
+%\subsubsection{References}
+%\begin{itemize}
+%\item O'Brient, B. \textit{et.al.}, "Sinuous-Antenna coupled TES bolometers for Cosmic Microwave Background
+%Polarimetry," LTD13 Proceedings (2009).
+%\item Edwards, J.M. \textit{et.al.}, "Dual-Polarized Sinuous Antennas on Extended
+%Hemispherical Silicon Lenses," IEEE Trans Antennas and Propagation, Vol 60, No 9 (2012).
+%\item Suzuki, A. "Lenslet Coupled Sinuous Antenna Systematic Study", Berkeley Memo (2015). - Ask for this, its not published.
+%\item Suzuki, A. "Sinuous Antenna Wobble Cancellation", Berkeley Memo (2012). - Ask for this, its not published.
+%\item O'Brient, B. \textit{et.al.}, "Sinuous Antennas for Cosmic Microwave Background
+%Polarimetry," SPIE, Vol 7020 70201H-1 (2008).
+%\item Suzuki, A. "Multichroic Bolometric Detector Architecture for Cosmic Microwave Background Polarimetry Experiments," Berkeley Dissertation (2013).
+%\end{itemize} 
