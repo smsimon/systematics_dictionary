@@ -1,0 +1,13 @@
+\subsection{Inhomogeneous AR Coating}
+
+\paragraph{Description:}
+If a telescope has any transmissive opitcal elements, those elements will need to have an effective antireflective (AR) coating.  Some systematics are particular to the AR technology used, but there are some general systematics.  Inhomogeneities can occur with most technologies, such as by a variation in the thickness of a layer across the element.  This will cause a decrease in the AR performance at the location of the inhomogeneity.  If the element is in a position in the beam such that all the detectors effectively see the entire element, this will be averaged over the entire element, and the systematic will be the same across the whole focal plane.  If the element is in a position such that each detector sees only a small part of the element, there will be a focal plane position dependence on the transmission.  If there are several such elements in the optical path for each detector, the effect will hopefully average out over the focal plane.
+
+\paragraph{Plan to model and/or measure:}
+Each optical element can have its AR coating performance tested.  Testing of specific technologies can give the tolerances of the that particular technology.  Using the tolerance and a transfer matrix model can give predictions on how much this will effect the overall performance. 
+
+\paragraph{Uncertainty/Range:}
+Most technologies can get to a paricular thickness consistensy across the surface.  So this may be from +/- 5 to 25 um depending on the technology.  Overall, this is a relatively small amount at most frequencies (at the upper end of ground based range it may start to present a problem).  If the AR performance is tightly tuned (to get less than about 0.5\% across the band) then any deviation  will cause the the performance to degrade to a percent or so.  If the performance was originally averaging a percent, or is a very broad bandwidth, this will just shift the bands around a bit (a few percent).  Overall, given the reasonably tight tolerances of current technologies, this will not be a major problem.
+
+\paragraph{Parameterization:}
+We should get the reflection vs frequency data for these designs, and understand the thickness and index tolerances of any proposed AR technology, getting an rmse for each layer of ar coating.
