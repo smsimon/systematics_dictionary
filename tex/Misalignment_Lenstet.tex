@@ -7,14 +7,14 @@ With lenslet couple antenna technology, there is a possibility that lenslets wil
 We can create a model in HFSS to simulate the effect to beam parameters from misalignment from lenslet couple antenna. After that we can use ray tracing program such as Zemax estimate how much of this contribute to overall pointing error on sky.
 
 \paragraph{Uncertainty/Range:}
-We can minimize an uncertainty from this by know all the possibilities that can cause a wafer slipped e.g. the thermal contraction from the wafer holder and wafer, or vibration from outside. 
+We can minimize an uncertainty from this by know all the possibilities that can cause a wafer slipped e.g. the thermal contraction from the wafer holder and wafer, or vibration from outside. Range of the uncertainty also vary by size of lenslets and antenna. In PB2 case, we set the tolerance level at 20 $\mu m$.
 
 \paragraph{Parameterization:}
 This is a result from HFSS that we simulated for PB2. This showed a linear relationship between the pointing error and the distance of lenslets and antenna. In the simulation also showed the direction of pointing offset is a same direction of wafer slipped. 
   
 \begin{figure}
 \centering
-\includegraphics[width=3in]{figures/pointingOffset_waferslipped.png}
+\includegraphics[width=3.25in]{figures/pointingOffset_waferslipped.png}
 \caption{plot pointing error vs an offset between sinuous antenna and lenslet }
 \label{poitingoffsetFromWaferslipped}
 \end{figure}
