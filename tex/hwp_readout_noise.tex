@@ -1,0 +1,27 @@
+
+\subsection{HWP Readout 1/f Noise}
+
+
+\paragraph{Description:}
+Half wave plates nominally separate polarization from atmospheric and readout low frequency power by modulation at 4f, however due to the ampitude of HWPSS and temperature to polarization leakage real demodulation methods couple readout effects into demodulated polarization channels. 
+This discusses readout 1/f power uncorrelated with atmospheric intensity. Generically this has multiplicative (small signal gain that acts on the 4f line) and additive (fluctuations on bias power impacting the 0f) effects . Following Eq. 4.6) - 4.8) in Takakura et al (2017), let $\Delta(t)$ be an additive 1/f mode and $\delta g(t)$ be a multiplicative readout gain instability.
+
+$$
+d_{m}(t) = (\delta I (t) + \Delta (t)) \times (1 + g_{1}d_{m}(t) + \delta g(t)) + …
+$$
+$$
+d_{d}^{sub}(t) = Q + iU + A_{0}^{4} \delta g(t) - \lambda_{4} \Delta (t) + …
+$$
+
+\paragraph{Plan to model and/or measure:}
+Upper limits on the effect can be determined using thermal data from PB1 readout electronics in conjunction with examining the gain path in readout electronics, however in practice thermal coefficients depend heavily on device matching which is difficult to know without direct measurement.
+
+In general this is best measured end-to-end using overbiased detectors or resistor channels. It is also possible to monitor and project out the ADC / DAC gain modes in an FDM system by outputting and monitoring low frequency tones that are then fed back into thermally stable (although slow) ADCs.
+
+\paragraph{Uncertainty/Range:}
+
+This has the potential to be a very significant limitation in low frequency sensitivity. There is circumstantial evidence that this may be the dominant effect limiting PB1 low-$\ell$ sensitivity in the HWP dataset. This effect is common mode and does not integrate down with detector count.
+
+\paragraph{Parameterization:}
+
+This can be described using the fractional gain instability $\delta g(t)$ and additive readout current $\Delta (t)$ referred to sky temperature. The effect should be common mode across the focal plane.
