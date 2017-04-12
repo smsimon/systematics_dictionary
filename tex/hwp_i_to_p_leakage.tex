@@ -1,0 +1,21 @@
+\subsection{HWP $I \rightarrow P$ Leakage Coming from Differential Optical Properties of a HWP}
+
+\paragraph{Description:}
+Leakage of upstream I into P signal due to differential transmission and reflection in the HWP and AR coating.
+\cite{Essinger-Hileman2013, Essinger-Hileman2016, ABS_HWP}. 
+
+\paragraph{Plan to model and/or measure:}
+The leakage can be modelled with a transfer-matrix model of the HWP, and end-to-end pipeline simulations can be used to measure the total leaked polarization power.
+To measure the leakage, one can measure 4f as a function of sky I/PWV, or alternatively make maps of known unpolarised sources (like Jupiter) in the instrument Q/U frame
+and measure the polarization. However both these method will characterize the overall $I \rightarrow P$ upstream of the HWP rather than just the HWP $I \rightarrow P$.
+Any detector non-linearity will also affect this measurement.
+
+
+\paragraph{Parameterization:}
+The leakage coefficients are the elements $M_{12}$ and $M_{13}$ of the HWP mueller matrix M. These coefficients can be expanded into a beam Gauss-Hermite functions, 
+see Equation 8 of \cite{Essinger-Hileman2016}. 
+
+\paragraph{Uncertainty/Range:}
+The effect is estimated to be small, in ABS, monopole leakage is 0.01\% and higher order leakage < 0.07\% (\cite{Essinger-Hileman2016}).
+Range comes from differential emissivity and transmission of the sapphire, reflection of radiation from the detectors to the HWP and back to detectors, 
+misalignment of HWP axes. $I \rightarrow P$ leakage effect increases at non-normal incidence.
