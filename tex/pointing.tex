@@ -11,6 +11,28 @@ B_{\ell}^{eff} = B_{\ell} e^{\frac{-\ell(\ell+1)}{2} \sigma^{2}_{p,RMS}}
 \end{equation}
 where $\sigma^{2}_{p,RMS}$ is the RMS pointing error. 
 
+The pointing error jitter can also have a similar effect as lensing: it mixes E-modes into B-mode \cite{hu03}:
+\begin{align} 
+\label{eq: bmodes from attitude errors pa}
+p_A: \,\,\,\, \delta C_{\ell}^{BB} &= \int \frac{\mathrm{d^2} \vec{{\ell}}_1}{(2\pi)^2}   C^{EE}_{{\ell}_2}(\sigma) C^{\theta \theta}_{{\ell}_1} [\vec{{\ell}}_2 \cdot              \hat{{\ell}}_1 \sin[2(\Phi_{{\ell}_2} - \Phi_{\ell})]]^2 \\
+\label{eq: bmodes from attitude errors pb}
+p_B: \,\,\,\, \delta C_{\ell}^{BB} &= \int \frac{\mathrm{d^2} \vec{{\ell}}_1}{(2\pi)^2}   C^{EE}_{{\ell}_2}(\sigma) C^{\theta \theta}_{{\ell}_1} [(\vec{{\ell}}_2 \times            \hat{{\ell}}_1) \cdot \hat{z} \sin[2(\Phi_{{\ell}_2} - \Phi_{\ell})]]^2 
+\end{align}
+\noindent where  $\vec{{\ell}_2} = \vec{{\ell}} - \vec{{\ell}_1}$, $\sigma$ is the experiment Gaussian beam width, $C_{\ell}^{\theta \theta}$ is the power spectrum of the      attitude error in the map, and $p_A$ and $p_B$ stand for pointing effects A and B and should be added up in quadrature.
+Note that in these equations, $C_{\ell}^{EE}(\sigma)$ is smoothed over the beam:  $C^{EE}_{\ell}(\sigma) = C^{EE}_{\ell} \exp{(-{\ell}({\ell}+1)\sigma^2)}$.
+For a white noise pointing error with RMS $\sigma_{\theta map}$ and coherence scale $\ell_s$:
+
+\begin{equation}
+ C^{\theta \theta}_{\ell} \simeq \frac{2\pi\sigma_{\theta map}^2}{{\ell}_s^2}\exp(-\frac{{\ell}({\ell}+1)}{2{\ell}_s^2})
+\end{equation}
+
+\noindent the above spurious B-modes simplifies to
+
+\begin{equation}
+\delta  C_{\ell}^{BB} \simeq  \frac{1}{2}\frac{\sigma_{\theta map}^2}{{\ell}_s^2}         \int^{{\ell}_s} \mathrm{d}{\ell}_1 \ {\ell}_1^3 \ C^{EE}_{{\ell}_2}(\sigma)
+\end{equation}
+
+
 Systematic pointing error is the residual error in the pointing reconstruction dependent on external parameters. This pointing error is due to optical elements moving relative to each other causing optical misalignment. For example it is well known that thermal and solar heating and cooling of the telescope can cause large amounts of pointing error on the orders of 10s of arcseconds. An overall ambient temperature change can cause pointing drifts across time. Furthermore differential solar heating creating temperature gradients across the telescope structure can cause complex pointing changes that depend on the structural shape of the telescope itself. This error is difficult to model due to its complex dependence on telescope orientation and environmental parameters
 \begin{equation}
 \sigma_{p,sys} \left ( Az, El, T, I_{R}, v_{w}, ... \right )
@@ -30,10 +52,12 @@ This pointing model can be expanded to include parameters that model environment
 
 Optical pointing distortions need to be mainly modeled using physical optics or structural analysis of the optical elements under various environmental conditions. This is by far the hardest to model and measure.
 
+Several formalism exist to model the effect of pointing errors onto the measured B-modes \cite{hu03, Shimon_2008}, involving convolving the power spectrum of the pointing error with sky signal to measure the spurious signals generated. For SO this \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/eb_leakage_from_pointing_error.pdf?ukey=61f26ef33e8439a4e7096ab52c54c523066a4e35}{memo} investigates briefly how pointing errors lense E-modes into B-modes. Linking the pointing error at the level of the map to telescope models and instantaneous pointing errors needs more work.
+
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+Telescope pointing specs requirements are of order 10 arcseconds.
+\cite{didier_memo17} shows that white noise pointing errors with RMS=9 arcseconds and coherence length 1000 creates spurious B-modes of order 10\% of sky B-modes starting $\ell \sim 1,000$.
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+For linking pointing errors to science: use the power spectra of the pointing error at the level of the map, $C_l^{\theta \theta}$.
+To obtain this, need to model the time- or az/el-dependant pointing error and link this with a scanning strategy.

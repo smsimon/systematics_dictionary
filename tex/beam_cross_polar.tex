@@ -1,18 +1,15 @@
-\subsection{Beam cross-polar response}
+\subsection{Cross Polarization}
 
 \paragraph{Description:}
-Cross polarization is an optical systematic that shows how much polarization leakage there is between orthogonal polarization modes. Typically it is a characteristic of the optical design itself and represents how much polarization is rotated as it propagates through the optics. This can be calibrated out with accurate polarization angle calibration but does decrease polarization efficiency. If the calibration is incorrect, this will cause Q and U to leak into each other and cause E modes leaking into B modes. 
+Cross polarization is an optical systematic that shows how much polarization leakage there is between orthogonal polarization modes. Typically it is a characteristic of the optical design itself and represents how much polarization is rotated as it propagates through the optics. Alternatively, it can comes from differencing detectors with different beam shapes.
 
-Instrumental polarization is an optical systematic that shows how much intensity signal is leaking into the polarization signal. This is also a characteristic of the optical design itself but depends more on the properties of metals and dielectric materials. This systematic will leak the T signal into E and B modes causing large contamination if not accounted for in analysis.
+This can be calibrated out with accurate polarization angle calibration but does decrease polarization efficiency. If the calibration is incorrect, this will cause Q and U to leak into each other and cause E modes leaking into B modes. 
 
-Both systematics can be modeled using the Mueller matrix formalism. If the telescope Mueller beam matrix is known, these systematics (along with beam effects) can be propagated to the Q, U maps by
+It can be modeled using the Mueller matrix formalism. If the telescope Mueller beam matrix is known, these systematics (along with beam effects) can be propagated to the Q, U maps by
 \begin{equation}
 Q' = m_{qq} Q + m_{qu} U, \ \ U' = m_{uu} U + m_{uq} Q
 \end{equation}
-\begin{equation}
-Q' = m_{qq} Q + m_{qi} I, \ \ U' = m_{uu} U + m_{ui} I
-\end{equation}
-where the first equation is for cross polarization and the second is for instrumental polarization. In this way systematics contaminated Q and U maps can be simulated. The contaminated Q and U maps can be further propagated to the power spectra to see the leakage effect.
+In this way systematics contaminated Q and U maps can be simulated. The contaminated Q and U maps can be further propagated to the power spectra to see the leakage effect.
 
 \paragraph{Plan to model and/or measure:}
 This effect can be modeled using physical optics simulations where the Mueller matrix can be calculated directly. Comparing this to real data may be needed using a polarized source.
@@ -22,3 +19,31 @@ Insert text
 
 \paragraph{Parameterization:}
 Insert text
+
+\subsection{Instrumental Polarization}
+
+Instrumental polarization (IP) is an optical systematic that shows how much intensity signal is leaking into the polarization signal. It can come from the optics (depends on the properties of metals and dielectric materials), or come from pair differencing with detectors having different beams. For optical elements, different transmission along orthogonal axis will polarize incoming unpolarized light. The optical components also emit polarized light for the same reason, but with opposite polarization angle.
+This systematic will leak the T signal into E and B modes causing large contamination if not accounted for in analysis.
+
+It can be modeled using the Mueller matrix formalism. The effect is worse at the edge of the focal plane because of the increased incident angles on optical elements. If the telescope Mueller beam matrix is known, these systematics (along with beam effects) can be propagated to the Q, U maps by
+\begin{equation}
+Q' = m_{qq} Q + m_{qi} I, \ \ U' = m_{uu} U + m_{ui} I
+\end{equation}
+In this way systematics contaminated Q and U maps can be simulated. The contaminated Q and U maps can be further propagated to the power spectra to see the leakage effect.
+
+\paragraph{Plan to model and/or measure:}
+\noindent Intrinsic Optical Leakage: \\
+This effect can be modeled using physical optics simulations where the Mueller matrix can be calculated directly. The main optical elements to consider are mirrors, lenses, and filters, HWP. A study of IP of filters can be found in \cite{pisano05}. In the case of a HWP, only the IP up to the HWP needs to be considered.
+A first attempt at tallying up the IP from the optical chain in SO is available in this \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/eb_leakage_from_pointing_error.pdf?ukey=61f26ef33e8439a4e7096ab52c54c523066a4e35}{memo}.
+
+
+\noindent Pair Differencing Leakage: \\
+The framework to simulate this is in the systematics pipeline as described in details in \url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule#toc5}.
+See Beam Ellipticity section for more details.
+
+\paragraph{Uncertainty/Range:}
+Typical IP of the total instrument are of order 0.1 to 0.2 \%. A more detail study integrates all incident angles over each optical elements, and if IP of various elements adds up coherently.
+
+\paragraph{Parameterization:}
+Instrument mueller matrix elements $m_{qi}$ and $m_{ui}$ as a function of frequency and incident angle.
+
