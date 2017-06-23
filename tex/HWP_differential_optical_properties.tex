@@ -1,18 +1,57 @@
+% !TEX root =  ../syst_master.tex 
+
 \subsection{Differential Optical Properties of a HWP}
 
 \paragraph{Description:}
-Differential transmission, reflection and emissivity creates a $2$f component in a polarimeter exploiting a rotating HWP
-\cite{Salatino10}. 
+The birefringence of the HWP causes different transmission efficiencies along the fast and slow axes of the crystal,
+producing different absorption and emission coeficcients along the two axes.
+Because of this, transmitted unpolarized light and emitted light both leave the HWP partially polarized.
+The polarization direction rotates with the HWP, and so this signal couples to the detector at 2f.
+
 
 \paragraph{Plan to model and/or measure:}
-Plan to model: HFSS model of the metamaterial HWP, transfer matrix method for the Sapphire HWP.
-Plan to measure:
-differential transmission and reflection: FTS measurements;
-differential emissivity: HWP emissivity measurements at different temperatures
-(liquid nitrogen, room temperature and temperatures higher than room temperature).
+In order to model this effect we require the HWP mueller matrix, and information about the optical chain.
 
+Using the temperatures, efficiencies, and emissivities of each element in the optical chain,
+the unpolarized power can be propagated through each element to find the incident unpolarized power on the HWP.
+If $P_n$ is the unpolarized power on the $n^\text{th}$ element, $\eta_n$ the efficiency, $\varepsilon_n$ the emissivity, and $B$ the spectral brightness
+the propagation step is 
+\begin{equation}
+\label{unpolarized_propagation}
+P_{n+1}(\nu) = \eta_n(\nu) P_n(\nu) + \varepsilon_n(\nu) B(\nu, T_n) .
+\end{equation}
+
+
+The HWP Mueller matrix is calculated using the method described in \cite{Salatino16}, and is of the form
+\[
+M_\text{HWP} = \left(
+\begin{array}{cccc}
+T & \rho & 0 & 0\\
+\rho & T & 0 & 0\\
+0 & 0 & c & -s \\
+0 & 0 & s & c
+\end{array}
+\right),
+\]
+where all elements are dependent on frequency and incident angle.
+$\rho$ is the polarized absorption and emissivity of the HWP.
+Though the polarized fraction of the transmitted and emitted light are the same but with opposite signs,
+they do not cancel since the radiation sources are at different temperatures.
+If we define $P_\text{HWP}$ to be the incident power on the HWP, the polarized power output is 
+\begin{equation}
+P_\text{HWP + 1}(\nu) = \rho(\nu)(P_\text{HWP} - A\Omega(\nu)B(\nu, T_\text{HWP})),
+\end{equation}
+with $a_2 = \rho$. 
+
+If we define $\eta_\text{det}$ to be the combined efficiency of all elements after the HWP,
+the final 2f signal produced by the HWP is 
+\[
+A^{(2)} = \int_{\nu_\text{low}}^{\nu_\text{high}} \eta(\nu) P_\text{HWP + 1}(\nu) d\nu.
+\]
 \paragraph{Uncertainty/Range:}
-Transmission and reflection measured at room temperature scaled to cryogenic temperatures, same for differential emissivity.
+For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of $A^{(2)} = .0165 \text{ pW} = 238 \text{ mK}_\text{CMB}$
 
 \paragraph{Parameterization:}
-12 Mueller matrix top left components of a real HWP or eq.$\,$(7) and (8) in \cite{Salatino16}. 
+We require $T$ and $\rho$ from the HWP Mueller matrix\cite{Salatino16}, and an optical chain input file containing
+absorption, temperature, and spill/scatter/reflect coefficients for each element.
+
