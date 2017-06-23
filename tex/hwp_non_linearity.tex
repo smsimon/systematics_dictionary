@@ -27,35 +27,10 @@ g_1 = -\frac{\eta}{2 P_{elec}} \frac{L}{L+1} \frac{L+1+\omega_{mod}^2 \tau_0^2}{
   
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect
-A simulation implementing the model above has been written up by Neil, and Julien is currently implementing this model in the overall systematics simulator. The idea is to look for the induced P 1/f noise, and the effect of B-mode measurements. The parameters used are:
-
-\begin{table}[h]
-\caption{Caption}
-\label{table:chapter:label}
-\begin{center}       
-\begin{tabular}{lll}
-\hline
-Parameter & Unit & Value \\
-f_{hwp} & Hz & 2 \\
-τ0  ms  10
-τ1  ms/K    0.004 to 0.028
-g1  1/K 0.0002 to 0.0026
-A4  mK_cmb  300
-a4  Percent 0.12
-A2  mK_cmb  206
-a2  Percent .358
-δopt    K_cmb   
-δelec   K_cmb   
-ϵ   unitless    
-dA4/dTmirror    varies  7.4e-5 pW/K ~ 1.06 mK_cmb/K
-\hline
-\end{tabular}
-\end{center}
-\end{table}
+A simulation implementing the model above has been written up by Neil, and Julien is currently implementing this model in the overall systematics simulator. The idea is to look for the induced P 1/f noise, and the effect on B-mode measurements after the $I \rightarrow P$ removal. A page with various details and documentation is on the wiki \href{http://simonsobservatory.wikidot.com/estimationof-hwpss}{here}.
 
 
 \paragraph{Uncertainty/Range:}
-%This section should include the uncertainty of
-%known parameters and/or the expected range of parameters for consideration
+The $I \rightarrow P$ leakage coming from non-linearity in PB $\sim$ 0.6\%. Given the HWPSS estimated magnitude, and worse/best case scenarios for the detector non-linearity parameters ($g_1$ and $\tau_1$, as described in the linked page), the $I \rightarrow P$ leakage coming varies from 0.13\% (low non-linearity, number driven by optical leakage) to 0.3 \% (high non-linearity). The residual $f_{knee}$ after removing the leakage is driven by the magnitude of $\epsilon$ (and to a lesser extent $\delta_{elec}$). Neil's \href{http://simonsobservatory.wdfiles.com/local--files/estimationof-hwpss/Estimating_Ell_Knee_for_SOLA.pdf?ukey=886f3c1ad56d36de42412c02765a1a658a35fad9}{simulations} show the leftover $f_{knee}$ is 0.7 Hz for $\epsilon$ variations on order of PB and 0.2 Hz for $\epsilon$ variations 1/10th of this.
 
 
