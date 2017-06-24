@@ -1,6 +1,7 @@
 % !TEX root =  ../syst_master.tex 
 
 \subsection{Differential Optical Properties of a HWP}
+\label{HWP Differential Optical Properties}
 
 \paragraph{Description:}
 The birefringence of the HWP causes different transmission efficiencies along the fast and slow axes of the crystal,
@@ -18,7 +19,7 @@ If $P_n$ is the unpolarized power on the $n^\text{th}$ element, $\eta_n$ the eff
 the propagation step is 
 \begin{equation}
 \label{unpolarized_propagation}
-P_{n+1}(\nu) = \eta_n(\nu) P_n(\nu) + \varepsilon_n(\nu) B(\nu, T_n) .
+P_{n+1}(\nu) = \eta_n(\nu) P_n(\nu) + \varepsilon_n(\nu) A\Omega(\nu)\;  B(\nu, T_n) .
 \end{equation}
 
 
@@ -39,6 +40,7 @@ Though the polarized fraction of the transmitted and emitted light are the same 
 they do not cancel since the radiation sources are at different temperatures.
 If we define $P_\text{HWP}$ to be the incident power on the HWP, the polarized power output is 
 \begin{equation}
+\label{eq:polarized_output}
 P_\text{HWP + 1}(\nu) = \rho(\nu)(P_\text{HWP} - A\Omega(\nu)B(\nu, T_\text{HWP})),
 \end{equation}
 with $a_2 = \rho$. 
@@ -49,7 +51,8 @@ the final 2f signal produced by the HWP is
 A^{(2)} = \int_{\nu_\text{low}}^{\nu_\text{high}} \eta(\nu) P_\text{HWP + 1}(\nu) d\nu.
 \]
 \paragraph{Uncertainty/Range:}
-For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of $A^{(2)} = .0165 \text{ pW} = 238 \text{ mK}_\text{CMB}$
+For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of 
+$A^{(2)} = .0165 \text{ pW} = 238 \text{ mK}_\text{CMB}$
 
 \paragraph{Parameterization:}
 We require $T$ and $\rho$ from the HWP Mueller matrix\cite{Salatino16}, and an optical chain input file containing
