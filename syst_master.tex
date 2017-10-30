@@ -16,6 +16,12 @@ BCOR5mm, % Binding correction
 \newcommand{\pb}{\textsc{Polarbear}}
 \newcommand{\clbb}{$C_\ell^{BB}$}
 
+\usepackage{varwidth}
+\usepackage(tabularx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{placeins}
+
 \hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
 
 %----------------------------------------------------------------------------------------
@@ -120,6 +126,7 @@ A summary of systematics.t
 \input{tex/det_nonlinearity}
 
 \section{Atmospheric Effects}
+\input{tex/bandpass_atmos.tex}
 
 \section{Papers on systematics}
 
