@@ -1,14 +1,13 @@
+\subsection{Crosstalk for DfMux}
+
 \paragraph{Description:}
 The frequency multiplexing readout has crosstalk due to the finite width of the LC resonators.
 Crosstalk from one bolometer to another due to coupling in the multiplexed readout will lead to polarization and temperature leakage from a point outside the main beam, creating a localized, polarized near side lobe. Crosstalk is strongest in bolometer channels that share a SQUID in the frequency-domain multiplexed readout, and are closest together in bias frequency. Below we look to describe the DfMux system and it's crosstalk in slightly more detail but detailed accounts can be found in \cite{Barron_Thesis}, \cite{DfMux_Dobbs2012}
-
-\subsection{Crosstalk for DfMux}
 
 In the DfMux system we put each TES in series with an inductor and capacitor and tile these RLC ($R=R_{TES}$ + stray series resistance) units together in parrallel with one bias resistor in parrallel to set the voltage bias across the "comb" of RLC's. This results in each TES having a characteristic AC bias frequency set by it's respective LC (L fixed, C varied) series pair between 1 and 6 MHz. A set of LC (currently up to 68x for SPT-3G\cite{SPT3G_DfMux_Overview}) is readout by a series array SQUID which has a per channel feedback to linearize, minimize noise, and maximize the dynamic range of the SQUID called Digital Active Nulling (DAN)\cite{DfMux_LC_Production}. The DfMux warm readout sets a bias and demodulation channel at each of the comb frequencies and monitors the amplitude at each demodulation channel. As the TES experiences resistance changes with changes in incoming power it amplitude modulates it's respective lorentzian peak height and this change in current amplitude is the signal readout on the demodulation channel. 
 
 There are three primary modes of crosstalk present in the DfMux system: bias carrier leakage, non-zero wiring impedance (cold wiring), inductive/capacitive wiring crosstalk (in warm cables or from physically close conductors in the system). These three types of crosstalk are discussed below with some discussion of how to minimize them. \cite{DAN_Crosstalk_Memo} We then discuss briefly what sorts of systematic effects on our measurements these forms of crosstalk will have. 
 
-\subsubsection{Types of Crosstalk}
 \setcounter{equation}{0}
 \paragraph{Bias Carrier Leakage}
 This variety of cross talk involves the lorentzian tail of the LRC resonance in frequency space overlapping with neighboring peaks such that some amount of current meant to bias TES $n$ at frequency $\omega_n$ is biasing TES $n\pm1$ at frequency $\omega_{n\pm1}$. The current seen by neighboring channels from channel n, $I^{\omega_n}_{n\pm1}$, is given by (1)
@@ -36,7 +35,7 @@ The ratio of power changes in a channel compared to its neighbors, given in (6),
 \begin{equation}
 \frac{dP^{\omega_n}_{n\pm1}}{dP^{\omega_n}_{n}}\simeq \frac{-dI^{\omega_n}_{n\pm1}\omega_nL_{stray}}{dI^{\omega_n}_{n}\Delta\omega L}
 \end{equation}
-\paragraph{Other Crosstalk}
+\paragraph{Other Sources of Crosstalk}
 \begin{itemize}
 
 \item Inductors are fabricated on the same board and there is some finite mutual inductance between physically close inductors. This crosstalk is minimized by keeping the mutual inductance coupling coefficient low ($\sim$ 0.01 for POLARBEAR) and physically separating inductors that are close in frequency space. 
@@ -55,8 +54,6 @@ The efficacy of this technique depends on the available point-source signal-to-n
 
 \pb\ assumed constant level of crosstalk between neighbour bolometers, which is not realistic and leads to underestimates of crosstalk-induced bias.
 We may want to have a spatial distribution across the focal plane for more realism, with substantial scatter; the effects of crosstalk on calibration measurements must also be taken into account.
-
-\subsubsection{Systematics Mitigation}
 
 There are a few primary pernicious effects of crosstalk on analysis:
 \begin{enumerate}
@@ -106,6 +103,7 @@ we propagate the crosstalk effect in all the TODs. We chose FF to be either 1, 3
 \end{enumerate}
 \textit{Feel free to comment and propose improvement. More informations available at \url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule}.}
 
+\textbf{references are commented out and should be added to the dictionary references}
 %\subsubsection{References}
 %\begin{itemize}
 %\item Barron, D., "Precision measurements of cosmic microwave background polarization
