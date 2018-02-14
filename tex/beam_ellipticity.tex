@@ -9,7 +9,7 @@ where $\sigma$ represents the width of the beam. Optical aberrations will lead t
 \begin{equation}
 P (x,y) = \frac{1}{2\pi \sigma_x \sigma_y} \exp (-\frac{1}{2}[x^2/\sigma ^2_x + y^2/\sigma ^2_y]).
 \end{equation}
-This is referred to as an elliptical Gaussian function. The $\sigma_x$ and $\sigma_y$ parameters are the widths of the elliptical Gaussian beam along its two principal axes. The beam full width at half maximum (FWHM) can be defined 
+This is referred to as an elliptical Gaussian function. The $\sigma_x$ and $\sigma_y$ parameters are the widths of the elliptical Gaussian beam along its two principal axes. The beam full width at half maximum (FWHM) can be defined as
 \begin{equation}
 \theta _\mathrm{FWHM} = \sqrt{8\sigma_x \sigma_y\log{(2)}}. 
 \end{equation}
@@ -17,16 +17,19 @@ We define beam ellipticity as
 \begin{equation}
 e = (\sigma_x-\sigma_y)/(\sigma_x+\sigma_y)
 \end{equation}
-\textbf{Is this the standard definition for beam ellipticity? I have seen the same but squared quantities: $e = (\sigma_x^2-\sigma_y^2)/(\sigma_x^2+\sigma_y^2)$}. The beam ellipticity quantifies the extent to which the symmetry of the detector spatial response is broken. A highly elliptical beam response suggests that the detector signal response at any given time is dependent on the orientation of your detector relative to the signal on the sky; in other words, your scan strategy.
+The beam ellipticity quantifies the extent to which the symmetry of the detector spatial response is broken. A highly elliptical beam response suggests that the detector signal response at any given time is dependent on the orientation of your detector relative to the signal on the sky; in other words, your scan strategy.
 
-The spherical harmonic transform of an elliptical Gaussian beam is discussed in \cite{Souradeep2001}. Let's try \cite{Takahashi2010}.
+The spherical harmonic transform of an elliptical Gaussian beam is discussed in \cite{Souradeep2001}. we use \cite{Takahashi2010}. \textbf{Also cite shimon et al., 2008.}
 
 \paragraph{Plan to model and/or measure:}
 Beam widths and ellipticities are extracted from beam maps which are acquired through scanning of a terrestrial source placed in the far-field of the optical system or by observing astrophysical point-sources such as the planets in our solar system. 
 
-An attempt to model it and propagate it through the systematic pipeline can be found at \href{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule#toc5}{here}. This study focuses on the v2 configuration for the instrument. \textbf{Question: should I expand here the analysis and remove the link to the wiki? Or just a link to the wiki is ok?}
+Using the systematics pipeline (s4cmb) and the v2 configuration for the instrument, the effects of ellipticity were modeled \href{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule#toc5}{here}. \textbf{Summarize the main results and setup of the study here.}
+
+Pair-differencing orthogonal detectors with can result in differential ellipticity, so the SRF is 4. The use of a HWP mitigates this effect since there is no longer a need to pair diference, so the SRF is reduced to 2.
 
 \paragraph{Uncertainty/Range:}
-Insert text
+\textbf{What levels of ellipticity are okay without calibration? How do these requirements change if we calibrate the beam to a reasonable level? Do our ellipticity requirements put any constraints on how well we need to calibrate the beams? What science goals does this impact the most? What is different between LAT and SAC?}
 
 \paragraph{Parameterization:}
+\textbf{Need to have something here...To estimate the impact on our science goals, we estimate the power spectra both with and without the effect of ellipticity???}
