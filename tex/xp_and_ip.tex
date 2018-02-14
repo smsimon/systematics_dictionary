@@ -3,75 +3,23 @@
 \subsection{Cross Polarization}
 
 \paragraph{Description:}
-Cross polarization is an optical systematic that shows how much polarization leakage there is between orthogonal polarization modes. Typically it is a characteristic of the optical design itself and represents how much polarization is rotated as it propagates through the optics. Alternatively, it can comes from differencing detectors with different beam shapes.
-
-This can be calibrated out with accurate polarization angle calibration but does decrease polarization efficiency. If the calibration is incorrect, this will cause Q and U to leak into each other and cause E modes leaking into B modes. 
-
+Cross polarization is an optical systematic that shows how much polarization leakage there is between orthogonal polarization modes. Typically it is a characteristic of the optical design itself and represents how much polarization is rotated as it propagates through the optics. Alternatively, it can come from differencing detectors with different beam shapes. Cross polarization decreases polarization efficiency. If not properly accounted for, it can cause Q to U leakage, which causes E-modes to leak into B-modes.
+ 
 It can be modeled using the Mueller matrix formalism. If the telescope Mueller beam matrix is known, these systematics (along with beam effects) can be propagated to the Q, U maps by
 \begin{equation}
 Q' = m_{qq} Q + m_{qu} U, \ \ U' = m_{uu} U + m_{uq} Q
 \end{equation}
-In this way systematics contaminated Q and U maps can be simulated. The contaminated Q and U maps can be further propagated to the power spectra to see the leakage effect.
+In this way, the Q and U maps with this systematic included can be simulated. The contaminated Q and U maps can be further propagated to the power spectra determine the level of E-mode to B-mode leakage.
+
+For the feedhorn and lenslet cross polarization modeling, the cross polarization is determined from the polarized ($rEL3X$ and $rEL3Y$) beam parameters in dB from HFSS. The E-plane beam is given by $rEL3X$ at $\phi=0^{\circ}$, where $\phi$ is the angular coordinate of the beam, and the H-plane beam is given by $rEL3X$ at $\phi=90^{\circ}$. The cross polarization beam is given by $rEL3Y$ at $\phi=45^{\circ}$. All beams are normalized by the maximum value of the E-plane beam, such that the maximum value of the E-plane beam is equal to one. The cross polarization is then the maximum value of the cross polarization beam within the aperture stop.
 
 \paragraph{Plan to model and/or measure:}
-This effect can be modeled using physical optics simulations where the Mueller matrix can be calculated directly. Comparing this to real data may be needed using a polarized source.
+This effect can be modeled for the telescope optics using physical optics simulations where the Mueller matrix can be calculated directly. For the feedhorn and lenslets, the crosspolarization can be modeled using HFSS. Cross polarization will be measured and calibrated out with polarization angle calibration using a both a polarized source or wire grid. To reach a negligible level of xx\%, we require a polarization angle calibration to XX$^{\circ}$. We will compare the measured cross polarization with the modeled system cross polarization. The feedhorn/lenslet cross polarization can be modeled and measured separately from the full system to differentiate how much cross polarization originates from the telescope versus the feedhorns/lenslets. For feedhornd, the beams will be measured at room-temperature using a VNA and/or holography beam mapping system to measure cross polarization and compare to HFSS simulations. For lenslets, this will be achieved through measuring the cold beams of lenslets and comparing to HFSS models.
+
+Cross polarization is small and can be calibrated out with polarization angle measurements, but it must be modeled. It thus has a SRF of 3.
 
 \paragraph{Uncertainty/Range:}
-Insert text
+The typical allowable ranges for this value are usually $<-15$~dB to $<-30$~dB in power, but this needs to be further constrained by the SWG for this specific project. For comparison, the cross polarization for the AdvACT 90/150~GHz feedhorns is $1.74\%$ in the low band and $0.3\%$ in the high band, while the values for the AdvACT 150/230~GHz feedhorns are $1\%$ in the low band and $0.4\%$ in the high band (though we note that these values take only the maximum of the cross-polar beam and do not account for the aperture stop).
 
 \paragraph{Parameterization:}
-Insert text
-
-\subsection{Instrumental Polarization} 
-\label{instrumental_polarization}
-
-Instrumental polarization (IP) is an optical systematic that shows how much intensity signal is leaking into the polarization signal. It can come from the optics (depends on the properties of metals and dielectric materials), or come from pair differencing with detectors having different beams. For optical elements, different transmission along orthogonal axis will polarize incoming unpolarized light. The optical components also emit polarized light for the same reason, but with opposite polarization angle.
-This systematic will leak the T signal into E and B modes causing large contamination if not accounted for in analysis.
-
-It can be modeled using the Mueller matrix formalism. The effect is worse at the edge of the focal plane because of the increased incident angles on optical elements. If the telescope Mueller beam matrix is known, these systematics (along with beam effects) can be propagated to the Q, U maps by
-\begin{equation}
-Q' = m_{qq} Q + m_{qi} I, \ \ U' = m_{uu} U + m_{ui} I
-\end{equation}
-In this way systematics contaminated Q and U maps can be simulated. The contaminated Q and U maps can be further propagated to the power spectra to see the leakage effect.
-
-\paragraph{Plan to model and/or measure:} \mbox{}\\
-\noindent \underline{Intrinsic Optical Leakage} \\
-This effect can be modeled using physical optics simulations where the Mueller matrix can be calculated directly. 
-The main optical elements to consider are mirrors, lenses, and filters.
-A study of IP of filters can be found in \cite{pisano2005}.
-
-The combined IP of the windows and lenses for ACTPol was calculated using Code V, 
-by putting an unpolarized input on the sky and propagating it to the focal plane.
-The IP is larger towards the edges of the detector due to the non-zero incident angles.
-This gives values of $\sim0.12\%$ and $\sim0.015\%$ at the edges and the center respectively.
-For now we assume that this IP is divided equally among the lenses.
-
-Optical leakage also occurs at the mirrors due to their finite conductivity. 
-The formula is calculated in \cite{Barkats:2005sh}, and is given by the Hagen-Rubens formula multiplied by 
-a geometric factor determined by the incident angle:
-\begin{equation}
-\lambda_\text{opt}(\nu) = \sqrt{4 \pi \epsilon_0 \nu \rho} (\sec \chi - \cos \chi).
-\end{equation}
-where $\rho$ is the conductivity of the mirror and $\chi$ the incident angle.
-
-Currently we use the mirror specifications of CCAT, which gives incident angles of $25.73^\circ$ for the primary mirror 
-and $19.59^\circ$ for the secondary. The IP of both mirrors together ends up around $0.04\%$ at 145 degrees.
-
-In the case of a HWP, only the IP up to the HWP needs to be considered.
-A more detailed discussion of how to calculate the power coming from IP and instrumental polarization
-seen by the detector is given in section \ref{HWP Differential Optical Properties}.
-A first attempt at tallying up the IP from the optical chain in SO is available in this \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/eb_leakage_from_pointing_error.pdf?ukey=61f26ef33e8439a4e7096ab52c54c523066a4e35}{memo}.
-
-
-\noindent \underline{Pair Differencing Leakage} \\
-The framework to simulate this is in the systematics pipeline as described in details in \url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule#toc5}.
-See Beam Ellipticity section for more details.
-
-\paragraph{Uncertainty/Range:}
-Using the methods above for the lenses and mirrors, we see an IP of about $0.16\%$ for the whole system.
-A more detail study integrates all incident angles over each optical elements, and add up the IP of various elements  coherently.
-
-\paragraph{Parameterization:}
-Instrument mueller matrix elements $m_{qi}$ and $m_{ui}$ as a function of frequency and incident angle.
-
-
+We will parameterize this effect with the contaminuated Q and U maps for the telescope and the cross-polar beams from HFSS for the feedhorns/lenslets (see more details on this in the feedhorn/lenslet polarization leakage section).
