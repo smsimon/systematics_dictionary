@@ -1,0 +1,53 @@
+\subsection{Instrumental Polarization} 
+\label{instrumental_polarization}
+
+Instrumental polarization (IP) is an optical systematic that shows how much intensity signal is leaking into the polarization signal. It can come from the optics (depends on the properties of metals and dielectric materials), or come from pair differencing with detectors having different beams. For optical elements, different transmission along orthogonal axis will polarize incoming unpolarized light. The optical components also emit polarized light for the same reason, but with opposite polarization angle.
+This systematic will leak the T signal into E and B modes causing large contamination if not accounted for in analysis.
+
+It can be modeled using the Mueller matrix formalism. The effect is worse at the edge of the focal plane because of the increased incident angles on optical elements. If the telescope Mueller beam matrix is known, these systematics (along with beam effects) can be propagated to the Q, U maps by
+\begin{equation}
+Q' = m_{qq} Q + m_{qi} I, \ \ U' = m_{uu} U + m_{ui} I
+\end{equation}
+In this way systematics contaminated Q and U maps can be simulated. The contaminated Q and U maps can be further propagated to the power spectra to see the leakage effect.
+
+\paragraph{Plan to model and/or measure:} \mbox{}\\
+\noindent \underline{Intrinsic Optical Leakage} \\
+This effect can be modeled using physical optics simulations where the Mueller matrix can be calculated directly. 
+The main optical elements to consider are mirrors, lenses, and filters.
+A study of IP of filters can be found in \cite{pisano2005}.
+
+The combined IP of the windows and lenses for ACTPol was calculated using Code V, 
+by putting an unpolarized input on the sky and propagating it to the focal plane.
+The IP is larger towards the edges of the detector due to the non-zero incident angles.
+This gives values of $\sim0.12\%$ and $\sim0.015\%$ at the edges and the center respectively.
+For now we assume that this IP is divided equally among the lenses.
+
+Optical leakage also occurs at the mirrors due to their finite conductivity. 
+The formula is calculated in \cite{Barkats:2005sh}, and is given by the Hagen-Rubens formula multiplied by 
+a geometric factor determined by the incident angle:
+\begin{equation}
+\lambda_\text{opt}(\nu) = \sqrt{4 \pi \epsilon_0 \nu \rho} (\sec \chi - \cos \chi).
+\end{equation}
+where $\rho$ is the conductivity of the mirror and $\chi$ the incident angle.
+
+Currently we use the mirror specifications of CCAT, which gives incident angles of $25.73^\circ$ for the primary mirror 
+and $19.59^\circ$ for the secondary. The IP of both mirrors together ends up around $0.04\%$ at 145 degrees.
+
+In the case of a HWP, only the IP up to the HWP needs to be considered.
+A more detailed discussion of how to calculate the power coming from IP and instrumental polarization
+seen by the detector is given in section \ref{HWP Differential Optical Properties}.
+A first attempt at tallying up the IP from the optical chain in SO is available in this \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/eb_leakage_from_pointing_error.pdf?ukey=61f26ef33e8439a4e7096ab52c54c523066a4e35}{memo}.
+
+
+\noindent \underline{Pair Differencing Leakage} \\
+The framework to simulate this is in the systematics pipeline as described in details in \url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule#toc5}.
+See Beam Ellipticity section for more details.
+
+\paragraph{Uncertainty/Range:}
+Using the methods above for the lenses and mirrors, we see an IP of about $0.16\%$ for the whole system.
+A more detail study integrates all incident angles over each optical elements, and add up the IP of various elements  coherently.
+
+\paragraph{Parameterization:}
+Instrument mueller matrix elements $m_{qi}$ and $m_{ui}$ as a function of frequency and incident angle.
+
+
