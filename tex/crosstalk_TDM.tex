@@ -1,31 +1,28 @@
 \subsection{Time-Domain Multiplexing Crosstalk}
 
 \paragraph{Description:}
-We define electrical cross-talk the systematic by which an electrical pick-up generates a signal in a detector that is not supposed to receive any signal.
-In a DTM readout schema detectors are read out grouped by bias lines. In presence of electrical cross-talk an electrical signal, injected in a given bias line, appears in other(s) detector(s) fed by completely different bias line(s). 
+We define electrical cross-talk the systematic by which an electrical pick-up generates a signal in a detector that is not supposed to receive any signal. In a TDM readout scheme detectors are read out grouped by bias lines. In the presence of electrical cross-talk an electrical signal, injected in a given bias line, appears in other(s) detector(s) fed by completely different bias line(s). \textbf{What leakage does the crosstalk produce?}
 
-
-
-
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+\textbf{need some relevant equations used to model this}
 
 \paragraph{Plan to model and/or measure:}
-The electrical cross-talk can be probed with the bias step technique, injecting a bias step signal in a single given bias line and looking at the detectors correlation matrix. The method is pretty robust, it takes few seconds per bias lines and it can be performed both in laboratory and in the field configuration. The correlation matrix is expected to by symmetric. In building the correlation matrix the elements on the diagonal, the detectors belonging to the same bias line under study and the detectors listed on the deadlist should be removed (the first and the second ones because they are expected to have correlation equal/close to 1).
-However, the correlation matrix built with just the Pearson coefficient does not discriminate between detectors with high amplitude signal and small correlation and detectors with low amplitude signal and high correlation: both will have the same correlation level.
-In order to break this degeneracy one possibility is to normalize the Pearson coefficient to the maximum amplitude of the detector signals. 
+The electrical cross-talk can be probed with the bias step technique, In this technique, a bias step signal is injected into a single bias line, the detector correlation matrix is measured. The method is robust, takes few seconds per bias line, and it can be performed both in the laboratory and in the field. The correlation matrix is expected to by symmetric. In building the correlation matrix the elements on the diagonal, the detectors belonging to the same bias line under study and the detectors listed on the deadlist should be removed (the first and the second ones because they are expected to have correlation equal/close to 1).
+
+However, the correlation matrix built with just the Pearson coefficient does not discriminate between detectors with high amplitude signal and small correlation and detectors with low amplitude signal and high correlation as both will have the same correlation level. In order to break this degeneracy, one possibility is to normalize the Pearson coefficient to the maximum amplitude of the detector signals. 
 
 If $S_{i}(t)$ and $S_{j}(t)$ are the detectors timestreams for the $i$-th and $j$-th detectors, respectively and $< ...>$ the time average of the detector timestream, the normalized Pearson coefficient can be estimated as:
 \begin{equation}\label{Pearson}
   \frac{|<S_{i}(t)> <S_{j}(t)>|}{max(<S_{i}(t)> <S_{j}(t)>)} Pearson(S_{i}(t) S_{j}(t)),
 \end{equation}
 with $i \neq j$.
-Since in this way the normalized Pearson coefficient spans different order of magnitudes, the absolute value, $|...|$ has to be considered. 
+In this way, the normalized Pearson coefficient spans different orders of magnitude, and the absolute value $|...|$ has to be considered. 
+
+\textbf{How can we minimize crosstalk for TDM?}
+
+Crosstalk must be modeled and measured and thus has an SRF of 4.
 
 \paragraph{Uncertainty/Range:}
-This effect is currently under study for the fielded AdvACT arrays. It is pretty simple to address the level of correlation between detectors. Simply reasoning it seems it could create just a I->I, P->P leakage but not a I->P one, but this has to be confirmed by detailed simulations at map-making level.
+This effect is currently under study for the fielded AdvACT arrays. \textbf{what is level of correlation between detectors? What effect does this have on the science goals?} 
 
 \paragraph{Parameterization:}
-The probed correlation level in AdvACT arrays could inform the input typical correlation level between detectors. Successively, a Gaussian realization of the correlation level, centered on the AdvACT value one, could be injected in the simulated TOD. The reconstructed I,Q,U maps could will study the leakage type (I->I, P->P or I->P). 
+The probed correlation level in AdvACT arrays could inform the input typical correlation level between detectors. Successively, a Gaussian realization of the correlation level, centered on the AdvACT value one, could be injected in the simulated TOD. The reconstructed I,Q,U maps can be used to determine the leakage levels in the power spectra. 
