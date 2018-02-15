@@ -1,7 +1,7 @@
 \subsection{Time Constant Effect on Beam and Pointing}
 
 \paragraph{Description:}
-The time constants can both shift the detector pointing and smear the beam, resulting in an increase in the measured beam width. To estimate these effects the beam can be approximated as a Gaussian with a full width at half maximum of $FWHM$. The experiment is assumed to scan at a rate of $f_{scan}$ at an elevation $\theta_{el}$. The scanning speed on the sky $f_{sky}$ is then given by $f_{sky}=f_{scan}\cos{(\theta_{el})}$. The time domain Gaussian beam $\beta (t)$ is then defined as
+The time constants can both shift the detector pointing and smear the beam, resulting in an increase in the measured beam width. To estimate these effects, the beam can be approximated as a Gaussian with a full width at half maximum of $FWHM$. The experiment is assumed to scan at a rate of $f_{scan}$ at an elevation $\theta_{el}$. The scanning speed on the sky $f_{sky}$ is then given by $f_{sky}=f_{scan}\cos{(\theta_{el})}$. The time domain Gaussian beam $\beta (t)$ is then defined as
 \begin{equation}
 \beta (t)=e^{\frac{-t^2}{2\sigma^2}},
 \end{equation}
@@ -17,7 +17,7 @@ The time constants of the detectors act as a low pass filter, so the beam is con
 \begin{equation}\label{eqn:low_pass}
 h(f)=\frac{1-if/f_{3dB}}{1+f^2/f_{3dB}^2}
 \end{equation}
-and then Fourier transformed back into the time domain to determine the impact on the pointing and beam widths. This treatment assumed that the low pass filter in Equation~\ref{eqn:low_pass} is a good approximation in the range of 3dB frequencies expected for the detectors. Figure~\ref{fig:tc_shift} shows the effect from varying 3dB frequencies on the beam for ABS, which had a $FWHM \approx 30$~arcmin and $f_{sky}\approx 0.5$~deg/s. These calculations give the shift and change in beam width for scanning in one direction, but the telescope scans in both directions. If there are an equal number of scans in each direction, the pointing offset averages out, but an odd number of scans could give a pointing offset. Thus the above calculation gives the maximum pointing offset $\Delta p_{max}$. The effect of scanning both ways further broadens the beam because the average measured beam is the sum of two offset beams as illustrated in Figure~\ref{fig:tc_beam_shift}. To account for this, the two beams from scanning in either direction are approximated as two Gaussian beams and a Gaussian is fit to their sum. From this, $\Delta FWHM$ can be calculated~\cite{Simon_Thesis_2016}. 
+and then Fourier transformed back into the time domain to determine the impact on the pointing and beam widths. This treatment assumes that the low pass filter in Equation~\ref{eqn:low_pass} is a good approximation in the range of 3dB frequencies expected for the detectors. Figure~\ref{fig:tc_shift} shows the effect from varying 3dB frequencies on the beam for ABS, which had a $FWHM \approx 30$~arcmin and $f_{sky}\approx 0.5$~deg/s. These calculations give the shift and change in beam width for scanning in one direction, but the telescope scans in both directions. If there are an equal number of scans in each direction, the pointing offset averages out, but an odd number of scans could give a pointing offset. Thus, the above calculation gives the maximum pointing offset $\Delta p_{max}$. The effect of scanning both ways further broadens the beam because the average measured beam is the sum of two offset beams as illustrated in Figure~\ref{fig:tc_beam_shift}. To account for this, the two beams from scanning in either direction are approximated as two Gaussian beams and a Gaussian is fit to their sum. From this, $\Delta FWHM$ can be calculated~\cite{Simon_Thesis_2016}. 
 
 \begin{figure}[h!]
 \centering
@@ -36,10 +36,12 @@ and then Fourier transformed back into the time domain to determine the impact o
 
 \paragraph{Plan to model and/or measure:}
 
-This effect is usually negligible, but it can be approximated as described above quickly and easily given a $f_{3dB}$ value. If the beam is well known, planet scans can be used to determine $\Delta FWHM$ and $\Delta p_{max}$ (though these measurements usually have low signal to noise). A null test split on fast versus slow time constants could help determine if this effect is contaminating the signal, but this null test split is redundant with other time-constant related systematics like the polarization angle rotation.
+This effect is usually negligible, but it can be approximated as described above quickly and easily given a $f_{3dB}$ value, beam width, scanning frequency, and elevation. If the beam is well known, planet scans can be used to determine $\Delta FWHM$ and $\Delta p_{max}$ (though these measurements usually have low signal to noise). Designing the experiment to have a fast time constant also minimized this effect. A null test split on fast versus slow time constants could help determine if this effect is contaminating the signal, but this null test split is redundant with other time-constant related systematics like the polarization angle rotation. 
+
+Given that we can model this effect well and that it is expected to be small, its SRF value is 3.
 
 \paragraph{Uncertainty/Range:}
-With the typical $f_{3dB}$ values for CMB experiments, this effect is often negligible, but it is good to check. When modeling this effect, the main uncertainties come from the time constants of the detectors and assuming a purely Gaussian beam. Typically, one can just use the lowest $f_{3dB}$ value expected/measured to put an upper bound on this effect. If the upper bound is negligible, then this effect will be negligible at all higher $f_{3dB}$ values as well. Table~\ref{table:tc_shift} summarizes the impact of the time constants on the ABS beam for various 3dB frequencies.
+With the typical $f_{3dB}$ values for CMB experiments, this effect is often negligible, but it is good to check. When modeling this effect, the main uncertainties come from the time constants of the detectors and assuming a purely Gaussian beam. Typically, one can just use the lowest $f_{3dB}$ value expected/measured to put an upper bound on this effect. If the upper bound is negligible, then this effect will be negligible at all higher $f_{3dB}$ values as well. Table~\ref{table:tc_shift} summarizes the impact of the time constants on the ABS beam, which is a similar size to the SO small aperture camera, for various 3dB frequencies.
 
 \begin{table}[h!] 
 \begin{center}
@@ -67,7 +69,7 @@ With the typical $f_{3dB}$ values for CMB experiments, this effect is often negl
   100.0 & 0.048 & 0.00052 \\
  \hline  
 \end{tabular}\\
-The pointing shift and beam width changes from different 3dB frequencies are shown above. The typical 3dB frequency of the ABS detectors is $\sim$100~Hz, and the lowest $f_{3dB}$ that passes the data selection criteria is greater than 30~Hz~\cite{Simon_Thesis_2016}.
+The pointing shift and beam width changes from different 3dB frequencies are shown above. The typical 3dB frequency of the ABS detectors is $\sim$109~Hz, and the lowest $f_{3dB}$ that passes the data selection criteria is greater than 30~Hz~\cite{Simon_Thesis_2016}.
 \end{center}
 \end{table}
 
