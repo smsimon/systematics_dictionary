@@ -1,0 +1,46 @@
+% !TEX root =  ../syst_master.tex 
+
+\subsection{Polarization modulation efficiency}\label{subsec:modeff}
+
+\paragraph{Description:}
+The polarization modulation efficiency quantifies the level of de-polarization induced by the HWP. In other words, it quantifies how much of the incoming polarization power $I_\mathrm{p,in}$ is transmitted by the HWP as $I_\mathrm{p,out}$:
+\begin{equation}
+\epsilon\def \frac{I_\mathrm{p,out}}{I_\mathrm{p,in}}
+\end{equation}
+
+With the definition above, the total intensity $I_\mathrm{out}$ at the detector can be expressed as:
+\begin{equation}
+I_\mathrm{out}=\frac{1}{2}\left[I_\mathrm{in}+\epsilon\sqrt{Q^2+U^2} \cos(4\chi-4\phi)\right]
+\end{equation}
+where $I_\mathrm{in}$ is the total incoming power, $\chi$ is the rotation angle of the HWP, and $\phi$ is the frequency-dependent phase offset which vanishes in the case of monochromatic HWP.
+
+The modulation efficiency depends on the incident frequency $\nu$, the detector bandwidth $\Delta \nu$, the incoming polarized power $I_\mathrm{p,in}$, the incidence angle of the incoming radiation $\theta_\mathtm{i}$ and the physical properties of the HWP. In particular, the design of the HWP can be chosen in order to optimize the modulation efficiency over a broad range of frequencies. 
+
+\paragraph{Plan to model and/or measure:}
+As for modelling the modulation efficiency, we can compute the analytic expression in the simple cases of monochromatic HWP (1 layer) and achromatic HWP (AHWP, 3 layers) at normal incidence. We make use of the Mueller calculus and represent the HWP stack (arbitrary number of layers, with and without AR coating) and the detector as Mueller matrices. The Mueller matrix for the HWP takes the generic form 
+\begin{equation}
+\begin{bmatrix}
+   T  &\rho  &0  &0\\
+   \rho  &T  &0  &0\\
+   0  &0  &c  &-s\\
+   0  &0  &s  &c
+\end{bmatrix}
+\end{equation}
+which allows for leakage off-diagonal terms. The elements of the HWP Mueller matrix are computed following the generalised transfer matrix approach. We model the rotation of the HWP stack with the usual rotation matrices:
+\begin{equation}
+R{2\chi}\cdot M \cdot R(-2\chi)
+\end{equation}
+
+It is straightforward to show that the output signal can be analytically expressed as a series of cosine terms. The modulation efficiency can be computed as:
+\begin{equation}\label{eq:eff}
+\epsilon=\frac{A_4}{A_0}
+\end{equation}
+where $A_x$ is the coefficient of the n-th harmonics.
+
+We consider the analytic approach as a good sanity check for the validation of a more generic method, which we dub as the ``fitting procedure''. According to the fitting procedure, we compute the output signal at the detector following the Mueller calculus as in the analytic approach, and fit the output signal to an harmonic series of cosine terms:
+\begin{equation}
+I_\mathrm{out}=\Sigma_{i=0,n} A_i \cos(i\chi-i\phi)
+\end{equation}
+
+The modulation efficiency is then computed as in Eq.~\ref{eq.eff}. The fitting procedure is a more general approach than the analytic method. It allows to model easily different and more complicated configurations, such as multi-layer stacks, slant incidence, broad-band incident radiation.
+
