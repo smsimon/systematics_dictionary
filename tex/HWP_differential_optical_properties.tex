@@ -4,18 +4,17 @@
 \label{HWP Differential Optical Properties}
 
 \paragraph{Description:}
-The birefringence of the HWP causes different transmission efficiencies along the fast and slow axes of the crystal,
-producing different absorption and emission coeficcients along the two axes.
-Because of this, transmitted unpolarized light and emitted light both leave the HWP partially polarized.
+The birefringence of the HWP causes different transmission coefficients along the fast and slow axes of the crystal,
+producing differential absorption and emission coefficients along the two axes.
+Because of this, transmitted unpolarized light and emitted light both are partially polarized by the optical action of the HWP.
 The polarization direction rotates with the HWP, and so this signal couples to the detector at 2f.
 
-
 \paragraph{Plan to model and/or measure:}
-In order to model this effect we require the HWP mueller matrix, and information about the optical chain.
+In order to model this effect we require the knowledge of the HWP Mueller matrix and information about the optical filter chain.
 
-Using the temperatures, efficiencies, and emissivities of each element in the optical chain,
+Knowing the temperatures, efficiencies, and emissivities of each component in the optical chain,
 the unpolarized power can be propagated through each element to find the incident unpolarized power on the HWP.
-If $P_n$ is the unpolarized power on the $n^\text{th}$ element, $\eta_n$ the efficiency, $\varepsilon_n$ the emissivity, and $B$ the spectral brightness
+If $P_n$ is the unpolarized power crossing the $n^\text{th}$ element, $\eta_n$ the efficiency, $\varepsilon_n$ the emissivity, and $B$ the spectral brightness, given the temperature $T_n$,
 the propagation step is 
 \begin{equation}
 \label{unpolarized_propagation}
@@ -34,8 +33,8 @@ T & \rho & 0 & 0\\
 \end{array}
 \right),
 \]
-where all elements are dependent on frequency and incident angle.
-$\rho$ is the polarized absorption and emissivity of the HWP.
+where all elements are dependent on frequency, incident angle and spatial position (x,y).
+$\rho$ is the differential transmission of the HWP.
 Though the polarized fraction of the transmitted and emitted light are the same but with opposite signs,
 they do not cancel since the radiation sources are at different temperatures.
 If we define $P_\text{HWP}$ to be the incident power on the HWP, the polarized power output is 
@@ -56,5 +55,5 @@ $A^{(2)} = .0165 \text{ pW} = 238 \text{ mK}_\text{CMB}$
 
 \paragraph{Parameterization:}
 We require $T$ and $\rho$ from the HWP Mueller matrix\cite{Salatino16}, and an optical chain input file containing
-absorption, temperature, and spill/scatter/reflect coefficients for each element.
+absorption, temperature, and spill/scatter/reflection coefficients for each element.
 
