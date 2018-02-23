@@ -6,17 +6,17 @@
 %defined. This should include where we expect to get the value of this variable
 %from (TWG, literature, etc.)
 
-Let's define polarization angle as the angle betweeen the light and the HWP, with incident light being rotated by the HWP to a different, transmitted angle.  This rotation angle has a dependence on the freqeuncy of light, as well as the precise properties of the HWP
+We define polarization angle as the angle betweeen the light and the HWP, with incident light being rotated by the HWP to a different, transmitted angle. This polarization angle has a dependence on the frequency of light, as well as the optical properties.
 
-It should be noted that there is a paper which proposes a way to mitigate this process\cite{Matsumura14}.  It places an additional, stationary HWP behind the rotating one.  This counteracts the frequency polarization angle dependence while maintianing broadband polarization modulation. 
+A strategy to mitigate this systematics has been proposed in \cite{Matsumura14}. It consists of an additional, stationary HWP behind the rotating one. This counteracts the frequency polarization angle dependence while maintaining broadband polarization modulation. 
 
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect. Use TRLs to describe how well we understand/can model the effect.
-A Muller Matrix paramaterization should be sufficient to model this effect, although it also could be modeled using a full transmission line model.  The transmission line model may more accuratly capture the behavior since it takes the multiple relfections between the various layers into account.
+A Muller Matrix paramaterization should be sufficient to model this effect, although it also could be modeled using a full transmission line model.  The transmission line model may more accuratly capture the behavior since it takes the multiple reflections between the various layers into account.
 
-For a silicon metamaterial HWP, the HWP in its entirity can be modeled in HFSS, and this dependence can be derived from the simulation.
+For a silicon metamaterial HWP, the phase shifter and its AR can be modeled in HFSS; this depenendence can be easily derived from the simulation.
 
-The collaboration has several HWPs that can be used in lab to measure this effect, such as by using a vector network analyzer set up.
+Several HWP are available inside the Simons Observatory collaboration that can be used in laboratory to measure this effect, such as by using a vector network analyzer set up.
 
 \paragraph{Uncertainty/Range:}
 %This section should include the uncertainty of
