@@ -7,7 +7,7 @@
 The birefringence of the HWP causes different transmission coefficients along the fast and slow axes of the crystal,
 producing differential absorption and emission coefficients along the two axes.
 Because of this, transmitted unpolarized light and emitted light both are partially polarized by the optical action of the HWP.
-The polarization direction rotates with the HWP, and so this signal couples to the detector at 2f.
+The polarization direction rotates with the HWP, and so this signal couples to the detector at 2$f$.
 
 \paragraph{Plan to model and/or measure:}
 In order to model this effect we require the knowledge of the HWP Mueller matrix and information about the optical filter chain.
@@ -22,7 +22,7 @@ P_{n+1}(\nu) = \eta_n(\nu) P_n(\nu) + \varepsilon_n(\nu) A\Omega(\nu)\;  B(\nu, 
 \end{equation}
 
 
-The HWP Mueller matrix is calculated using the method described in \cite{Salatino16}, and is of the form
+The HWP Mueller matrix is calculated using the method described in \cite{Salatino16}, and is of the form:
 \[
 M_\text{HWP} = \left(
 \begin{array}{cccc}
@@ -45,15 +45,16 @@ P_\text{HWP + 1}(\nu) = \rho(\nu)(P_\text{HWP} - A\Omega(\nu)B(\nu, T_\text{HWP}
 with $a_2 = \rho$. 
 
 If we define $\eta_\text{det}$ to be the combined efficiency of all elements after the HWP,
-the final 2f signal produced by the HWP is 
+the final 2$f$ signal produced by the HWP is 
 \[
 A^{(2)} = \int_{\nu_\text{low}}^{\nu_\text{high}} \eta(\nu) P_\text{HWP + 1}(\nu) d\nu.
 \]
 \paragraph{Uncertainty/Range:}
 For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of 
-$A^{(2)} = .0165 \text{ pW} = 238 \text{ mK}_\text{CMB}$
+$A^{(2)} = .0165 \text{pW} = 238 \text{mK}_\text{CMB}$. 
+\textbf{We expect similar values for similar frequency values}.
 
 \paragraph{Parameterization:}
 We require $T$ and $\rho$ from the HWP Mueller matrix\cite{Salatino16}, and an optical chain input file containing
-absorption, temperature, and spill/scatter/reflection coefficients for each element.
+absorption, temperature, and spill/scatter/reflection coefficients for each element. The Mueller matrix components can be theoretically estimated by transfer matrix model \cite{Essinger-Hileman13} or HFSS simulations. They can be experimentally measured with FTS measurements.
 
