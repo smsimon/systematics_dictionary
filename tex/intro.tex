@@ -1,10 +1,23 @@
-The signal timestream registering in our detectors can be approximated by the following expression
+Write an introduction describing SO CSS efforts, Calibration and Systematics, the point of the Systematics Dictionary. (Asignee: Sara)
+
+\textbf{SRF Definitions:}
+\begin{enumerate}
+\item Not significant, does not need modeling
+\item This is a well-understood and/or minimal effect that we may not need to model
+\item We expect this effect to be small, but we need to model it either because it needs to be checked or because it is not well understood.
+\item This is a large effect that we understand reasonably well, and need to model. OR We need to model this effect because we are not sure how large it will be, and it can have a significant impact on our science goals.
+\item This is a highly significant effect either because it is design-driving, has limited past experiments, and/or is not well understood. It needs to be modeled with the highest priority.
+\end{enumerate}
+
+
+\textbf{What is the point of this description, is it used elsewhere in the dictionary?}
+The signal timestream registering in \textbf{$i$}-th (our) detector(s) can be approximated by the following expression
 \begin{equation}
 \begin{split}
 d _i &= K \ast \left( n_i + g_i \int d \nu A_\mathrm{e} (\nu) F(\nu) \int d\Omega P (\theta _i,\phi _i) \right. \\ 
-&\times [I(\theta _i, \phi _i) + \left. \gamma _i (Q(\theta _i,\phi _i)\cos (2\psi _i) + U(\theta _i,\phi _i) \sin (2\psi _i) ]  \vphantom{\int } \right) + \tilde{n}_i
+&\times [I(\theta _i, \phi _i) + \left. \gamma _i (Q(\theta _i,\phi _i)\cos (2\psi _i) + U(\theta _i,\phi _i) \sin (2\psi _i) ]  \vphantom{\int } \right) + \tilde{n}_i,
 \end{split}
 \end{equation}
 where $K \ast$ represents a convolution with the detector time response, $n_i$ is the noise, which we assume is uncorrelated with signal, $A_{\mathrm{e}} (\nu)$ represents the effective area of the telescope, $F(\nu)$ is the spectral responsivity, and $\tilde{n}_i$ represents noise terms that are not convolved by the detector response, including readout noise. 
 
-The above expression is in many ways incomplete. For example, it does suggest that the Stokes $I$, $Q$, and $U$ parameters are frequency independent, which is certainly incorrect. The sky signal is generally composed of astrophysical signals with varying frequency dependence. This includes the CMB itself, thermal emission from dust, and synchrotron radiation. A CMB telescopes will observe the sky convolved with its beam function, $P(\theta, \phi)$.
+The above expression is in many ways incomplete. For example, it does suggest that the Stokes $I$, $Q$, and $U$ parameters are frequency independent, which is certainly incorrect. The sky signal is generally composed of astrophysical signals with varying frequency dependence. This includes the CMB itself, thermal emission from dust, and synchrotron radiation. A CMB telescopes will observe the sky convolved with its beam function, $P(\theta, \phi)$. \textbf{What are theta, phi, psi and g here?}

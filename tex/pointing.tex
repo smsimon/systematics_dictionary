@@ -1,39 +1,67 @@
 \subsection{Pointing}
 
 \paragraph{Description:}
-Pointing reconstruction is necessary in order accurate know where the instrument is looking at on the sky at any particular time. It is well known that many mechanical, structural, and environmental factors will affect the telescope pointing on the sky and a pointing model is needed in order to recover the pointing accuracy to the level needed for high ell science. The pointing systematics can be categorized into random pointing jitter, systematic pointing error, and optical pointing distortions.
+Pointing reconstruction is necessary in order accurately know where the instrument is looking on the sky at any particular time. It is well known that many mechanical, structural, and environmental factors will affect the telescope pointing on the sky, and a pointing model is needed in order to recover the pointing accuracy to the level needed for high $\ell$ science. The pointing systematics can be categorized into random pointing jitter, systematic pointing error, and optical pointing distortions.
 
-Pointing models are very commonly used for astronomical telescopes in order to reconstruct accurate telescope pointing. Commonly used pointing model parameters are described in Mangum, 2001. Typically structural deformations and tilts, encoder offsets, and timing errors are taken into account through the pointing model. Pointing models are calculated through dedicated pointing observations of point-like sources across the sky in azimuth and elevation. Ideally uniform sampling across the sky is necessary but in many cases bright point-like sources are not available in various parts of the sky which can lead to errors in the pointing reconstruction.
+Pointing models are very commonly used for astronomical telescopes in order to reconstruct accurate telescope pointing. Commonly used pointing model parameters are described in Mangum, 2001\textbf{Add a citation here}. Typically structural deformations and tilts, encoder offsets, and timing errors are taken into account through the pointing model. Pointing models are calculated through dedicated pointing observations of point-like sources across the sky in azimuth and elevation. Ideally, uniform sampling across the sky is necessary but in many cases bright point-like sources are not available in various parts of the sky which can lead to errors in the pointing reconstruction. \textbf{Should we also note that finding point-like sources can be difficult depending on your beam size?}
 
-Random pointing jitter is the statistical RMS error in the pointing reconstruction. In the case that the pointing error is random, this error can be modeling as a blurring or broadening of the telescope beam. Hence the effect is equivalent to decreased sky resolution. This can be modeled in terms of $B_{\ell}$
+Random pointing jitter is the statistical RMS error in the pointing reconstruction. In the case that the pointing error is random, this error can be modeled as a blurring or broadening of the telescope beam. Hence the effect is equivalent to decreased sky resolution. This can be modeled in terms of $B_{\ell}$ as
 \begin{equation}
-B_{\ell}^{eff} = B_{\ell} e^{\frac{-\ell(\ell+1)}{2} \sigma^{2}_{p,RMS}}
+B_{\ell}^{eff} = B_{\ell} e^{\frac{-\ell(\ell+1)}{2} \sigma^{2}_{p,RMS}}  \,\,\,\,\, ,
 \end{equation}
 where $\sigma^{2}_{p,RMS}$ is the RMS pointing error. 
 
-Systematic pointing error is the residual error in the pointing reconstruction dependent on external parameters. This pointing error is due to optical elements moving relative to each other causing optical misalignment. For example it is well known that thermal and solar heating and cooling of the telescope can cause large amounts of pointing error on the orders of 10s of arcseconds. An overall ambient temperature change can cause pointing drifts across time. Furthermore differential solar heating creating temperature gradients across the telescope structure can cause complex pointing changes that depend on the structural shape of the telescope itself. This error is difficult to model due to its complex dependence on telescope orientation and environmental parameters
-\begin{equation}
-\sigma_{p,sys} \left ( Az, El, T, I_{R}, v_{w}, ... \right )
-\end{equation}
-In the case that there is uniform sampling across each of these parameters and the errors are small relative to the beam size, then the pointing error can be roughly approximated similar to the pointing jitter, but this may not always be the case. If the systematic nature is complex, then the effective beam may become non-Gaussian in ways difficult to model.
+The pointing error jitter has a similar effect as lensing: it mixes E-modes into B-mode \cite{hu03}:
+\begin{align} 
+\label{eq: bmodes from attitude errors pa}
+p_A: \,\,\,\, \delta C_{\ell}^{BB} &= \int \frac{\mathrm{d^2} \vec{{\ell}}_1}{(2\pi)^2}   C^{EE}_{{\ell}_2}(\sigma) C^{\theta \theta}_{{\ell}_1} [\vec{{\ell}}_2 \cdot              \hat{{\ell}}_1 \sin[2(\Phi_{{\ell}_2} - \Phi_{\ell})]]^2 \\
+\label{eq: bmodes from attitude errors pb}
+p_B: \,\,\,\, \delta C_{\ell}^{BB} &= \int \frac{\mathrm{d^2} \vec{{\ell}}_1}{(2\pi)^2}   C^{EE}_{{\ell}_2}(\sigma) C^{\theta \theta}_{{\ell}_1} [(\vec{{\ell}}_2 \times            \hat{{\ell}}_1) \cdot \hat{z} \sin[2(\Phi_{{\ell}_2} - \Phi_{\ell})]]^2 
+\end{align}
+\noindent where  $\vec{{\ell}_2} = \vec{{\ell}} - \vec{{\ell}_1}$, $\sigma$ is the experiment Gaussian beam width, $C_{\ell}^{\theta \theta}$ is the power spectrum of the attitude error in the map, and $p_A$ and $p_B$ stand for pointing effects A and B, which should be added in quadrature.
+Note that in these equations, $C_{\ell}^{EE}(\sigma)$ is smoothed over the beam:  $C^{EE}_{\ell}(\sigma) = C^{EE}_{\ell} \exp{(-{\ell}({\ell}+1)\sigma^2)}$.
+For a white noise pointing error with RMS $\sigma_{\theta map}$ and coherence scale $\ell_s$,
 
-Optical pointing distortions are pointing errors due to deformation of the optical elements themselves. This error is distinguished from systematic pointing errors above in that the optics itself changes rather than just alignment. For example the primary mirror can deform due to solar heating during the daytime and change the F number of the system. Pointing distortions are harder to correct than systematic pointing error because they are dependent on the tolerance of the optical system and hence affect the optical performance of the telescope. Typically the effects are larger in degree than the other pointing errors and may only be correctable by active realignment of the telescope itself or insulating optical elements well.
+\begin{equation}
+ C^{\theta \theta}_{\ell} \simeq \frac{2\pi\sigma_{\theta map}^2}{{\ell}_s^2}\exp(-\frac{{\ell}({\ell}+1)}{2{\ell}_s^2}) \, .
+\end{equation}
+
+\noindent The above spurious B-modes simplifies to
+
+\begin{equation}
+\delta  C_{\ell}^{BB} \simeq  \frac{1}{2}\frac{\sigma_{\theta map}^2}{{\ell}_s^2}         \int^{{\ell}_s} \mathrm{d}{\ell}_1 \ {\ell}_1^3 \ C^{EE}_{{\ell}_2}(\sigma) \, .
+\end{equation}
+
+
+Systematic pointing error is the residual error in the pointing reconstruction, which is dependent on external parameters. This pointing error is due to optical elements moving relative to each other, causing optical misalignment. For example, it is well known that thermal and solar heating and cooling of the telescope can cause large amounts of pointing error on the order of tens of arcseconds. An overall ambient temperature change can cause pointing drifts across time. Furthermore, differential solar heating creating temperature gradients across the telescope structure can cause complex pointing changes that depend on the structural shape of the telescope itself. This error is difficult to model due to its complex dependence on telescope orientation and environmental parameters:
+\begin{equation}
+\sigma_{p,sys} \left ( Az, El, T, I_{R}, v_{w}, ... \right ) \, .
+\end{equation}
+In the case that there is uniform sampling across each of these parameters and the errors are small relative to the beam size, then the pointing error can be roughly approximated in similar way to the pointing jitter, but this may not always be the case. If the systematic nature is complex, then the effective beam may become non-Gaussian in ways difficult to model.
+
+Optical pointing distortions are pointing errors due to deformation of the optical elements themselves. This error is distinguished from the systematic pointing errors above in that the optics change rather than just alignment. For example, the primary mirror can deform due to solar heating during the daytime and change the F number of the system. Pointing distortions are harder to correct than systematic pointing error because they are dependent on the tolerance of the optical system and hence affect the optical performance of the telescope. Typically the effects are larger than the other pointing errors and may only be corrected by active realignment of the telescope itself or insulating the optical elements well.
 \begin{equation}
 \delta_{p} \left ( x, y, M, ... \right )
 \end{equation}
-Here $M$ represents the Mueller matrix beam model calculable through physical optics simulations. 
+Here $M$ represents the Mueller matrix beam model, which is calculated through physical optics simulations. 
 
 \paragraph{Plan to model and/or measure:}
-Frequent and regular observations of bright point-like sources across the sky are needed in order to calculate a pointing model. With good coverage across azimuth and elevation, the pointing jitter can be minimized well. With good coverage the jitter error will eventually be limited by errors in the analysis itself such as fitting for beam centroids.
+Frequent and regular observations of bright point-like sources across the sky are needed to calculate a pointing model. With good coverage across azimuth and elevation, the pointing jitter can be minimized well. With good coverage the jitter error will eventually be limited by errors in the analysis itself such as fitting for beam centroids.
 
-This pointing model can be expanded to include parameters that model environmental effects as done in POLARBEAR. This would allow for modeling and minimizing the systematic error, but there is a limit to how well these effects can be corrected using the pointing model alone. Regular observations around the year as well as at various times during the day will be needed to assess the impact of this error and its dependence to the environmental parameters.
+This pointing model can be expanded to include parameters that model environmental effects as done in POLARBEAR \textbf{Add a citation}. This would allow for modeling and minimizing the systematic error, but there is a limit to how well these effects can be corrected using the pointing model alone. Regular observations throughout the year and at various times during the day will be needed to assess the impact of this error and its dependence on the environmental parameters.
 
 Optical pointing distortions need to be mainly modeled using physical optics or structural analysis of the optical elements under various environmental conditions. This is by far the hardest to model and measure.
 
+Several formalisms exist to model the effect of pointing errors onto the measured B-modes \cite{hu03, Shimon_2008}, involving convolving the power spectrum of the pointing error with sky signal to measure the spurious signals generated. For SO this \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/eb_leakage_from_pointing_error.pdf?ukey=61f26ef33e8439a4e7096ab52c54c523066a4e35}{memo} investigates briefly how pointing errors lense E-modes into B-modes. \textbf{Have there been updates to the memo since last year?} Linking the pointing error at the level of the map to telescope models and instantaneous pointing errors needs further work. \textbf{Has there been progess on this that should be included?}
+
+We expect the statistical pointing jitter to be small and can measured during observations, so it has a SRF of 2. Systematic pointing jitter on a well-insulated telescope has a SRF of 2, while a poorly insulated telescope has an SRF of 3 as it becomes difficult to model if there are large structural gradients. Optical pointing distortions have an SRF of 3 and may require a refocusing mechanism. \textbf{Do any of these change between the large and small aperture cases?}
+
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+For the large aperture telescope, the pointing requirements are of order 10 arcseconds.
+This \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/eb_leakage_from_pointing_error.pdf?ukey=61f26ef33e8439a4e7096ab52c54c523066a4e35}{memo} shows that white noise pointing errors with RMS=9 arcseconds and coherence length 1000 creates spurious B-modes of order 10\% of sky B-modes starting $\ell \sim 1,000$.
+
+\textbf{Need to include a similar spec for the small-a[erture case}
+
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+For linking pointing errors to science, we use the power spectra of the pointing error at the level of the map, $C_l^{\theta \theta}$. To obtain this, we plan to model the time- or az/el-dependant pointing error and link it with a scanning strategy.

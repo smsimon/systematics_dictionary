@@ -1,21 +1,20 @@
-\paragraph{Description:}
-The frequency multiplexing readout has crosstalk due to the finite width of the LC resonators.
-Crosstalk from one bolometer to another due to coupling in the multiplexed readout will lead to polarization and temperature leakage from a point outside the main beam, creating a localized, polarized near side lobe. Crosstalk is strongest in bolometer channels that share a SQUID in the frequency-domain multiplexed readout, and are closest together in bias frequency. Below we look to describe the DfMux system and it's crosstalk in slightly more detail but detailed accounts can be found in \cite{Barron_Thesis}, \cite{DfMux_Dobbs2012}
-
 \subsection{Crosstalk for DfMux}
 
-In the DfMux system we put each TES in series with an inductor and capacitor and tile these RLC ($R=R_{TES}$ + stray series resistance) units together in parrallel with one bias resistor in parrallel to set the voltage bias across the "comb" of RLC's. This results in each TES having a characteristic AC bias frequency set by it's respective LC (L fixed, C varied) series pair between 1 and 6 MHz. A set of LC (currently up to 68x for SPT-3G\cite{SPT3G_DfMux_Overview}) is readout by a series array SQUID which has a per channel feedback to linearize, minimize noise, and maximize the dynamic range of the SQUID called Digital Active Nulling (DAN)\cite{DfMux_LC_Production}. The DfMux warm readout sets a bias and demodulation channel at each of the comb frequencies and monitors the amplitude at each demodulation channel. As the TES experiences resistance changes with changes in incoming power it amplitude modulates it's respective lorentzian peak height and this change in current amplitude is the signal readout on the demodulation channel. 
+\paragraph{Description:}
+The frequency multiplexing readout has crosstalk due to the finite width of the LC resonators.
+Crosstalk from one bolometer to another due to coupling in the multiplexed readout will lead to polarization and temperature leakage from a point outside the main beam, creating a localized, polarized near side lobe. Crosstalk is strongest in bolometer channels that share a SQUID in the frequency-domain multiplexed readout, and are closest together in bias frequency. Below we look to describe the DfMux system and its crosstalk in slightly more detail but detailed accounts can be found in \cite{Barron_Thesis} and \cite{DfMux_Dobbs2012}.
 
-There are three primary modes of crosstalk present in the DfMux system: bias carrier leakage, non-zero wiring impedance (cold wiring), inductive/capacitive wiring crosstalk (in warm cables or from physically close conductors in the system). These three types of crosstalk are discussed below with some discussion of how to minimize them. \cite{DAN_Crosstalk_Memo} We then discuss briefly what sorts of systematic effects on our measurements these forms of crosstalk will have. 
+In the DfMux system we put each TES in series with an inductor and capacitor and tile these RLC ($R=R_{TES}$ + stray series resistance) units together in parrallel with one bias resistor in parrallel to set the voltage bias across the "comb" of RLC's. This results in each TES having a characteristic AC bias frequency set by its respective LC (L fixed, C varied) series pair between 1 and 6 MHz. A set of LC (currently up to 68x for SPT-3G\cite{SPT3G_DfMux_Overview}) is readout by a series array SQUID, which has a per channel feedback to linearize, minimize noise, and maximize the dynamic range of the SQUID called Digital Active Nulling (DAN)\cite{DfMux_LC_Production}. The DfMux warm readout sets a bias and demodulation channel at each of the comb frequencies and monitors the amplitude at each demodulation channel. As the TES experiences resistance changes with changes in incoming power its amplitude modulates its respective lorentzian peak height, and this change in current amplitude is the signal read out on the demodulation channel. 
 
-\subsubsection{Types of Crosstalk}
+There are three primary modes of crosstalk present in the DfMux system: bias carrier leakage, non-zero wiring impedance (cold wiring), and inductive/capacitive wiring crosstalk (in warm cables or from physically close conductors in the system). These three types of crosstalk are discussed below with some discussion of how to minimize them. \cite{DAN_Crosstalk_Memo} We then discuss briefly what sorts of systematic effects on our measurements these forms of crosstalk will have. 
+
 \setcounter{equation}{0}
 \paragraph{Bias Carrier Leakage}
-This variety of cross talk involves the lorentzian tail of the LRC resonance in frequency space overlapping with neighboring peaks such that some amount of current meant to bias TES $n$ at frequency $\omega_n$ is biasing TES $n\pm1$ at frequency $\omega_{n\pm1}$. The current seen by neighboring channels from channel n, $I^{\omega_n}_{n\pm1}$, is given by (1)
+This variety of crosstalk involves the lorentzian tail of the LRC resonance in frequency space overlapping with neighboring peaks such that some amount of current meant to bias TES $n$ at frequency $\omega_n$ is biasing TES $n\pm1$ at frequency $\omega_{n\pm1}$. The current seen by neighboring channels from channel n, $I^{\omega_n}_{n\pm1}$, is given by
 \begin{equation}
-I^{\omega_n}_{n\pm1} = \frac{V^{\omega_n}_{bias}}{R_{TES}+i\omega_nL+(i\omega_nC_{n\pm1})^-1} \simeq \frac{V^{\omega_n}_{bias}}{2i\Delta\omega L}\left(1+\frac{iR_{TES}}{2\Delta\omega L}\right)
+I^{\omega_n}_{n\pm1} = \frac{V^{\omega_n}_{bias}}{R_{TES}+i\omega_nL+(i\omega_nC_{n\pm1})^-1} \simeq \frac{V^{\omega_n}_{bias}}{2i\Delta\omega L}\left(1+\frac{iR_{TES}}{2\Delta\omega L}\right).
 \end{equation}
-By taking the ratio of the current modulation on neighboring channels compared to on a given channel as given in (2) and (3) we can get  the approximate level of crosstalk $|R^2_{TES}/(2\Delta \omega L)^2|$. This comes out to $\sim0.25\%$ for \pb.
+By taking the ratio of the current modulation on neighboring channels compared to on a given channel as shown below, we can get the approximate level of crosstalk $|R^2_{TES}/(2\Delta \omega L)^2|$. This comes out to $\sim0.25\%$ for \pb.
 \begin{equation}
 \frac{\Delta I^{\omega_n}_{n\pm1}}{\Delta R_{TES}} \simeq \frac{V^{\omega_n}_{bias}}{2\Delta\omega L}
 \end{equation}
@@ -24,24 +23,24 @@ By taking the ratio of the current modulation on neighboring channels compared t
 \end{equation}
 
 \paragraph{Non-zero Wiring Impedance}
-Non-zero impedance in the cold wiring can come from stray impedances in between the bias resistor due to leads, stray series resistance and the SQUIDs input coil. In our system the stray impedance, $Z_{stray}$, is dominated by stray inductances, $L_{stray}$. This creates a modification of the combs voltage bias proportional to the current through a given channel which in turn modulates the current in neighboring channels. With a constant $V_{bias}$ the total change in voltage across the comb is given by (4)
+Non-zero impedance in the cold wiring can come from stray impedances in between the bias resistor due to leads, stray series resistance, and the SQUID's input coil. In our system the stray impedance, $Z_{stray}$, is dominated by stray inductances, $L_{stray}$. This creates a modification of the combs voltage bias proportional to the current through a given channel which in turn modulates the current in neighboring channels. With a constant $V_{bias}$ the total change in voltage across the comb is given by
 \begin{equation}
-dV_{tot}=-dV_{stray}\simeq dI^{\omega_n}_{n}i\omega_nL_{stray}
+dV_{tot}=-dV_{stray}\simeq dI^{\omega_n}_{n}i\omega_nL_{stray}.
 \end{equation}
-This voltage induces a current in the nearest neighbor channels as defined by (5)
+This voltage induces a current in the nearest neighbor channels as defined by
 \begin{equation}
-dI^{\omega_n}_{n\pm1}=\frac{dV_{tot}}{Z^{LCR}_{n\pm1}}\simeq \frac{-dI^{\omega_n}_{n}\omega_nL_{stray}}{2\Delta \omega L}
+dI^{\omega_n}_{n\pm1}=\frac{dV_{tot}}{Z^{LCR}_{n\pm1}}\simeq \frac{-dI^{\omega_n}_{n}\omega_nL_{stray}}{2\Delta \omega L}.
 \end{equation}
-The ratio of power changes in a channel compared to its neighbors, given in (6), quantifies this level of crosstalk. For POLARBEAR this is $\sim0.3\%$.
+The ratio of power changes in a channel compared to its neighbors, given below, quantifies this level of crosstalk. For POLARBEAR this is $\sim0.3\%$.
 \begin{equation}
 \frac{dP^{\omega_n}_{n\pm1}}{dP^{\omega_n}_{n}}\simeq \frac{-dI^{\omega_n}_{n\pm1}\omega_nL_{stray}}{dI^{\omega_n}_{n}\Delta\omega L}
 \end{equation}
-\paragraph{Other Crosstalk}
+\paragraph{Other Sources of Crosstalk}
 \begin{itemize}
 
 \item Inductors are fabricated on the same board and there is some finite mutual inductance between physically close inductors. This crosstalk is minimized by keeping the mutual inductance coupling coefficient low ($\sim$ 0.01 for POLARBEAR) and physically separating inductors that are close in frequency space. 
-\item Crosstalk in the warm cabling between the SQUID and the warm electronics where demodulation and DAN feedback computation occurs can create imperfect nulling which produces excess loading and noise on the SQUIDs. Shielded cables were developed that kept crosstalk between twisted pairs at 60dB between 0.1-10 MHz for POLARBEAR. \cite{DfMux_Warm_Crosstalk_Memo}
-\item Crosstalk has been seen between LC boards. Specifically ones that share a PCB board. There have been some ongoing studies about possible inductive coupling between LC boards. John Groh, \& Darcy Barron on POLARBEAR and many SPT-3G members have been studying this.
+\item Crosstalk in the warm cabling between the SQUID and the warm electronics where demodulation and DAN feedback computation occurs can create imperfect nulling which produces excess loading and noise on the SQUIDs. Shielded cables were developed that kept crosstalk between twisted pairs at 60dB between 0.1-10 MHz for POLARBEAR~\cite{DfMux_Warm_Crosstalk_Memo}.
+\item Crosstalk has been seen between LC boards. Specifically ones that share a PCB board. There have been some ongoing studies about possible inductive coupling between LC boards. %John Groh, \& Darcy Barron on POLARBEAR and many SPT-3G members have been studying this.
 \end{itemize}
 
 \paragraph{Plan to model and/or measure:}
@@ -53,10 +52,8 @@ Most of the effects outlined above are not time-variable, so the values hold per
 This is especially true if one crosstalk mechanism dominates, in which case an appropriate choice of units will remove dependence on bias point.
 The efficacy of this technique depends on the available point-source signal-to-noise and is thus easier on large-aperture instruments than small-aperture ones.
 
-\pb\ assumed constant level of crosstalk between neighbour bolometers, which is not realistic and leads to underestimates of crosstalk-induced bias.
+\pb\ assumed a constant level of crosstalk between neighbour bolometers, which is not realistic and leads to underestimates of crosstalk-induced bias.
 We may want to have a spatial distribution across the focal plane for more realism, with substantial scatter; the effects of crosstalk on calibration measurements must also be taken into account.
-
-\subsubsection{Systematics Mitigation}
 
 There are a few primary pernicious effects of crosstalk on analysis:
 \begin{enumerate}
@@ -79,33 +76,41 @@ First, for the dominant concern of T$\rightarrow$P leakage, the apparent polariz
 In the event that we deploy a rapid polarization modulator, it also immediately eliminates this source of T$\rightarrow$P, just as it does for all beam effects.
 Second, for E$\rightarrow$B leakage, there is little issue so long as the leakage is random.
 Unlike the bias in temperature caused by the preferred sign of the off-diagonal crosstalk matrix elements, there is in general no preferred polarization rotation unless unfortunate choices are made in frequency scheduling.
-Such choices should be avoided.
+Such choices should be avoided in the design phase.
 
 The most dangerous of these is inter-band cross-talk, as that is the hardest to calibrate out.
 Figuring out the source band requires a suite of point sources with different spectra and is subject to large uncertainties; measuring it in detail requires detailed wideband FTS scans of every detector, which are substantially more time and labor intensive than planet observations.
-This is best avoided by scheduling the different bands far apart in frequency or, ideally, on different SQUIDs altogether.
+This is best avoided by scheduling the different bands far apart in frequency or, ideally, on different SQUIDs altogether. \textbf{Are there other smart choices we cna make to minimize this?}
+
+The crosstalk needs to be modeled and measured. It can be minimized by making smart design decisions and is thus a design driver, making its SRF a 5.
 
 \paragraph{Uncertainty/Range:}
 As a first start, we define two cases.
 Each bolometer draws a leakage coefficient from a normal distribution with G1 = ($\mu=-0.3\%,\, \sigma=0.1\%$) or G2 = ($\mu=-3\%,\, \sigma=1\%$).
+\textbf{Are these realistic values for SO? How do LAT and SAC differ?}
+
+\textbf{summarize some of the main results on crosstalk from the sims}
+
 \paragraph{Parameterization:}
 The instrument systematic pipeline developed for SO aims at more realism than what was done originally for \pb. 
-Here is the setup put in place to study the impact of having crosstalk (in a generic way, i.e. leakage from one detector to another(s)):
+Here is the setup put in place to study the impact of having crosstalk (in a generic way, i.e. leakage from one detector to others):
 \begin{enumerate}
-\item{We assume a fix total number of detectors for the focal plane.}
-\item{Using this total number of detectors, we assume different focal plane configurations (see Table 1) according to the MUX factor (number of bolometers/SQUID)}
+\item{We assume a fixed total number of detectors for the focal plane.}
+\item{Using this total number of detectors, we assume different focal plane configurations (see Table 1 \textbf{This table doesn't exist}) according to the MUX factor (number of bolometers/SQUID).}
 \item{We generate corresponding TODs.}
 \item{Each bolometer draws a leakage coefficient from a range of values defined above (G1 or G2).}
-\item{This distribution is the same then for all CES (i.e. leakage is constant in time). Note that time-varying crosstalk is also available in the pipeline, but not used here.}
+\item{This distribution is the same then for all CESes (i.e. leakage is constant in time). Note that time-varying crosstalk is also available in the pipeline, but not used here. \textbf{Is the time variation in crosstalk a secondary effect?}}
 \item{According to the Friend Factor (FF), which defines the nearest bolometer indices B communicating with bolometer b in its SQUID: 
 \begin{equation}
 B = \{ b2\, |\, 0 < |b-b2| \leq FF \},
 \end{equation} 
-we propagate the crosstalk effect in all the TODs. We chose FF to be either 1, 3, or total number of bolometers in the SQUID.}
-\item{We estimate the sky maps from contaminated TODs, and compute angular power-spectra.}
+we propagate the crosstalk effect in all the TODs. We chose FF to be either 1, 3, or the total number of bolometers in the SQUID.}
+\item{We estimate the sky maps from contaminated TODs, and compute angular power-spectra to determine the polarization leakage.}
 \end{enumerate}
-\textit{Feel free to comment and propose improvement. More informations available at \url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule}.}
+\url{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule}.
+\textbf{summarize some of the main results}
 
+\textbf{references are commented out and should be added to the dictionary references}
 %\subsubsection{References}
 %\begin{itemize}
 %\item Barron, D., "Precision measurements of cosmic microwave background polarization

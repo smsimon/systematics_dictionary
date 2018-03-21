@@ -3,16 +3,16 @@
 
 
 \paragraph{Description:}
-Putting a HWP skyward of every optical element cures a range of beam and polarization systematics. However, putting a HWP inside the optical system induces some beam and polarization systematics of its own, and fails to cure some systematics you'd think it would. Thus, careful consideration is needed.
+Having a HWP skyward of every optical element cures a range of beam and polarization systematics. However, putting a HWP inside the optical system induces some beam and polarization systematics of its own, and fails to cure some systematics you'd think it would. Thus, careful consideration is needed.
 
 \paragraph{Plan to model and/or measure:}
 Modeling would entail ray tracing and physical optics for a non-planar or non-uniform AR coated HWP. It would also require calculating the impact of non-uniform AR coatings or optical properties. Non-normal incidence effects...might matter...might focus the beam...ask ABS people on the theory side, and PB/ACT people on the experience side.
 
-Also model how these beam systematics show up in the rapid-rotation demodulation. Even with an optimal mapmaker, ignoring this effect would mean they will show up likely as I-P and Q-U leakage beams with very funny structure. (Investigate making an optimal mapmaker for this..? Would definitely require data since the dipole-quadrupole small-distortion beam formalism may not apply here.)
+Also model how these beam systematics show up in the rapid-rotation demodulation. Even with an optimal mapmaker, ignoring this effect would mean they will show up likely as I-P and Q-U leakage beams with very complicated structure. (Investigate making an optimal mapmaker for this..? Would definitely require data since the dipole-quadrupole small-distortion beam formalism may not apply here.)
 
-In general, CST is commercial software that can model diffraction, without too much CPU time, from very funny shaped large structures (like struts and baffles and things). Putting the HWP into that model to get some of these beam systematics might be interesting.
+In general, the commercially available software CST can model diffraction effects, in a reasonable CPU time, from very funny shaped large structures (like struts and baffles, for example). Developing such a model with a HWP to better investigate these systematics is interesting.
 
-Measurements, in principle, would be done with a long campaign of beam maps taken at a large set of HWP angle. And/or, in the case of a rapid modulator, very slow beam maps taken with several modulation cycles per beam scanned (unlike in science mode where we can scan fast). The source is TBD, a sky source seems like it would be slow, and informally in the meeting people were saying that a source on a mast will be difficult because it requires tilting the telescope to a low elevation that's mechanically difficult.
+Measurements, in principle, would be done with a long campaign of beam maps taken at a large set of HWP angle, and/or, in the case of a rapid modulator, very slow beam maps taken with several modulation cycles per beam scanned (differently from sky configuration where the telescope scan is faster). The source needs to be defined, a sky source seems like it would be slow. However, an artificial source mounted on a mast would be difficult since it requires tilting the telescope to a low elevation that imposes strong mechanical constraints.
 
 \paragraph{Uncertainty/Range:}
 Very uncertain "prior" on this, could be no effect, could be huge and a showstopper.

@@ -1,20 +1,27 @@
-\subsection{Misalignment of lenslet couple antenna systematic}
+\subsection{Misalignment of Lenslet/Horn Array}
 
 \paragraph{Description:}
-With lenslet couple antenna technology, there is a possibility that lenslets will not be aligned with an antenna. This can occur from each individual pixel or entire wafer slipped from each other. For a case of  slipped in each individual pixel, this will be a random direction in entire wafer. For a case of entire of wafer, this can cause on how good we clamp between each wafers or thermal contraction between the wafer holder and the wafer. This scenario will be more likely to create systematic pointing error. 
+With the lenslet coupled antenna technology, there is a possibility that the lenslets will not be aligned with an antennae. This can occur with individual pixels or the entire wafer. In the case of individual pixels, this offset would be in random directions across the wafer and thus average out across the array. In the case of entire of wafer, misalignment can be caused cause by how well the wafer and lenslet array are clamped together and thermal contraction between the wafer holder and the wafer. An entire wafer offset would create a systematic pointing error.
 
 \paragraph{Plan to model and/or measure:}
-We can create a model in HFSS to simulate the effect to beam parameters from misalignment from lenslet couple antenna. After that we can use ray tracing program such as Zemax estimate how much of this contribute to overall pointing error on sky.
+We can create a model in HFSS to simulate the effect on beam parameters from a systematic misalignment between a lenslet and an antenna. We can then use a ray-tracing program such as Zemax to estimate how much this effect contributes to the pointing error on the sky.
 
-\paragraph{Uncertainty/Range:}
-We can minimize an uncertainty from this by know all the possibilities that can cause a wafer slipped e.g. the thermal contraction from the wafer holder and wafer, or vibration from outside. Range of the uncertainty also vary by size of lenslets and antenna. In PB2 case, we set the tolerance level at 20 $\mu m$.
+\textbf{Say something about how we can calibrate the pointing offset.}
 
-\paragraph{Parameterization:}
-This is a result from HFSS that we simulated for PB2. This showed a linear relationship between the pointing error and the distance of lenslets and antenna. In the simulation also showed the direction of pointing offset is a same direction of wafer slipped. 
+PB2 models of this effect show a linear relationship between the pointing error and the offset between the lenslet and antenna (see Figure~\ref{poitingoffsetFromWaferslipped}). The direction of thepointing offset is in the same direction as the wafer slip. 
   
 \begin{figure}
 \centering
 \includegraphics[width=3.25in]{figures/pointingOffset_waferslipped.png}
-\caption{plot pointing error vs an offset between sinuous antenna and lenslet }
+\caption{Pointing error versus an offset between a sinuous antenna and a lenslet for PB2. The pointing offset roughly linear with the offset between the two.}
 \label{poitingoffsetFromWaferslipped}
 \end{figure}
+
+
+We can model this effect well, but need to model it, making its SRF a 3.
+
+\paragraph{Uncertainty/Range:}
+We can minimize the uncertainty from this effect by understanding the effects that can cause a wafer to slip like thermal contraction from the wafer holder and wafer or outside vibrations and setting contraints on wafer slippage. The range of the uncertainty also varies with the size of lenslets and antenna. In the PB2 case, we set the tolerance level at 20 $\mu m$. \textbf{Do we have some tolerance numbers for SO?}
+
+\paragraph{Parameterization:}
+We parameterize this effect as a pointing offset.
