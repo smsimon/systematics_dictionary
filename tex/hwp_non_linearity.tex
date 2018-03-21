@@ -6,7 +6,7 @@
 % defined. This should include where we expect to get the value of this variable
 % from (TWG, literature, etc.)
 
-The presence of a large HWPSS (usually at 2f or 4f), of order a few hundred mK, can drive the detectors in a non-linear regime. The detector response then changes synchronously with the HWP rotation harmonics. In particular, the response change induced by a large HWPSS 4f will modulate the unpolarized power at 4f, which appears in the detectors as an I $\rightarrow$ P leakage. This leakage can be partly removed by correlating $I$ and $P$ (done in the time domain for PB, see \cite{PB1_WHWP}, or in the map domain for EBEX, see \cite{joy_thesis_2016}), however the different sources of $I$ for the optical vs NL leakage (see $\delta_{opt}$), as well as gain variations $\epsilon$ and 1/f noise $\delta_{elec}$, couple into the removal procedure and produce a leftover $I \rightarrow P$ leakage.
+The presence of a large HWPSS (usually at 2$f$ or 4$f$), of order a few hundred mK, can drive the detectors in a non-linear regime. The detector response then changes synchronously with the HWP rotation harmonics. In particular, the response change induced by a large HWPSS 4f will modulate the unpolarized power at 4$f$, which appears in the detectors as an $I \rightarrow P$ leakage. This leakage can be partly removed by correlating $I$ and $P$ (done in the time domain for PB, see \cite{PB1_WHWP}, or in the map domain for EBEX, see \cite{joy_thesis_2016}), however the different sources of $I$ for the optical vs NL leakage (see $\delta_{opt}$), as well as gain variations $\epsilon$ and 1/f noise $\delta_{elec}$, couple into the removal procedure and produce a leftover $I \rightarrow P$ leakage.
 
 \paragraph{Parameterization:}
 We model the detector response in the following manner:
@@ -27,7 +27,7 @@ g_1 = -\frac{\eta}{2 P_{elec}} \frac{L}{L+1} \frac{L+1+\omega_{mod}^2 \tau_0^2}{
   
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect
-A simulation implementing the model above has been written up by Neil, and Julien is currently implementing this model in the overall systematics simulator. The idea is to look for the induced P 1/f noise, and the effect on B-mode measurements after the $I \rightarrow P$ removal. A page with various details and documentation is on the wiki \href{http://simonsobservatory.wikidot.com/estimationof-hwpss}{here}.
+A simulation implementing the model above \textbf{has been written up by Neil, and Julien is currently implementing this model} in the overall systematics simulator. The idea is to look for the induced $P$ 1/f noise, and the effect on B-mode measurements after the $I \rightarrow P$ removal. A page with various details and documentation is on the wiki \href{http://simonsobservatory.wikidot.com/estimationof-hwpss}{here}.
 
 
 \paragraph{Uncertainty/Range:}
