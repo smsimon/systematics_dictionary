@@ -3,13 +3,9 @@
 
 
 \paragraph{Description:}
-<<<<<<< HEAD
-Half wave plates nominally separate polarization from atmospheric and readout low frequency power by modulation at 4f, however due to the ampitude of HWPSS and temperature to polarization leakage real demodulation methods couple readout effects into demodulated polarization channels. 
-This discusses readout 1/f power uncorrelated with atmospheric intensity. Generically this has multiplicative (small signal gain that acts on the 4f line) and additive (fluctuations on bias power impacting the 0f) effects . Following Eq. 4.6) - 4.8) in Takakura et al (2017), let $\Delta(t)$ be an additive 1/f mode and $\delta g(t)$ be a multiplicative readout gain instability.
-=======
-HWPs nominally separate the sky polarized signal from atmospheric and readout low frequency power by modulation at 4$f$, however due to the ampitude of HWP Synchronous Signal (HWPSS) and temperature to polarization leakage ($I \rightarrow P$) real demodulation methods couple readout effects into demodulated polarization channels. 
+
+HWPs nominally separate the sky polarized signal from atmospheric and readout low frequency power by modulation at 4$f$, however due to the presence of a HWP Synchronous Signal (HWPSS) and temperature to polarization leakage, real demodulation methods will mix low frequency readout noise and gain drifts into demodulated polarization channels. 
 Here we discuss readout 1/f power uncorrelated with atmospheric intensity. Generically this has multiplicative (small signal gain that acts on the 4f line) and additive (fluctuations on bias power impacting the 0f) effects . Following Eq. 4.6) - 4.8) in Takakura et al. (2017), let $\Delta(t)$ be an additive 1/f mode and $\delta g(t)$ be a multiplicative readout gain instability.
->>>>>>> 80ac1ff81aae23d884d2823bd23365c868c26195
 
 $$
 d_{m}(t) = (\delta I (t) + \Delta (t)) \times (1 + g_{1}d_{m}(t) + \delta g(t)) + …
@@ -19,21 +15,15 @@ d_{d}^{sub}(t) = Q + iU + A_{0}^{4} \delta g(t) - \lambda_{4} \Delta (t) + …
 $$
 
 \paragraph{Plan to model and/or measure:}
-<<<<<<< HEAD
-Upper limits on the effect can be determined using thermal data from PB1 readout electronics in conjunction with examining the gain path in readout electronics, however in practice thermal coefficients depend heavily on device matching which is difficult to know without direct measurement.
-=======
-Upper limits on the effect can be determined using thermal data from PB1 readout electronics in conjunction with examining the gain path in readout electronics, however, in practice thermal coefficients depend heavily on device matching which is difficult to know without direct measurement.
->>>>>>> 80ac1ff81aae23d884d2823bd23365c868c26195
 
-In general this is best measured end-to-end using overbiased detectors or resistor channels. It is also possible to monitor and project out the ADC / DAC gain modes in an FDM system by outputting and monitoring low frequency tones that are then fed back into thermally stable (although slow) ADCs.
+Upper limits on the effect can be determined by measuring the thermal stability of the readout electronics enclosure in conjunction with the thermal coefficients of elements in the gain path in readout electronics, however, in practice the overall system thermal coefficient depends heavily on component matching which is difficult to estimate without a direct end to end measurement.
+
+This end-to-end measurement can be done using overbiased detectors or resistor channels. 
 
 \paragraph{Uncertainty/Range:}
 
-<<<<<<< HEAD
-This has the potential to be a very significant limitation in low frequency sensitivity. There is circumstantial evidence that this may be the dominant effect limiting PB1 low-$\ell$ sensitivity in the HWP dataset. This effect is common mode and does not integrate down with detector count.
-=======
-This has the potential to be a very significant limitation in low frequency sensitivity. There is circumstantial evidence that this may be the dominant effect limiting PB1 low-$\ell$ sensitivity in the HWP dataset. This effect is common mode and does not average down with detector count.
->>>>>>> 80ac1ff81aae23d884d2823bd23365c868c26195
+This has the potential to be a very significant limitation in low frequency statistical sensitivity. This effect can be common mode across the focal plane and does not integrate down with detector count. In principle it is possible to monitor and project out the ADC / DAC gain modes in an FDM system by either accurately tracking the temperature in the electronics enclosure or by creating an end to end gain monitor by outputting low frequency tones fed back into thermally stable ADCs.
+
 
 \paragraph{Parameterization:}
 
