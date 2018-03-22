@@ -6,25 +6,22 @@
 %defined. This should include where we expect to get the value of this variable
 %from (TWG, literature, etc.)
 
-We define polarization angle as the angle betweeen the light and the HWP, with incident light being rotated by the HWP to a different, transmitted angle. This polarization angle has a dependence on the frequency of light, as well as the optical properties.
+We define polarization angle as the angle betweeen the polarization of the incident light and the transmitted angle induced by the HWP. This polarization angle is frequency-dependent and is defined by the optical properties of the HWP.
 
-A strategy to mitigate this systematics has been proposed in \cite{Matsumura14}. It consists of an additional, stationary HWP behind the rotating one. This counteracts the frequency polarization angle dependence while maintaining broadband polarization modulation. 
+One strategy to mitigate this systematic effect is to use an additional stationary HWP behind the rotating one to counteract the frequnecy dependence while maintaining broadband polarization modulation as proposed in \cite{Matsumura14}. 
 
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect. Use TRLs to describe how well we understand/can model the effect.
-A Muller Matrix paramaterization should be sufficient to model this effect, although it also could be modeled using a full transmission line model.  The transmission line model may more accuratly capture the behavior since it takes the multiple reflections between the various layers into account.
+Using the Muller Matrix paramaterization is sufficient to model this effect, although it also could also be modeled using a full transmission line model. The transmission line model could more accuratly capture the behavior since it takes multiple reflections between the various layers into account.
 
-For a silicon metamaterial HWP, the phase shifter and its AR can be modeled in HFSS; this depenendence can be easily derived from the simulation.
+For a silicon metamaterial HWP, the phase shifter and its AR coating can be modeled in HFSS, and the frequency depenendence can then be derived from the HFSS simulations.
 
-Several HWP are available inside the Simons Observatory collaboration that can be used in laboratory to measure this effect, such as by using a vector network analyzer set up.
+This effect could also be measured with a ector network analyzer (VNA) setup.
 
 \paragraph{Uncertainty/Range:}
 %This section should include the uncertainty of
 %known parameters and/or the expected range of parameters for consideration
-Discussion in \cite{Matsumura09} show this can be up to about 20 degrees for some HWPs.
-
-
-
+Discussion in \cite{Matsumura09} shows that this can be up to about 20 degrees for some HWPs. Calculations within SO are forthcoming. \textbf{Say something quantatative about the SO HWPs. Make sure to include frequency dependence.}
 
 \paragraph{Parameterization:}
 %This section should include the parameterization of figures of
