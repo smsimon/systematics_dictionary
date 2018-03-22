@@ -3,7 +3,7 @@
 \subsection{Polarization modulation efficiency}\label{subsec:modeff}
 
 \paragraph{Description:}
-The polarization modulation efficiency quantifies the level of de-polarization induced by the HWP. In other words, it quantifies how much of the incoming polarization power $I_\mathrm{p,in}$ is transmitted by the HWP as $I_\mathrm{p,out}$:
+The polarization modulation efficiency quantifies how much of the incident polarization power $I_\mathrm{p,in}$ is transmitted by the HWP as $I_\mathrm{p,out}$:
 \begin{equation}
 \epsilon\def \frac{P_\mathrm{out}}{P_\mathrm{in}}
 \end{equation}
@@ -13,12 +13,12 @@ With the definition above, the total intensity $I_\mathrm{out}$ at the detector 
 \begin{equation}
 I_\mathrm{out}=\frac{1}{2}\left[I_\mathrm{in}+\epsilon\sqrt{Q^2+U^2} \cos(4\chi-4\phi)\right]
 \end{equation}
-where $I_\mathrm{in}$ is the total incoming signal, $\chi$ is the rotation angle of the HWP, and $\phi$ is the frequency-dependent phase offset which vanishes in the case of monochromatic HWP.
+where $I_\mathrm{in}$ is the total incoming signal, $\chi$ is the rotation angle of the HWP, and $\phi$ is the frequency-dependent phase offset which vanishes in the case of a monochromatic HWP.
 
 The modulation efficiency depends on the incident frequency $\nu$, the detector bandwidth $\Delta \nu$, the incoming polarized power $I_\mathrm{p,in}$, the incidence angle of the incoming radiation $\theta_\mathrm{i}$ and the physical properties of the HWP. In particular, the design of the HWP can be chosen in order to optimize the modulation efficiency over a broad range of frequencies. 
 
 \paragraph{Plan to model and/or measure:}
-As for modelling the modulation efficiency, we can compute the analytic expression in the simple cases of monochromatic HWP (1 layer) and achromatic HWP (AHWP, 3 layers) at normal incidence. We make use of the Mueller calculus and represent the HWP stack (arbitrary number of layers, with and without AR coating) and the detector as Mueller matrices. The Mueller matrix for the HWP takes the generic form 
+To model the modulation efficiency, we can compute the analytic expression in the two simple cases of a monochromatic HWP (1 layer) and an achromatic HWP (AHWP, 3 layers) at normal incidence. We make use of the Mueller calculus and represent the HWP stack (arbitrary number of layers, with and without AR coating) and the detector as Mueller matrices. The Mueller matrix for the HWP takes the generic form 
 \begin{equation}
 \begin{bmatrix}
    T  &\rho  &0  &0\\
@@ -32,21 +32,21 @@ which allows for leakage off-diagonal terms. The elements of the HWP Mueller mat
 R{2\chi}\cdot M \cdot R(-2\chi)
 \end{equation}
 
-It is straightforward to show that the output signal can be analytically expressed as a series of cosine terms. The modulation efficiency can be computed as:
+The output signal can be then analytically expressed as a series of cosine terms. The modulation efficiency is then computed as:
 \begin{equation}\label{eq:eff}
 \epsilon=\frac{A_4}{A_0}
 \end{equation}
-where $A_x$ is the coefficient of the n-th harmonics.
+where $A_x$ is the coefficient of the n-th harmonic.
 
-We consider the analytic approach as a good sanity check for the validation of a more generic method, which we dub as the ``fitting procedure''. According to the fitting procedure, we compute the output signal at the detector following the Mueller calculus as in the analytic approach, and fit the output signal to an harmonic series of cosine terms:
+In more generic cases, including more complicated configurations, such as multi-layer stacks, slant incidence, and broad-band incident radiation, we compute the output signal at the detector following the Mueller calculus as in the analytic approach, and fit the output signal to an harmonic series of cosine terms:
 \begin{equation}
 I_\mathrm{out}=\Sigma_{i=0,n} A_i \cos(i\chi-i\phi)
 \end{equation}
 
-The modulation efficiency is then computed as in Eq.~\ref{eq.eff}. The fitting procedure is a more general approach than the analytic method. It allows to model easily different and more complicated configurations, such as multi-layer stacks, slant incidence, broad-band incident radiation.
+The modulation efficiency is then computed as in Eq.~\ref{eq.eff}.\textbf{missing an equation label somewhere}
 
 Fig.~\ref{fig:eff} shows the polarization modulation efficiency as a function of frequency computed with the fitting procedure in two cases: a single layer HWP (curves peaking at $120\,\mathrm{GHz}$); and a 3-layer AHWP optimized to cover the two bands centered at $90\,\mathrm{GHz}$ and $150\,\mathrm{GHz}$, depeicted as the gray vertical bands. It is clear that the multi-layer design is able to provide a nearly maximal polarization modulation efficiency over a broad range of frequencies. 
-The different colors correspond to different incidence angle, as detailed in the legend. The modulation efficiency does not change dramatically with the incidence angle.
+The different colors correspond to different incidence angles, as detailed in the legend. The modulation efficiency does not change dramatically with the incidence angle.
 
 \begin{figure}
 \begin{center}
@@ -55,6 +55,15 @@ The different colors correspond to different incidence angle, as detailed in the
 \caption{Polarization modulation efficiency as a function of frequency for two HWP designs: a single-layer (monochromatic) HWP centered at $120\,\mathrm{GHZ}$; and a 3-layer AHWP optimized for the two bands at $90\,\mathrm{GHz}$ and $150\,\mathrm{GHz}$. The vertical gray bands identify the two frequency bands. The different colors correspond to different incidence angles of the incoming radiation. There is not a strong dependency on the incidence angle.}\label{fig:eff}
 \end{figure}
 
+This effect is small, but because it needs to be modeled, its SRF is 3.
+
+\paragraph{Uncertainty/Range:}
+\textbf{How does this propagate into systematics? At what level does it become significant?}
+
+\paragraph{Parameterization:}
+This is parameterized as the modulation efficiency as a function of frequency, $\epsilon (\nu)$.
+
+\textbf{Cite thes in the text and put the references in the bibliography file}
 \paragraph{References:}
 The description of this systematic entry is based on the following references:
 \begin{itemize}
@@ -62,4 +71,3 @@ The description of this systematic entry is based on the following references:
 \item T. Matsumura \textit{et al}, ``Analysis of performance of three- and five-stack achromatic half-wave plates at millimeter wavelengths'', arXiv:0806.1518v1 [physics.optics], for the definition and calculation methods of $\epsilon$.
 \item S. Hanany \textit{et al}, ``A Millimeter-Wave Achromatic Half Wave Plate'', arXiv:physics/0503122 [physics.optics], for the definition and calculation of $\epsilon$ according to the fitting procedure.
 \end{itemize}
-
