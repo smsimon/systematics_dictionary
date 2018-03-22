@@ -8,7 +8,7 @@
 
 A source of white noise in the demodulated timestream is encoder jitter, which is governed by how well the HWP angle and bolometer sample are matched in the time-ordered data (TOD). 
 
-During observation, the HWP angle and bolometer samples are read out and timestamped simultaneously by a global trigger, sent to a centralized DAQ device, and paired within a single data packet. In an ideal world, the HWP angle assigned to this timestamp will be correctly obtained and synchronized; however, in reality, the stored HWP angle is not exact but instead exhibits some (presumedly Gaussian white) distribution around the true value. This ``angle jitter'' creates a decorrelation between the rotation-synchronous signal of the HWP and the signal detected by the bolometers. During analysis, this error between the HWP angle the the ``true'' angle experienced by the bolometer (via the HWP-synchronous signal) injects white noise into the demodulated timestream.
+During observation, the HWP angle and bolometer samples are read out and timestamped simultaneously by a global trigger, sent to a centralized DAQ device, and paired within a single data packet. In an ideal world, the HWP angle assigned to this timestamp will be correctly obtained and synchronized. However, in reality, the stored HWP angle is not exact but instead exhibits some (presumedly Gaussian white) distribution around the true value. This ``angle jitter'' creates a decorrelation between the rotation-synchronous signal of the HWP and the signal detected by the bolometers. During analysis, this error between the HWP angle the the ``true'' angle experienced by the bolometer (via the HWP-synchronous signal) injects white noise into the demodulated timestream.
 
 Below are a few sources of this timestamp jitter:
 
@@ -21,13 +21,17 @@ Below are a few sources of this timestamp jitter:
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect
 
-Expected instrumental polarization from optical elements in front of your HWP must be modeled in order to make estimates of the expected power at 4f. This should be modeled using a physical optics simulator with realistic emissivities. Additionally, HWP differential emission and differential reflection should be measured prior to deployment to make estimates of the expedted power at 2f. Then, given these expected weights, you can set a requirement on the acceptable white noise for your amplifiers, on the well-behavedness of your encoder waveform, etc.
+Expected instrumental polarization from optical elements in front of the HWP must be modeled in order to make estimates of the expected power at 4f. This should be modeled using a physical optics simulator with realistic emissivities. Additionally, HWP differential emission and differential reflection should be measured prior to deployment to make estimates of the expected power at 2f. Then, given these expected weights, you can set requirements on the acceptable white noise for your amplifiers, the well-behavedness of your encoder waveform, etc.
+
+This is a small effect, but can become important in cases where the polarization leakage in front of the HWP is large. Thus, it should be modeled and has an SRF of 3.
 
 \paragraph{Uncertainty/Range:}
 %This section should include the uncertainty of
 %known parameters and/or the expected range of parameters for consideration
 
-This systematic is driven by the size of the 2f and 4f signal of the HWP, which in turn is dependant on the instrumental polarization sky-side of the modulator. So, for a HWP at prime focus in the Cross-Dragone scenario, (POLARBEAR), the requirement is quite tight--less than 1 arcsecond--where as for a modulator at the stop of a small-aperture telescope (e.g. ABS), the requirement becomes looser.
+This systematic is driven by the size of the 2f and 4f signals of the HWP, which in turn is dependant on the instrumental polarization sky-side of the modulator. For a HWP at prime focus in the Cross-Dragone scenario, (POLARBEAR), the requirement is quite tight--less than 1 arcsecond--where as for a modulator at the stop of a small-aperture telescope (e.g. ABS), the requirement becomes looser.
+
+\textbf{What values would we expect for SO?}
 
 This effect can be averaged down in analysis with interpolation schemes, and is hence improved if the HWP rotational stability is very good over long timescales.
 
@@ -51,12 +55,12 @@ where we've assumed that the Q/U signal rises/falls by $A_{p2p}/2$ in $1/16$th o
     	\sigma_{\theta} < \frac{\mathrm{d}\theta}{\mathrm{d}T} NET_{jitter} <  \frac{\pi/8 rad}{0.1 K} (0.5 \mu K \sqrt{s}) < 1.9 \mu rad \sqrt{s}
 \end{equation}
 
-The requirement gets tighter the larger your HWP sychrnous-signal is, hence making large instrumental polarization signals in front of your HWP dangerous.
+The requirement on the white noise should be set by the science working group (SWG). The requirement gets tighter the larger your HWP sychrnous-signal is, hence making large instrumental polarization signals in front of your HWP dangerous.
 
-To convert this angle requirement into a timestamp jitter, which is often more useful for diagnosing aspects of the system like IRIG and RP synchronization, microcontroller performance, etc., you divide the angle jitter by the HWP rotation speed. For the above example, for a 2 Hz HWP, the timestamp jitter requireent is
+To convert this angle requirement into a timestamp jitter, which is often more useful for diagnosing aspects of the system like IRIG and RP synchronization, microcontroller performance, etc., you divide the angle jitter by the HWP rotation speed. For the above example, for a 2 Hz HWP, the timestamp jitter requirement is
 
 \begin{equation}
 	\sigma_{t} = \sigma_{\theta} / \frac{\mathrm{d}\theta}{\mathrm{d}{t}} = (1.9 \mu rad \sqrt{s}) / (\frac{4 \pi}{s}) = 0.15 \mu s \sqrt{s}
 \end{equation}
 
-Again, the requirement on the HWP timestamp accuracy is made tighter as the HWP is spun faster.
+The requirement on the HWP timestamp accuracy becomes tighter as the HWP rotation frequency increases.
