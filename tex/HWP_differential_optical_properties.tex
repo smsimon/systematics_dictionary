@@ -4,15 +4,11 @@
 \label{HWP Differential Optical Properties}
 
 \paragraph{Description:}
-The birefringence of the HWP causes different transmission coefficients along the fast and slow axes of the crystal,
-producing differential absorption and emission coefficients along the two axes.
-Because of this, transmitted unpolarized light and emitted light both are partially polarized by the optical action of the HWP.
-The polarization direction rotates with the HWP, and so this signal couples to the detector at 2$f$.
+Because the HWP is birefringent, the HWP has different transmission coefficients along the fast and slow axes of the crystal,
+which produces differential absorption and emission coefficients along the two axes. Because of this, transmitted unpolarized light and emitted light both are partially polarized by the HWP. The polarization direction rotates with the HWP, so this signal couples to the detectors at 2$f$. While the science band is at $4f$, the $2f$ signal can leak into the $4f$ signal through... \textbf{fill this out a bit}.
 
 \paragraph{Plan to model and/or measure:}
-In order to model this effect we require the knowledge of the HWP Mueller matrix and information about the optical filter chain.
-
-Knowing the temperatures, efficiencies, and emissivities of each component in the optical chain,
+To model this effect, we require the HWP Mueller matrix and information about the optical filter chain. Knowing the temperatures, efficiencies, and emissivities of each component in the optical chain,
 the unpolarized power can be propagated through each element to find the incident unpolarized power on the HWP.
 If $P_n$ is the unpolarized power crossing the $n^\text{th}$ element, $\eta_n$ the efficiency, $\varepsilon_n$ the emissivity, and $B$ the spectral brightness, given the temperature $T_n$,
 the propagation step is 
@@ -22,39 +18,30 @@ P_{n+1}(\nu) = \eta_n(\nu) P_n(\nu) + \varepsilon_n(\nu) A\Omega(\nu)\;  B(\nu, 
 \end{equation}
 
 
-The HWP Mueller matrix is calculated using the method described in \cite{Salatino16}, and is of the form:
-\[
-M_\text{HWP} = \left(
-\begin{array}{cccc}
-T & \rho & 0 & 0\\
-\rho & T & 0 & 0\\
-0 & 0 & c & -s \\
-0 & 0 & s & c
-\end{array}
-\right),
-\]
-where all elements are dependent on frequency, incident angle and spatial position (x,y).
-$\rho$ is the differential transmission of the HWP.
-Though the polarized fraction of the transmitted and emitted light are the same but with opposite signs,
-they do not cancel since the radiation sources are at different temperatures.
+The HWP Mueller matrix (Equation~\ref{eq:Mueller_Matrix} is calculated using the method described in \cite{Salatino16}, where all elements are dependent on frequency, incident angle and spatial position (x,y). The $\rho$ components represent the differential transmission of the HWP. While the polarized fraction of the transmitted and emitted light are equal and opposite, they do not cancel because the radiation sources are at different temperatures.
 If we define $P_\text{HWP}$ to be the incident power on the HWP, the polarized power output is 
 \begin{equation}
 \label{eq:polarized_output}
 P_\text{HWP + 1}(\nu) = \rho(\nu)(P_\text{HWP} - A\Omega(\nu)B(\nu, T_\text{HWP})),
 \end{equation}
-with $a_2 = \rho$. 
+with $A_2 = \rho$. 
 
 If we define $\eta_\text{det}$ to be the combined efficiency of all elements after the HWP,
 the final 2$f$ signal produced by the HWP is 
 \[
 A^{(2)} = \int_{\nu_\text{low}}^{\nu_\text{high}} \eta(\nu) P_\text{HWP + 1}(\nu) d\nu.
 \]
+
+\textbf{How do we model how much leaks into $4f$ frmo $2f$?}
+
+Since this effect can leak into the science band, it is important to model and thus has an SRF of 3.
 \paragraph{Uncertainty/Range:}
 For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of 
 $A^{(2)} = .0165 \text{pW} = 238 \text{mK}_\text{CMB}$. 
 \textbf{We expect similar values for similar frequency values}.
+\textbf{Describe how much of this leaks into $4f$ and contaminates our actual science signal.}
 
 \paragraph{Parameterization:}
 We require $T$ and $\rho$ from the HWP Mueller matrix\cite{Salatino16}, and an optical chain input file containing
-absorption, temperature, and spill/scatter/reflection coefficients for each element. The Mueller matrix components can be theoretically estimated by transfer matrix model \cite{Essinger-Hileman13} or HFSS simulations. They can be experimentally measured with FTS measurements.
+absorption, temperature, and spill/scatter/reflection coefficients for each element. The Mueller matrix components can be theoretically estimated by transfer matrix model \cite{Essinger-Hileman13} or HFSS simulations. They can be experimentally measured with FTS measurements. We parameterize this with the $A_2$ component of the HWP template and a leakage coefficienct ($\epsilon_{2,4}$) between $2f$ and $4f$.
 
