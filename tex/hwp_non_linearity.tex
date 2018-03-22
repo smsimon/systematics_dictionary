@@ -6,9 +6,11 @@
 % defined. This should include where we expect to get the value of this variable
 % from (TWG, literature, etc.)
 
-The presence of a large HWPSS (usually at 2$f$ or 4$f$), of order a few hundred mK, can drive the detectors in a non-linear regime. The detector response then changes synchronously with the HWP rotation harmonics. In particular, the response change induced by a large HWPSS 4f will modulate the unpolarized power at 4$f$, which appears in the detectors as an $I \rightarrow P$ leakage. This leakage can be partly removed by correlating $I$ and $P$ (done in the time domain for PB, see \cite{PB1_WHWP}, or in the map domain for EBEX, see \cite{joy_thesis_2016}), however the different sources of $I$ for the optical vs NL leakage (see $\delta_{opt}$), as well as gain variations $\epsilon$ and 1/f noise $\delta_{elec}$, couple into the removal procedure and produce a leftover $I \rightarrow P$ leakage.
+The presence of a large HWPSS (usually at 2$f$ or 4$f$), of order a few hundred mK, can drive the detectors in a non-linear regime. The detector response then changes synchronously with the HWP rotation harmonics. In particular, the response change induced by a large HWPSS 4f will modulate the unpolarized power at 4$f$, which appears in the detectors as an $I \rightarrow P$ leakage. This leakage can be partly removed by correlating $I$ and $P$ (done in the time domain for PB, see \cite{PB1_WHWP}, or in the map domain for EBEX, see \cite{joy_thesis_2016}), however the different sources of $I$ for the optical vs NL leakage (see $\delta_{opt}$), as well as gain variations $\epsilon$ and 1/f noise $\delta_{elec}$, couple into the removal procedure and produce a residual $I \rightarrow P$ leakage.
 
-\paragraph{Parameterization:}
+  
+\paragraph{Plan to model and/or measure:}
+%Plan to model/measure effect
 We model the detector response in the following manner:
 
 \begin{align}
@@ -16,7 +18,7 @@ d(t) = f_{nl} \left[  (I+\delta_{opt}) + (A_2 + a_2 I) e^{2 i \chi} + (Q + iU + 
 f_{nl}(x) = \left[ 1 + \epsilon + g_1 d(t - \tau_0 - \tau_1 I) \right] d(t - \tau_0 - \tau_1 I)
 \end{align}
 
-\noindent where we only included the 2f and 4f harmonics for $A(\chi)$. $I, Q$ and $U$ represent the CMB, foregrounds and atmosphere signals. $\delta_{opt}$ is the unpolarized power emitted after the HWP, $\delta_{elec}$ is the readout and detector 1/f noise. The non-linearity response is described by $f_{nl}$. (1 + $\epsilon$) is the gain, where $\epsilon$ is the error / time variation of the gain, $g_1$ is the variation of the gain with incoming power, $\tau_0$ is the time constant of the detectors, $\tau_1$ is the variation of the time constant with incoming power. \cite{PB1_WHWP} shows that $\tau_1$ and $g_1$ are linked to detectors parameters in the following way:
+\noindent where we only include the $2f$ and $4f$ harmonics for $A(\chi)$. $I, Q$ and $U$ represent the CMB, foregrounds and atmospheric signals. $\delta_{opt}$ is the unpolarized power emitted after the HWP, $\delta_{elec}$ is the readout and detector 1/f noise. The non-linearity response is described by $f_{nl}$. (1 + $\epsilon$) is the gain, where $\epsilon$ is the error / time variation of the gain, $g_1$ is the variation of the gain with incoming power, $\tau_0$ is the time constant of the detectors, $\tau_1$ is the variation of the time constant with incoming power. \cite{PB1_WHWP} shows that $\tau_1$ and $g_1$ are linked to detectors parameters in the following way:
 
 \begin{align}
 g_1 = -\frac{\eta}{2 P_{elec}} \frac{L}{L+1} \frac{L+1+\omega_{mod}^2 \tau_0^2}{(L+1)^2 + \omega_{mod}^2 \tau_0^2} C \\
@@ -24,13 +26,10 @@ g_1 = -\frac{\eta}{2 P_{elec}} \frac{L}{L+1} \frac{L+1+\omega_{mod}^2 \tau_0^2}{
 \end{align}
 
 \noindent The description of the parameters that go into $g_1$ and $\tau_1$, and usual values / varation with loop gain $L$ are available \href{http://simonsobservatory.wdfiles.com/local--files/calandsys-telecon/hwp_systematics_pipeline_2017-05-17.pdf?ukey=b7162749d5391f6bfc1b0d7e0ed84ab97c96f6a8}{here}
-  
-\paragraph{Plan to model and/or measure:}
-%Plan to model/measure effect
-A simulation implementing the model above \textbf{has been written up by Neil, and Julien is currently implementing this model} in the overall systematics simulator. The idea is to look for the induced $P$ 1/f noise, and the effect on B-mode measurements after the $I \rightarrow P$ removal. A page with various details and documentation is on the wiki \href{http://simonsobservatory.wikidot.com/estimationof-hwpss}{here}.
-
 
 \paragraph{Uncertainty/Range:}
-The $I \rightarrow P$ leakage coming from non-linearity in PB $\sim$ 0.6\%. Given the HWPSS estimated magnitude, and worse/best case scenarios for the detector non-linearity parameters ($g_1$ and $\tau_1$, as described in the linked page), the $I \rightarrow P$ leakage coming varies from 0.13\% (low non-linearity, number driven by optical leakage) to 0.3 \% (high non-linearity). The residual $f_{knee}$ after removing the leakage is driven by the magnitude of $\epsilon$ (and to a lesser extent $\delta_{elec}$). Neil's \href{http://simonsobservatory.wdfiles.com/local--files/estimationof-hwpss/Estimating_Ell_Knee_for_SOLA.pdf?ukey=886f3c1ad56d36de42412c02765a1a658a35fad9}{simulations} show the leftover $f_{knee}$ is 0.7 Hz for $\epsilon$ variations on order of PB and 0.2 Hz for $\epsilon$ variations 1/10th of this.
+The $I \rightarrow P$ leakage coming from non-linearity in PB is $\sim$ 0.6\%. Given the HWPSS estimated magnitude, and worse/best case scenarios for the detector non-linearity parameters ($g_1$ and $\tau_1$, as described in the linked page), the $I \rightarrow P$ leakage coming varies from 0.13\% (low non-linearity, number driven by optical leakage) to 0.3 \% (high non-linearity). The residual $f_{knee}$ after removing the leakage is driven by the magnitude of $\epsilon$ (and to a lesser extent $\delta_{elec}$). Neil's \href{http://simonsobservatory.wdfiles.com/local--files/estimationof-hwpss/Estimating_Ell_Knee_for_SOLA.pdf?ukey=886f3c1ad56d36de42412c02765a1a658a35fad9}{simulations} show the leftover $f_{knee}$ is 0.7 Hz for $\epsilon$ variations on order of PB and 0.2 Hz for $\epsilon$ variations 1/10th of this.
 
 
+\paragraph{Parameterization:}
+A simulation implementing the model above and is in the process of being implemented in the time-domain systematics pipeline simulator. The idea is to look for the induced $P$ 1/f noise, and the effect on B-mode measurements after the $I \rightarrow P$ removal. A page with various details and documentation is on the wiki \href{http://simonsobservatory.wikidot.com/estimationof-hwpss}{here}.
