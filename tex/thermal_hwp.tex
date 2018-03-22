@@ -1,23 +1,23 @@
 \subsection{Thermal Variation in HWP Temperature}
 
 \paragraph{Description:}
-HWP thermal gradient and thermal fluctuations. A not uniform HWP temperature and its temporal fluctuations create a spatial and time dependent 0$f$, 1$f$, 2$f$, 4$f$ signals, etc. depending on the amplitude of harmonic decomposition of the temperature profile of the HWP. 
+In practice, the HWP has thermal gradients and fluctuations. A non-uniform HWP temperature and its temporal fluctuations create spatial and time dependent 0$f$, 1$f$, 2$f$, and 4$f$ signals that depend on the amplitude of the harmonic decomposition of the temperature profile of the HWP. 
+
+\textbf{Add a few sentences about how estimating the HWP template wrong because it is spatially and temporally varying can translate into leakage.}
 
 \paragraph{Plan to model and/or measure:}
-Model: thermal finite element analysis of a HWP thermalized with a suitable heat sink and with a realistic time variable loading.
-Measure: cryogenic measurements of the thermal gradients.
+To model this effect, we can use a thermal finite element analysis of a HWP thermalized with a suitable heat sink and with realistic time variable loading. \textbf{How can we estimate the next step (the impact on leakage from this)?}
+To measure this, we can use cryogenic measurements of the thermal gradients, and on-sky measurements of polarization leakage will include this effect (as well as other instrumental sources)
+
+This effect is expected to be subdominant, so the SRF is 3.
 
 
 \paragraph{Uncertainty/Range:}
-Realistic model of the time variation of the loading.
-
-For a sapphire HWP, we expect this time variation effect to be small, as sapphire has a large thermal conductivity and large heat capacity, giving it both good thermalization properties and a large time constant.
-
+The uncertainties in these models will be limited by how realistic models of the time variation of the loading are. For a sapphire HWP, we expect the time variation effect to be small, as sapphire has a large thermal conductivity and large heat capacity, giving it both good thermalization properties and a large time constant.
+ \textbf{Add more detail if we mdoel this}
 
 \paragraph{Parameterization:}
-HWP thermal fluctuations: $\Delta_{HWP}(x,y,t)$ with $(x,y)$ the spatial coordinates of the HWP and $t$ the time.
-
-HWP thermal fluctuation time constant: 
+We can parameterize this using the HWP thermal fluctuations: $\Delta_{HWP}(x,y,t)$ with $(x,y)$ the spatial coordinates of the HWP and $t$ the time and the effect on the HWP thermal fluctuation time constant: 
 
 \begin{equation}
 \tau_{T_{HWP}} = C(T_{HWP})/G(T_{HWP}, T_{BCK})
@@ -25,10 +25,10 @@ HWP thermal fluctuation time constant:
 
 where $C$ is the HWP heat capacity as a function of its temperatue $T_{HWP}$, and $G$ is the thermal link between the HWP at $T_{HWP}$ and the surrounding environment at $T_{BCK}$. 
 
-Then we expect the HWP temperature to fluctuate, assuming a fluctuating background at frequency $\omega_{BCK}$, as
+Using this, we expect the HWP temperature to fluctuate, assuming a fluctuating background at frequency $\omega_{BCK}$, as
 
  \begin{equation} 
  T_{HWP} \propto \frac{e^{i \omega_{BCK} t}}{i \omega_{BCK} + 1/\tau_{T_{HWP}}}
  \end{equation}
  
- Because the time constant is large, expect the thermal fluctuation to manifest at very low frequencies $\omega_{BCK}$.
+ Because the time constant is large, we expect the thermal fluctuation to manifest at very low frequencies $\omega_{BCK}$. To estimate the scientific impact, we could parameterize this with spatially and temporally varying HWP template values.
