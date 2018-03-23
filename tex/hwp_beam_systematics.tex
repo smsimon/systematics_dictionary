@@ -3,20 +3,21 @@
 
 
 \paragraph{Description:}
-Having a HWP skyward of every optical element cures a range of beam and polarization systematics. However, putting a HWP inside the optical system induces some beam and polarization systematics of its own, and fails to cure some systematics you'd think it would. Thus, careful consideration is needed.
+Having a HWP skyward of every optical element mitigates a range of beam and polarization systematics. However, when the HWP is further down the optical chain as in the case of a cryogenic HWP, detailed modeling is necessary to determine what systematics it induces and mitigates.
+
+\textbf{Do we have examples of what beam properties get worse?}
 
 \paragraph{Plan to model and/or measure:}
-Modeling would entail ray tracing and physical optics for a non-planar or non-uniform AR coated HWP. It would also require calculating the impact of non-uniform AR coatings or optical properties. Non-normal incidence effects...might matter...might focus the beam...ask ABS people on the theory side, and PB/ACT people on the experience side.
+Modeling would require the HWP optical properties and both ray tracing and physical optics for several cases, including non-planar positions and non-uniform AR coatings. The HWP would need to be included in full optics simulations of the optics chain. Commercially available software like CST can model diffraction effects, in a reasonable CPU time, for complicated, large structures, so a model could be developed for the HWPs and serve as input to the larger optical studies.
 
-Also model how these beam systematics show up in the rapid-rotation demodulation. Even with an optimal mapmaker, ignoring this effect would mean they will show up likely as I-P and Q-U leakage beams with very complicated structure. (Investigate making an optimal mapmaker for this..? Would definitely require data since the dipole-quadrupole small-distortion beam formalism may not apply here.)
+\textbf{Is there more info on how we can model/measure/calibrate/mitigate this effect?}
 
-In general, the commercially available software CST can model diffraction effects, in a reasonable CPU time, from very funny shaped large structures (like struts and baffles, for example). Developing such a model with a HWP to better investigate these systematics is interesting.
+Beam maps with and without the HWP can also help determine the HWP's impact on the beams. Measurements, in principle, would be done with a long campaign of beam maps taken at a large set of HWP angle, and/or, in the case of a rapid modulator, very slow beam maps taken with several modulation cycles per beam scanned (differently from sky configuration where the telescope scan is faster). Both unpolarized and polarized beam maps would be necessary.
 
-Measurements, in principle, would be done with a long campaign of beam maps taken at a large set of HWP angle, and/or, in the case of a rapid modulator, very slow beam maps taken with several modulation cycles per beam scanned (differently from sky configuration where the telescope scan is faster). The source needs to be defined, a sky source seems like it would be slow. However, an artificial source mounted on a mast would be difficult since it requires tilting the telescope to a low elevation that imposes strong mechanical constraints.
+Optical effects of the HWP must be modeled as there is a large uncertainty in the size of the effect, so the SRF is 5.
 
 \paragraph{Uncertainty/Range:}
-Very uncertain "prior" on this, could be no effect, could be huge and a showstopper.
+\textbf{Do we have any modeled values from SO?}
 
 \paragraph{Parameterization:}
-
-Leverage existing beam formalisms? Leverage Maria, Sean, Tom E-H, others, work on polarization non-idealities of the HWP, but combine it with beam formalisms?
+This can be expressed as the beam with and without the HWP from optics simulations.
