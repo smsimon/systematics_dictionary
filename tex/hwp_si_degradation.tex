@@ -6,23 +6,25 @@
 % defined. This should include where we expect to get the value of this variable
 % from (TWG, literature, etc.)
 
-One minor concern for the silicon HWP is degredation of the modulator performance over time. The causes of this degradation are distinct enough from a sapphire hwp that they should be a different subsectoin.  A few causes for such degredation are:
+One minor concern for silicon metamaterial HWPs is degredation of the modulator performance over time.  A few causes for such degredation are:
 
 \begin{enumerate}
 	\item chipping of the surface structures (AR, or even the birefringent layer)
 	\item delamination of glue layer between silicon parts
 	\item HWP moving around inside the rotor, therefore adjusting its angle with respect to the encoder
 	\item HWP becoming dirtied by the environment
+	\item \textbf{What about metallization by UV?}
 \end{enumerate}
 
-ACT has used a silicon HWP for approximatly 3 months, over which no significant chipping or changes in performance have been measured.  There may have been a small amound of dirt build up in the grooves, which shouldn't effect the performance.
+Si metamaterial HWPs are primarily advantageous ove sapphire at ambient temperature, where their smaller thickness due to their refractive indices result in less thermal emission. At cryogenic temperatures, this advantage is lessened because the cooler temperatures result in less overall emission. Thus, we consider only an ambient temperature Si HWP here as in ACTPol/AdvACT. In a three month deployment period, ACT measured no significant chipping or changes in performance.  There may have been a small amount of dust build up in the grooves, but this is not expected to decrease performance.
 
-A newer, yet-to-be-deployed silicon HWP has a bossed invar ring glued to the edge of the HWP, which should keep the HWP angle fixed to the encoder angle, barring catastrophic failure...
+A newer, yet-to-be-deployed silicon HWP has , barring catastrophic failure...
   
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect
+Most of these effects can be mitigated by careful deisgn and measuremetns of the HWP prior to deployment. They can also be measured and tracked through the HWPSS and HWP performance. Chipping of the substructures occurs primarily in the fabrication process. The pillars are robust to light handling and do not usually break under normal operation. Thus, specifications on the number of chips can be set prior to fabrication as a quality control parameter. Any delamination usually occurs during manufacture, so measurements of the HWP prior to deployment can set a spec on this, and changes in HWP performance can be monitored with the HWPSS. A bossed invar ring glued to the edge of the HWP, keeps the HWP angle fixed to the encoder angle, preventing movement betweeen the HWP and encoder. \textbf{How does ACT keep them clean from dirt and prevent UV damage?}
 
-After redeploying the HWPs on ACT, we can keep them on the telescope for several months, and then remeasure their performances (preferably on the telescope) and see if there are any significant changes.  From above described experience, no worrying degradation is foreseen.
+No degredation has been observed on ACT, so the SRF of this effect is 2.
 
 
 \paragraph{Uncertainty/Range:}
@@ -30,9 +32,10 @@ After redeploying the HWPs on ACT, we can keep them on the telescope for several
 %known parameters and/or the expected range of parameters for consideration
 
 
-Preliminary studies have shown that surface chipping of the AR is not terribly compromising. As much as 1 in 7 pillars chipped shows only a marginal loss in reflection mitigation \cite{SiAR_1}, and we have a much better yeild than that. The pillars are also robust to light handling, and tend not to break under normal operation.
+Preliminary studies have shown that surface chipping of the AR coating does not strongly impact the HWP performance. As many as 1 in 7 pillars chipped shows only a marginal loss in reflection mitigation \cite{SiAR_1}, and the actual pillar yield is significantly better and closer to \textbf{put the typical yield here, note that we can assume we've gotten better in time and use weight later HWPs more}.
 
-Like POLARBEAR this is a HWP operating at ambient temperature, and thus exposed to the evironment in a way that a cryogenic one wouldn't be. But it is also not subject to the same thermal cycling a cryogenic one would be, so it is unclear if a warm HWP would develop issues in a cold one, and vise versa.
+\textbf{Do we have any estimates for how big effects from delamination, dirt, and UV effect the HWP performance?}
+
 
 \paragraph{Parameterization:}
-We'll need to describe the effective yield of the AR coating (intact pillars / total pillars). The main effect would be an increase in reflection. Delamination could cause reflections, scattering, and modulation efficiency problems.  
+We can parameterize the chipping effect through the effective yield of the AR coating (intact pillars / total pillars). The main effect would be an increase in reflection. Delamination could cause changes in the HWPSS, reflections, scattering, and modulation efficiency problems, so can be parameterized by those. \textbf{UV?}
