@@ -16,31 +16,37 @@ One concern for the HWP is degredation of the modulator performance over time. A
 	\item HWP becoming dirtied by the environment
 \end{enumerate}
 
-POLARBEAR is now in its third season using a modulator \cite{PB1_WHWP}. The PB HWP consists of a sapphire sustrate with a layer of RT6002 Duroid from Rogers Corporation glued using melted LDPE for AR. The HWP is located between the primary and secondary mirrors (i.e. at prime focus) and is covered with a thin Mylar sheet for environmental protection. PB has not seen evidence of HWP degrdation despite snowstorms, windy weather, etc. The Mylar sheet should ideally be cleaned periodically.
+POLARBEAR is now in its fourth season using a sapphire modulator \cite{PB1_WHWP}. The PB HWP consists of a sapphire substrate with an AR coating of RT6002 Duroid from Rogers Corporation adhered with melted LDPE. The HWP is located between the primary and secondary mirrors (i.e. at prime focus) and is covered with a thin Mylar sheet for environmental protection. PB has not seen evidence of HWP degrdation despite snowstorms, dust, windy weather, etc. The Mylar sheet must be cleaned periodically.
 
 For the POLARBEAR-2a warm HWP (WHWP) \cite{PB2a_WHWP}, we are using a three-stack sapphire HWP with RT3006 Duroid/HDPE dual-layer AR held onto the sapphire using a vacuum-bag technique (i.e. no glue layers). The HWP sits in front of the optics tube window and is protected from the environment by a weather-sealed boom enclosure. The vacuum technique avoids the possibilities of AR delamination and non-uniform glue-layers. To prevent the three sapphire plates from rotating with respect to one another, we epoxy them together at the edges, and to prevent the stack from shifting in the rotor, it is held snugly by a rubber gasket as well as the friction of the vacuum bag. Another concern for HWP degredation is UV eroding the HDPE quality, but we expect this effect to be small given the UV-tight quality of the boom enclosure.
 
-For the POLARBEAR-2b/c cold HWP (CHWP), we are using three-stack sapphire with alumina thermal spray loaded with nitrogen-infused silica microspheres to adjust the dielectric constant. The HWP will sit behind the cryostat window at the 50\,K stage. An additional concern for the CHWP is the danger of AR delamination due to differential thermal contraction during thermal cycles. However, the alumina-powder-based thermal-spray AR has the same expansion coefficient as the sapphire substrate, and no delamination has been seen in testing.
+For the POLARBEAR-2b/c cold HWP (CHWP), we are using three-stack sapphire with alumina thermal spray loaded with nitrogen-infused silica microspheres to adjust the dielectric constant. The HWP will sit behind the cryostat window at the 50\,K stage. An additional concern for the CHWP is the danger of AR delamination due to differential thermal contraction during thermal cycles. However, the alumina-powder-based thermal-spray AR has the same expansion coefficient as the sapphire substrate, and there has been no evidence of delamination in testing.
   
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect
+The impact of these effects can be mitigated through regular monitoring and mitigated through the design/repair of the HWP.
 
-For the WHWP, because it is outside the receiver, load curves can be taken by doing in-and-out tests between seasons to look for uniform degredations of the dielectric layers that would cause an increase in emission. 
+For the WHWP, because it is outside the receiver, load curves can be taken by doing in-and-out tests between seasons to look for uniform degredations of the dielectric layers that would cause an increase in emission. Visual inspections can also be used to monitor the HWP. Non-uniform degredations, such as AR delamination, will show up in the HWPSS, or if egregiuos enough, in beam maps. These effects depend on where your HWP is located within the optical system.
 
-Non-uniform degredations, such as AR delamination, will show up in the HWP-synchronous-signals, or if egregiuos enough, in beam maps. These effects, though, depend on where your HWP is located within the optical system.
+In a cryogenic system, the HWPSS and beam maps as a function of time can be used to track HWP degradation.
+
+This effect has an SRF of 2 because the effect is small and can be monitored as well as mitigated with the HWP design.
 
 \paragraph{Uncertainty/Range:}
 %This section should include the uncertainty of
 %known parameters and/or the expected range of parameters for consideration
 
-The acceptable range of these effects are difficult to quantify, but we should not tolerate AR delamination or shifting of the birefringent substrate in the design process. If it happens in the field, we must hope it's dramatic enough that we see it immediately.
+The acceptable range of these effects are difficult to quantify, but we should not tolerate AR delamination or shifting of the birefringent substrate in the design process. 
+
+\textbf{How big are these effects when they have shown up on PB? Based on the location of the HWPs in SO, do we expect it to be bigger or smaller? Is it more important at UHF frequencies?}
 
 \paragraph{Parameterization:}
 
-Parameters to pay attention to from the perspective of sensitivity:
+Parameters for the sensitivity and systematics include:
 
 \begin{enumerate}
 	\item HWP efficiencyas a function of time $\eta(t)$
 	\item HWP emissivity as a function of time $\epsilon(t)$
 	\item HWP loading due to scattering as a function of time $P_{HWP, \, scatter}(t)$
+	\item HWPSS over time
 \end{enumerate}	
