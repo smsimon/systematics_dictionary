@@ -1,18 +1,12 @@
 \subsection{Differential Gain}
 
 \paragraph{Description:}
-Miscalibrations of relative bolometer gains in a pixel pair will ``leak'' temperature signal into $Q$ and $U$.
-This effect is particularly enhanced if we subtract two bolometers within pairs to obtain the polarized part of the timestream. If we just deconvolved timestreams (using rotating HWP), we might not really care about this?
-
-(Loïc addition)
-
-I am not sure to understand the last comment.
-
-(end Loïc addition)
-
+Miscalibrations of relative bolometer gains in a pixel pair can leak temperature signal into $Q$ and $U$. This effect is particularly enhanced if we use pair-differencing to gain polarization sensitivity. This effect is less pronounced when polarization modulators are used.
 
 \paragraph{Plan to model and/or measure:}
-Leakage from gain mismatch can be computed using the formalism described in \cite{rosset2010}. Simulations for various scanning strategies should be performed. These simulations will be useful not only to estimate the precision we need for the gain but also for the polarization efficiencies and detector orientations.
+Leakage from gain mismatch can be computed using the formalism described in \cite{rosset2010}.
+
+Simulations for various scanning strategies should be performed. These simulations will be useful not only to estimate the precision we need for the gain but also for the polarization efficiencies and detector orientations.
 
 \paragraph{Uncertainty/Range:}
 
