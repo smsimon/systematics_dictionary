@@ -4,45 +4,33 @@
 \label{HWP Differential Optical Properties}
 
 \paragraph{Description:}
-Because the HWP is birefringent, the HWP has different transmission coefficients along the fast and slow axes of the crystal,
-which produces differential absorption and emission coefficients along the two axes. Because of this, transmitted unpolarized light and emitted light both are partially polarized by the HWP. The polarization direction rotates with the HWP, so this signal couples to the detectors at 2$f$. While light polarized by the HWP primarily contributes to the 2$f$ component, a small amount of it can be modulated into the 4$f$ science band. This occurs when reflection-induced polarization caused by irregularies in the AR coating is rotated by the HWP\cite{Essinger-Hileman2013, Essinger-Hileman2016, ABS_HWP}. Since this effect is from reflections between optical elements and the HWP, it can result from optical elements both upstream and downstream of the HWP.
+Due to the birefringence of the HWP, there are different transmission, absorption, and reflection coefficients along the fast and slow axes of the crystal. Because of this, any light that is transmitted, reflected, or emitted may be partially polarized. The polarization direction rotates at the same frequency as the HWP, so this signal mostly couples to the detectors at 2$f$.
+However a small amount can be modulated into the 4$f$ science band. This occurs when reflection-induced polarization caused by irregularies in the AR coating is rotated by the HWP. This leakage is more prominent at non-normal incidence, due to the Muller Matrix's non-trivial dependence on incidence angle \cite{Essinger-Hileman2013, Essinger-Hileman2016, ABS_HWP}.  Since this effect is from reflections between optical elements and the HWP, it can result from optical elements both upstream and downstream of the HWP.
 
 \paragraph{Plan to model and/or measure:}
-To model this effect, we require the HWP Mueller matrix and information about the optical filter chain. Knowing the temperatures, efficiencies, and emissivities of each component in the optical chain,
-the unpolarized power can be propagated through each element to find the incident unpolarized power on the HWP.
-If $P_n$ is the unpolarized power crossing the $n^\text{th}$ element, $\eta_n$ the efficiency, $\varepsilon_n$ the emissivity, and $B$ the spectral brightness, given the temperature $T_n$,
-the propagation step is 
-\begin{equation}
-\label{unpolarized_propagation}
-P_{n+1}(\nu) = \eta_n(\nu) P_n(\nu) + \varepsilon_n(\nu) A\Omega(\nu)\;  B(\nu, T_n) .
-\end{equation}
+To model this effect, we require the HWP Mueller matrix and inforation about the optical chain of the telescope.
 
+The HWP Mueller and Jones matrices are calculated using Thomas Essinger-Hillman's generalized Transfer Matrix Method \cite{Essinger-Hileman2013}.
+These also provide us with the transmission, reflection, and absorption coefficients along both axes of the HWP.
 
-The HWP Mueller matrix (Equation~\ref{eq:Mueller_Matrix} is calculated using the method described in \cite{Salatino16}, where all elements are dependent on frequency, incident angle and spatial position (x,y). The $\rho$ components represent the differential transmission of the HWP. While the polarized fraction of the transmitted and emitted light are equal and opposite, they do not cancel because the radiation sources are at different temperatures.
-If we define $P_\text{HWP}$ to be the incident power on the HWP, the polarized power output is 
-\begin{equation}
-\label{eq:polarized_output}
-P_\text{HWP + 1}(\nu) = \rho(\nu)(P_\text{HWP} - A\Omega(\nu)B(\nu, T_\text{HWP})),
-\end{equation}
-with $a_2 = \rho$. 
+Using the transmission, reflection, and absorption coefficients of each optical element along with their temperatures, the unpolarized power can be propagated through the system to find the incident power on both the sky-side and detector-side of the HWP.
 
-If we define $\eta_\text{det}$ to be the combined efficiency of all elements after the HWP,
-the final 2$f$ signal produced by the HWP is 
-\[
-A^{(2)} = \int_{\nu_\text{low}}^{\nu_\text{high}} \eta(\nu) P_\text{HWP + 1}(\nu) d\nu.
-\]
+To calculate the values of $A^{(2)}$ and $A^{(4)}$, we multiply the sky-side power by the transmission Mueller matrix, and the detector-side power by the reflection Mueller matrix for a range of HWP rotation angles. 
+We then fit the first 8 harmonic amplitudes and phases to the modulated signal, and multiply by the efficiency of all optical elements between the HWP and the detectors. 
+\textbf{I updated the modelling to what we have been most recently doing. I didn't add the most recent version of the propagation equations because I didn't think it is that important. Is this ok or should I describe the propogation in more detail? } 
 
 The leakage into $4f$ from $2f$ can be modelled with a transfer-matrix model of the HWP, and end-to-end optical simulations can be used to measure the total leaked polarization power. To measure the leakage, one can measure 4$f$ as a function of sky intensity (which can be parameterized by the PWV and elevation angle). Alternatively, the polarization leakage can be directly measured by making maps of known unpolarized sources (like Jupiter) in the instrument Q/U frame. Both of these methods characterize the overall $I \rightarrow P$, which includes contributions from upstream of the HWP and the HWP $I \rightarrow P$. Any detector non-linearity will also contribute to this systematic effect (see Sec.\,\ref{det_nonlinearity}).
 
 Since this effect can leak into the science band, it is important to model and thus has an SRF of 4.
 
-\paragraph{Uncertainty/Range:}
+\paragraph{Uncertainty/Range:} 
+\textbf{THESE ARE NOT THE MOST RECENT RESULTS.... I'll update this soon}
 For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of 
 $A^{(2)} = .0165 \text{pW} = 238 \text{mK}_\text{CMB}$. 
 \textbf{We expect similar values for similar frequency values}.
 The leakage into $4f$ is estimated to be small. In ABS, the monopole leakage is 0.01\% and higher order leakage < 0.07\% \cite{Essinger-Hileman2016}. The value depends on the differential emissivity and transmission of the sapphire, the reflection of radiation from the detectors to the HWP and back to detectors, and any misalignment of the HWP axes. The $I \rightarrow P$ leakage increases at non-normal incidence.
 
 \paragraph{Parameterization:}
-We require $T$ and $\rho$ from the HWP Mueller matrix\cite{Salatino16}, and an optical chain input file containing
-absorption, temperature, and spill/scatter/reflection coefficients for each element. The Mueller matrix components can be theoretically estimated by transfer matrix model \cite{Essinger-Hileman13} or HFSS simulations. They can be experimentally measured with FTS measurements. The leakage coefficients are the elements $M_{12}$ and $M_{34}$ (or $\rho$ and $s$) of the HWP Mueller matrix. These coefficients can be expanded into a beam Gauss-Hermite functions, as in Equation 8 of \cite{Essinger-Hileman2016}.
+We require the HWP transmission and reflection Mueller matrices\cite{Salatino16}, and an optical chain input file containing
+absorption, temperature, and spill/scatter/reflection coefficients for each element. The Mueller matrix components can be theoretically estimated by transfer matrix model \cite{Essinger-Hileman13} or HFSS simulations. They can be experimentally measured with FTS measurements. The leakage coefficients for normal incidence are the elements $M_{12}$ and $M_{34}$ (or $\rho$ and $s$) of the HWP Mueller matrix. These coefficients can be expanded into a beam Gauss-Hermite functions, as in Equation 8 of \cite{Essinger-Hileman2016}.
 
