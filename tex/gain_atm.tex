@@ -1,11 +1,12 @@
-\subsection{Atmospheric gain correction}
+\subsection{Atmospheric Gain Correction}
 
 \paragraph{Description:}
-The scale of the atmosphere fluctuations follow a power law dominated by large scales, which are the dominant signal on the detectors, producing strong correlations between them. We can use these correlations to obtain a correction to the calibration mismatch. 
+The scale of the atmospheric fluctuations follow a power law dominated by large scales, which are the dominant signal on the detectors, producing strong correlations between them. We can use these correlations to obtain a correction to the calibration mismatch. The gain corrections suffer from atmospheric substructure. Sub-array atmosphere modes contaminate the calibration by leaking power into the common mode estimator (mean or median), biased towards the sub-array modes which are better represented or correlated between many detectors. We expect this effect to generate higher common mode correlations in the center of the array, as those sub-array atmosphere modes will be better sampled compared to those on the edges.
 
-On top of this, the gain corrections suffer from atmospheric substructure. Sub-array atmosphere modes contaminate the calibration by leaking power into the common mode estimator (mean or median), biased towards the sub-array modes which are better represented or correlated between many detectors. We expect this effect to generate higher common mode correlations in the center of the array, as those sub-array atmosphere modes will be better sampled compared to those on the edges.
+\paragraph{Plan to Model and/or Measure:}
+We would like to know the fraction of the time when this effect is relevant and if it is correlated with the optical loading or amplitude of the atmospheric fluctuations. To do this, we can study the PWV dependency of the technique by plotting the correlation of PWV vs. loading and PWV vs. TOD normalization.
 
-The procedure used for ACT is the following:
+The procedure used for atmospheric corrections to calibration mismatch used on ACT is the following:
 
 \begin{enumerate}
 \item Fourier transform the data and select a working frequency band to do the analysis. In ACT we often select frequencies between 0.017 to 0.088 Hz. The following steps are performed on this subset of the data in Fourier space.
@@ -18,11 +19,12 @@ The procedure used for ACT is the following:
 
 The stability of this calibration over long periods of time is dominated by the right selection of stable detectors. These detectors have been selected for having reliable bias-step responsibities over a wide range of atmospheric conditions, but we lack of a more systematic method to select the stable detectors. 
 
+\textbf{What does the plan for SO look like? What did PB do?}
+
 \paragraph{uncertainty/range:}
-The uncertainty in the atmosphere gain corrections in now limited by our ability to measure it. In the case of ACT, that con only be done using planet observations, requiring single detector fits to the planet signal, with an uncertainty between 8 to 10\%. We expect the precision of the correction to be better than that at the 150 GHz band. On the other hand, we have seen that the technique is not useful at low frequency bands. In particular, we have shown that the relative calibration worsen when applied to 90 GHz data.
+The uncertainty in the atmospheric gain corrections is limited by our ability to measure it. In the case of ACT, that can only be done using planet observations, requiring single detector fits to the planet signal, with an uncertainty between 8 to 10\%. We expect the precision of the correction to be better than that at the 150 GHz band. On the other hand, we have seen that the technique is not useful at low frequency bands. In particular, we have shown that the relative calibration worsen when applied to 90 GHz data.
 
-
-\paragraph{Plan to measure:}
-We would like to know the fraction of the time when this effect is relevant and if it is correlated with the optical loading or amplitude of the atmospheric fluctuations. For this reason we plan to study the PWV dependency of the technique. Plot correlation vs loading. Plot correlation vs TOD norm
+\textbf{How well do we think we can do on SO? Are there other ways to calibrate this that will decrease this uncertainty?}
 
 \paragraph{Parameterization:}
+\textbf{How do we parameterize this for the SWG so we can get requirements?}
