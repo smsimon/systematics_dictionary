@@ -1,7 +1,11 @@
-\subsection{Atmosphere gain correction}
+\subsection{Atmospheric gain correction}
 
 \paragraph{Description:}
-The scale of the atmosphere fluctuations follow a power law dominated by large scales, which are the dominant signal on the detectors, producing strong correlations between them. We can use these correlations to obtain a correction to the calibration mismatch. The procedure used for ACT is the following:
+The scale of the atmosphere fluctuations follow a power law dominated by large scales, which are the dominant signal on the detectors, producing strong correlations between them. We can use these correlations to obtain a correction to the calibration mismatch. 
+
+On top of this, the gain corrections suffer from atmospheric substructure. Sub-array atmosphere modes contaminate the calibration by leaking power into the common mode estimator (mean or median), biased towards the sub-array modes which are better represented or correlated between many detectors. We expect this effect to generate higher common mode correlations in the center of the array, as those sub-array atmosphere modes will be better sampled compared to those on the edges.
+
+The procedure used for ACT is the following:
 
 \begin{enumerate}
 \item Fourier transform the data and select a working frequency band to do the analysis. In ACT we often select frequencies between 0.017 to 0.088 Hz. The following steps are performed on this subset of the data in Fourier space.
@@ -17,27 +21,8 @@ The stability of this calibration over long periods of time is dominated by the 
 \paragraph{uncertainty/range:}
 The uncertainty in the atmosphere gain corrections in now limited by our ability to measure it. In the case of ACT, that con only be done using planet observations, requiring single detector fits to the planet signal, with an uncertainty between 8 to 10\%. We expect the precision of the correction to be better than that at the 150 GHz band. On the other hand, we have seen that the technique is not useful at low frequency bands. In particular, we have shown that the relative calibration worsen when applied to 90 GHz data.
 
-On top of this, the gain corrections suffer from various systematics that can bias their values in a variety of ways. The main ones are:
-
-\paragraph{Atmosphere substructure:}
-Sub-array atmosphere modes contaminate the calibration by leaking power into the common mode estimator (mean or median), biased towards the sub-array modes which are better represented or correlated between many detectors. We expect this effect to generate higher common mode correlations in the center of the array, as those sub-array atmosphere modes will be better sampled compared to those on the edges.
-
-\paragraph{Thermal contamination effects:}
-The atmosphere signal is contaminated at low TOD frequencies by thermal fluctuations of the array bath temperature. 
-This is especially important because because we are forced to work at the low frequency end of the TOD spectrum to ensure a uniform atmospheric common mode over the array, forcing us into the 1/f thermal noise.
-Most of the thermal information available comes from the dark detectors, as the other thermometers are too coarse to measure these fluctuations. For this reason, dark detectors are currently essential for achieving a reliable relative calibration.
-
-\paragraph{Optic-thermal coupling:}
-In many cases we have seen the thermal signal, measured by dark detectors, strongly correlated to the optical signal. We think this is due to optical power heating the detector array. If this were the case, the thermal signal would produce non-linear effects on the measurement of the optical power:
-
-\begin{equation}
-P = k(T_{\mathrm{TES}}^n-T_{\mathrm{bath}}^n).
-\end{equation}
-
-Here the bath temperature would be a function of the optical power, introducing a non-linearity in the calibration as a function of total loading. Deprojecting the dark detector signal would, in this case, remove a significant amount of atmosphere signal, weakening our ability to calibrate.
 
 \paragraph{Plan to measure:}
 We would like to know the fraction of the time when this effect is relevant and if it is correlated with the optical loading or amplitude of the atmospheric fluctuations. For this reason we plan to study the PWV dependency of the technique. Plot correlation vs loading. Plot correlation vs TOD norm
 
-\paragraph{Wafer thermal modes:}
-We have seen significant wafer specific common mode (and slope) signals. These contaminate the common mode estimator, weighting more wafers with higher number of detectors. One alternative we have studied is to compute estimators for the wafer signal on top of the common mode signal and perform a direct subtraction from individual detectors, but we haven't been able to obtain measurable confirmation of an improvement because the dispersion of the planet peak heights are dominated by measurement error.
+\paragraph{Parameterization:}
