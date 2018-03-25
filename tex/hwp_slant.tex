@@ -44,6 +44,22 @@ optimized for 150 GHz (no ARC). The incoming radiation is at 45deg incidence \ci
 %------------------------
 \subsubsection{Metamaterial HWP}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{figures/meta1.png}
+\caption{Output signal (dimensionless units) at 70GHz from an unpolarized radiation crossing the AdvACT MF metamaterial HWP. The HWP is %optimized for a frequency band centered
+on 90 GHz. Violet line: -10deg, cyan line 0deg and orange 10deg incident angle. At 10deg away from the normal incidence, the output %signal
+changes by 0.03.}\label{meta1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{figures/meta2.png}
+\caption{Output signal (dimensionless units) at 90GHz from an unpolarized radiation crossing the AdvACT MF metamaterial HWP. The HWP is %optimized for a frequency band centered
+on 90 GHz. Violet line: -10deg, red line 0deg and cyan 10deg incident angle. At 10deg away from the normal incidence, the output signal
+changes by 0.0015.}\label{meta2}
+\end{figure}
+
 \paragraph{Plan to model and/or measure:}
 For a metamaterial HWP, uderstanding of how the optical properties change with the incident angle requires simulations in HFSS or CST. HFSS simulations have demonstrated that the variation in the output signal increases at frequencies closest to the central working frequency of the
 HWP (Figs. \ref{meta1} and \ref{meta2}). \textbf{Include these figs.}
@@ -58,19 +74,3 @@ This effect is not modeled in the literature, and could be large in some cases, 
 
 \paragraph{Parameterization:}
 HFSS/CST simulations can give the optical properties as a function of the incident angle $i$. \textbf{How do we parametrize the science impact}
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=2.5in]{figures/meta1.png}
-%\caption{Output signal (dimentionless units) at 70GHz from an unpolarized radiation crossing the AdvACT MF metamaterial HWP. The HWP is %optimized for a frequency band centered
-%on 90 GHz. Violet line: -10deg, cyan line 0deg and orange 10deg incident angle. At 10deg away from the normal incidence, the output %signal
-%changes by 0.03.}\label{meta1}
-%\end{figure}
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=2.5in]{figures/meta2.png}
-%\caption{Output signal (dimentionless units) at 90GHz from an unpolarized radiation crossing the AdvACT MF metamaterial HWP. The HWP is %optimized for a frequency band centered
-%on 90 GHz. Violet line: -10deg, red line 0deg and cyan 10deg incident angle. At 10deg away from the normal incidence, the output signal
-%changes by 0.0015.}\label{meta2}
-%\end{figure}
