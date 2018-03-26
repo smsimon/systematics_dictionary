@@ -1,10 +1,7 @@
 \subsection{HWP $I\rightarrow P$}
 \label{IP downstream of HWP}
 \paragraph{Description:}
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+When passing through the HWP, incoming polarized radiation is rotated by $2\chi$, where $\chi$ is the rotation angle of the HWP optical axis. The signal is finally seen by the detectors at $4\chi$. Any unpolarized signal which is modulated at $4\chi$ represents a source of systematics. A list of possible sources of spurious $4\chi$ signals can be found in Sec.III of~\cite{ABS}.
 
 \paragraph{Plan to model and/or measure:}
 Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. Is there a good null test that we could use to catch this effect?
