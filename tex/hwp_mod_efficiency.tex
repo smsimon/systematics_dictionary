@@ -3,9 +3,9 @@
 \subsection{Polarization modulation efficiency}\label{subsec:modeff}
 
 \paragraph{Description:}
-The polarization modulation efficiency quantifies how much of the incident polarization power $I_\mathrm{p,in}$ is transmitted by the HWP as $I_\mathrm{p,out}$:
+The polarization modulation efficiency quantifies how much of the incident polarization signal $P_\mathrm{p,in}$ is transmitted by the HWP as $P_\mathrm{p,out}$:
 \begin{equation}
-\epsilon\def \frac{P_\mathrm{out}}{P_\mathrm{in}}
+\epsilon \def \frac{P_\mathrm{out}}{P_\mathrm{in}}
 \end{equation}
 in the absence of systematic effects that induce a 2f component.
 
@@ -19,24 +19,24 @@ The modulation efficiency depends on the incident frequency $\nu$, the detector 
 
 \paragraph{Plan to model and/or measure:}
 To model the modulation efficiency, we can compute the analytic expression in the two simple cases of a monochromatic HWP (1 layer) and an achromatic HWP (AHWP, multi-layers) at normal incidence. We make use of the Mueller calculus and represent the HWP stack (arbitrary number of layers, with and without anti-reflection coating) and the detector as Mueller matrices. The Mueller matrix for the single-layer HWP takes the generic form 
-\begin{equation} \label{eq:Mueller_Matrix}
+\begin{equation} 
 \begin{bmatrix}
    T  &\rho  &0  &0\\
    \rho  &T  &0  &0\\
    0  &0  &c  &-s\\
    0  &0  &s  &c
 \end{bmatrix}
-\end{equation}
-which allows for leakage off-diagonal terms. In the case of the AHWP, Eq.~\ref{eq:Mueller_matrix} takes a different form, accounting for the fact that the AHWP is a stack of several layers rotated by a certain angle with respect to the first layer. Each layer is represented by a Mueller matrix as Eq.~\ref{eq:Mueller_matrix}, and the rotation with respect to the first layer is modelled with the usual rotation matrices:
+\end{equation}\label{eq:Mueller_Matrix}
+which allows for leakage off-diagonal terms. In the case of the AHWP, Eq.~\ref{eq:Mueller_matrix} takes a different form, accounting for the fact that the AHWP is a stack of several layers rotated by a certain angle with respect to the first layer. Each layer is represented by a Mueller matrix as Eq.~\ref{eq:Mueller_matrix}, and the rotation with respect to the first layer is modelled with the usual rotation matrices $R(\theta)$:
 \begin{equation}
-R{2\phi}\cdot M \cdot R(-2\phi).
+R{(2\phi)}\cdot M \cdot R(-2\phi).
 \end{equation} 
 
 The elements of the HWP (either monochromatic or achromatic) Mueller matrix are computed following the generalised transfer matrix approach~\cite{Essinger-Hileman_TM}. 
 
 We finally model the global rotation of the HWP stack with the usual rotation matrices:
 \begin{equation}
-R{2\chi}\cdot M_\mathrm{stack} \cdot R(-2\chi).
+R{(2\chi)}\cdot M_\mathrm{stack} \cdot R(-2\chi).
 \end{equation}
 
 The output signal can be then analytically expressed as a series of cosine terms. The modulation efficiency is then computed as~\cite{Hanany:2005vx,Matsumura:2008zx}:
