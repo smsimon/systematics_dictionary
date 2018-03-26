@@ -19,14 +19,16 @@ The modulation efficiency depends on the incident frequency $\nu$, the detector 
 
 \paragraph{Plan to model and/or measure:}
 To model the modulation efficiency, we can compute the analytic expression in the two simple cases of a monochromatic HWP (1 layer) and an achromatic HWP (AHWP, multi-layers) at normal incidence. We make use of the Mueller calculus and represent the HWP stack (arbitrary number of layers, with and without anti-reflection coating) and the detector as Mueller matrices. The Mueller matrix for the single-layer HWP takes the generic form 
-\begin{equation} 
-\begin{bmatrix}
+
+\begin{equation}\label{eq:Mueller_Matrix}
+M=\begin{bmatrix}
    T  &\rho  &0  &0\\
    \rho  &T  &0  &0\\
    0  &0  &c  &-s\\
    0  &0  &s  &c
-\end{bmatrix}\label{eq:Mueller_Matrix}
+\end{bmatrix}
 \end{equation}
+
 which allows for leakage off-diagonal terms. In the case of the AHWP, Eq.~\ref{eq:Mueller_matrix} takes a different form, accounting for the fact that the AHWP is a stack of several layers rotated by a certain angle with respect to the first layer. Each layer is represented by a Mueller matrix as Eq.~\ref{eq:Mueller_matrix}, and the rotation with respect to the first layer is modelled with the usual rotation matrices $R(\theta)$:
 \begin{equation}
 R{(2\phi)}\cdot M \cdot R(-2\phi).
