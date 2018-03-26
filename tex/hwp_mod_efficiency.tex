@@ -5,7 +5,7 @@
 \paragraph{Description:}
 The polarization modulation efficiency quantifies how much of the incident polarization signal $P_\mathrm{p,in}$ is transmitted by the HWP as $P_\mathrm{p,out}$:
 \begin{equation}
-\epsilon \def \frac{P_\mathrm{out}}{P_\mathrm{in}}
+\epsilon \equiv \frac{P_\mathrm{out}}{P_\mathrm{in}}
 \end{equation}
 in the absence of systematic effects that induce a 2f component.
 
@@ -25,8 +25,8 @@ To model the modulation efficiency, we can compute the analytic expression in th
    \rho  &T  &0  &0\\
    0  &0  &c  &-s\\
    0  &0  &s  &c
-\end{bmatrix}
-\end{equation}\label{eq:Mueller_Matrix}
+\end{bmatrix}\label{eq:Mueller_Matrix}
+\end{equation}
 which allows for leakage off-diagonal terms. In the case of the AHWP, Eq.~\ref{eq:Mueller_matrix} takes a different form, accounting for the fact that the AHWP is a stack of several layers rotated by a certain angle with respect to the first layer. Each layer is represented by a Mueller matrix as Eq.~\ref{eq:Mueller_matrix}, and the rotation with respect to the first layer is modelled with the usual rotation matrices $R(\theta)$:
 \begin{equation}
 R{(2\phi)}\cdot M \cdot R(-2\phi).
