@@ -65,32 +65,35 @@ Cross-linking in the maps can help identify and quantify this leakage. Accountin
 
 
 \paragraph{Uncertainty/Range:}
-Ideally, any leakage into the polarized spectra should be lower than the B-mode signal by several orders of magnitude. The EE to BB leakage is negligible for the feedhorn in both the LAT and SAC cases. For the lenslet and sinuous detector, the EE to BB leakage is at the level of the B-modes without any mitigation for both the LAT and SAC cases. Window-function simulations for the LAT, show that the total polarization leakage is several orders of magnitude below the B-mode signal for both the feedhorn and lenslet architectures. For the SAC, which has a larger stop, the level of the temperature to poalrization leakage is comparable to the level of the B-modes so the full map-based pipeline must be employed. Using this method, it can be determined that the feedhorn and lenslet architectures both have acceptable levels of leakage (when only the wobble mitigation for the lenslet is included). However, it is also imporatant to note that the SAC will have a HWP, which will strongly mitigate this effect. Some examples for preliminary SO designs at 5.3~mm onthe LAT are shown in Figures~??-??
-%put some images for 5.3 mm case on SO.
-
-%An example of this for the AdvACT 150/230~GHz feedhorns is shown in Figures~\ref{fig:HF_measured_spectra}, \ref{fig:HF_TP_leakage}, and \ref{fig:HF_EB_leakage}~\cite{Simon_Thesis_2016}.
+Ideally, any leakage into the polarized spectra should be lower than the B-mode signal by several orders of magnitude. The EE to BB leakage is negligible for the feedhorn in both the LAT and SAC cases. For the lenslet and sinuous detector, the EE to BB leakage is at the level of the B-modes without any mitigation for both the LAT and SAC cases. Window-function simulations for the LAT, show that the total polarization leakage is several orders of magnitude below the B-mode signal for both the feedhorn and lenslet architectures. For the SAC, which has a larger stop, the level of the temperature to poalrization leakage is comparable to the level of the B-modes so the full map-based pipeline must be employed. Using this method, it can be determined that the feedhorn and lenslet architectures both have acceptable levels of leakage (when only the wobble mitigation for the lenslet is included). However, it is also imporatant to note that the SAC will have a HWP, which will strongly mitigate this effect. Some examples of the leakage estimation using the window function method for preliminary SO designs at a 5.3~mm pixel size on the LAT are shown in Figures~\ref{fig:MF_90_TP_leakage}-\ref{fig:MF_150_EB_leakage}.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{figures/HF_measured_spectra.pdf}
-\caption{Simulated measurements of the EE and BB polarization spectra using the 150/230~GHz AdvACT feedhorn candidates are shown above for the 150~GHz band (left) and the 230~GHz band (right)~\cite{Simon_Thesis_2016}.}
-\label{fig:HF_measured_spectra}
+\includegraphics[width=\textwidth]{figures/90GHz_band_ITT_pixel_size_horn_sinuous_5p3mm.pdf}
+\caption{The temperature to polarization leakage of the AdvACT spline-profiled feedhorn design (blue) and a lenslet and sinuous design (red) for a 5.3 mm pixel size at 90 GHz. Note that the leakage goes primarily into E-modes for the feedhorn.}
+\label{fig:MF_90_TP_leakage}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{figures/HF_TP_leakage.pdf}
-\caption{The temperature to polarization leakage of the AdvACT 150/230~GHz spline-profiled (red), conical (cyan), and corrugated (magenta) feedhorns are plotted with the B-mode signal for $r=0$ (green) and $r=0.01$ (blue) for the 150~GHz band (left) and the 230~GHz band (right)~\cite{Simon_Thesis_2016}.}
-\label{fig:HF_TP_leakage}
+\includegraphics[width=\textwidth]{figures/150GHz_band_ITT_pixel_size_horn_sinuous_5p3mm.pdf}
+\caption{The temperature to polarization leakage of the AdvACT spline-profiled feedhorn design (blue) and a lenslet and sinuous design (red) for a 5.3 mm pixel size at 150 GHz. Note that the leakage goes primarily into E-modes for the feedhorn.}
+\label{fig:MF_150_TP_leakage}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{figures/HF_EB_leakage.pdf}
-\caption{The EE to BB leakages of the AdvACT 150/230~GHz feedhorn candidates are shown above for the 150~GHz band (left) and the 230~GHz band (right). In all cases, this leakage is negligibly low~\cite{Simon_Thesis_2016}.}
-\label{fig:HF_EB_leakage}
+\includegraphics[width=\textwidth]{figures/90GHz_band_UEE_pixel_size_horn_sinuous_5p3mm.pdf}
+\caption{The E-mode to B-mode leakage of the AdvACT spline-profiled feedhorn design (blue) and a lenslet and sinuous design (red) for a 5.3 mm pixel size at 90 GHz. Note that the leakage of the feedhorn is negligibly low and that the contribution from the lenslet and sinuous antenna is from the polarization wobble.}
+\label{fig:MF_90_EB_leakage}
 \end{figure}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{figures/150GHz_band_UEE_pixel_size_horn_sinuous_5p3mm.pdf}
+\caption{The E-mode to B-mode leakage of the AdvACT spline-profiled feedhorn design (blue) and a lenslet and sinuous design (red) for a 5.3 mm pixel size at 150 GHz. Note that the leakage of the feedhorn is negligibly low and that the contribution from the lenslet and sinuous antenna is from the polarization wobble.}
+\label{fig:MF_150_EB_leakage}
+\end{figure}
 
 \paragraph{Parameterization:}
 This can be parameterized with the estimated leakage spectra from the pair-differenced model.
