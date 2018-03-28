@@ -19,10 +19,10 @@ e = (\sigma_x-\sigma_y)/(\sigma_x+\sigma_y)
 \end{equation}
 The beam ellipticity quantifies the extent to which the symmetry of the detector spatial response is broken. A highly elliptical beam response suggests that the detector signal response at any given time is dependent on the orientation of your detector relative to the signal on the sky; in other words, your scan strategy.
 
-The spherical harmonic transform of an elliptical Gaussian beam is discussed in \cite{Souradeep2001}. we use \cite{Takahashi2010}. \textbf{Also cite shimon et al., 2008.}
+The spherical harmonic transform of an elliptical Gaussian beam is discussed in \cite{Souradeep2001}. we use \cite{Takahashi2010}. Polarization systematics from beam asymmetries are discussed in \cite{Shimon_2008}.
 
 \paragraph{Plan to model and/or measure:}
-Beam widths and ellipticities are extracted from beam maps which are acquired through scanning of a terrestrial source placed in the far-field of the optical system or by observing astrophysical point-sources such as the planets in our solar system. 
+Beam widths and ellipticities are extracted from beam maps which are acquired through scanning of a terrestrial source placed in the far-field of the optical system or by observing astrophysical point-sources such as the planets in our solar system \cite{planck16i, weiland11, Planck2017_planet_flux}. 
 
 Using the systematics pipeline (s4cmb) and the v2 configuration for the instrument, the effects of ellipticity were modeled \href{http://simonsobservatory.wikidot.com/instrument-systematic-systmodule#toc5}{here}. \textbf{Summarize the main results and setup of the study here.}
 
@@ -32,4 +32,5 @@ Pair-differencing orthogonal detectors with can result in differential elliptici
 \textbf{What levels of ellipticity are okay without calibration? How do these requirements change if we calibrate the beam to a reasonable level? Do our ellipticity requirements put any constraints on how well we need to calibrate the beams? What science goals does this impact the most? What is different between LAT and SAC?}
 
 \paragraph{Parameterization:}
-\textbf{Need to have something here...To estimate the impact on our science goals, we estimate the power spectra both with and without the effect of ellipticity???}
+The effect of beam asymmetry can be measured by running simulations with and without beam ellipticity. A gradual step through a range of realistic ellipticity numbers can help quantify what values of $e$ become generate non-negligible effects.
+

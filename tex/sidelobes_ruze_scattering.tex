@@ -1,0 +1,21 @@
+\subsection{Ruze Scattering}
+
+\paragraph{Description:}
+
+Gaussian surface errors on reflector elements redistribute power from the main beam to larger angles. Errors with large spatial correlation lengths (large dimples), compared to the wavelength of reflected light, will distribute energy to relatively small angular scales. Conversely, small dimples will distribute energy over large angular scales. The beam shoulder generated this way is often called a Ruze-envelope. Ruze derived an expression for loss in antenna gain due to uncorrelated surface errors with a Gaussian distributions of zero mean deformations spanning a range of physical scales. The expression appropriate for the beam response is \cite{Ruze1966}
+\begin{equation} 
+\Psi(\theta,\phi) = \Psi_0(\theta,\phi) e^{-\overline{\delta^2}} + \left( \frac{2 \pi l}{\lambda} \right)^2 e^{-\overline{\delta^2}} \sum_{n=1}^{\infty} \frac{\overline{\delta^2}^n}{n \times n!} e^{-\left(\pi l \sin(\theta) / \lambda \right)^2/n},
+\label{eq:gr}
+\end{equation}
+where $l$ is the correlation length of the surface deformation, $\lambda$ is the wavelength, $\Psi_0(\theta,\phi)$ is the ideal beam shape and $\overline{\delta^2}$ represents the variance of the phase errors. The equation is applicable in the limit when $D/(2l) \gg 1$, where $D$ is the diameter of the optical element. According to Equation \ref{eq:gr}, loss in forward gain is mainly determined by the amplitude of the RMS error and not correlation lengths.
+
+Since random surface errors have a tendency to create an azimuthally symmetric sidelobe, Ruze scattering can create a relatively benign systematic. However, large surface errors remove power from the main beam in a way that reduces the forward gain of the telescope and therefore the telescope sensitivity.
+
+\paragraph{Plan to model and/or measure:}
+Surface errors on reflectors can be measured through interferometry and photogrammetry techniques \cite{Hincks2008, Tauber2010}.
+
+\paragraph{Uncertainty/Range:}
+Since the effect of surface errors depends highly on frequency, acceptable surface error RMS values depend on the operational frequency of the telescope. For the reflectors on the Planck satellite, the RMS error var measured to be smaller than 10 $\mu$m \cite{Tauber2010}. The ACT collaboration has reported surface errors ranging from 10--30 $\mu$m \cite{Hincks2008}.
+
+\paragraph{Parameterization:}
+We parametrize this effect using the surface error variance $\overline{\delta^2}$ and associated correlation lengths $l$ (see equation \ref{eq:gr}). 
