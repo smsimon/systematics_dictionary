@@ -1,10 +1,10 @@
-A Half Wave Plate (HWP) is an optical device that introduces a phase delay between the two orthogonal polarizations of the incoming signal. It can be made of birifringent crystals (e.g. Sapphire) or metamaterials. The HWP flips the polarization of incoming light along the fast axis of the crystal resulting in a polarization shift of $2\chi$, where $\chi$ is the incoming polarization angle of the light with respect to the fast axis. Thus, a HWP rotating with frequency $f$ modulates the incoming polarization at $2f$, which is detected in the bolometer timestreams at $4f$. The demodulation process described below summarizes the formalism defined in Kusaka \& Essinger-Hileman et al., 2014~\cite{ABS_HWP}.
+A Half Wave Plate (HWP) is an optical device that introduces a phase delay between the two orthogonal polarizations of the incoming signal. It can be made of birifringent crystals (e.g. Sapphire) or metamaterials. The HWP flips the polarization of incoming light along the fast axis of the crystal resulting in a polarization shift of $2\chi$, where $\chi$ is the incoming polarization angle of the light with respect to the fast axis. Thus, a HWP rotating with frequency $f$ mo\-du\-la\-tes the incoming polarization at $2f$, which is detected in the bolometer timestreams at $4f$. The demodulation process described below summarizes the formalism defined in Kusaka \& Essinger-Hileman et al., 2014~\cite{ABS_HWP}.
 
 The detector timestream $d_{m}$ is composed of the unpolarized sky intensity $I$, the modulated polarization signal $P(\chi)$, white noise $N_{w}$, and spurious modulation signals $A(\chi)$ that depend on the HWP angle $\chi$ such that
 \begin{equation}
 d_{m}= I + P(\chi)+ N_{w} + A(\chi).
 \end{equation}
-The modulated polarization signal can be represented in terms of the Stokes $Q$ and $U$ parameters (Equation~\ref{eqn:Stokes}) as
+The modulated polarization signal can be represented in terms of the Stokes $Q$ and $U$ parameters, eq.~(\ref{eqn:Stokes})), as
 \begin{equation}
 P(\chi)=\epsilon \mathrm{Re}\{(Q+iU) m(\chi)\},
 \end{equation}
@@ -19,7 +19,7 @@ The demodulated timestream is, then, extracted by applying a bandpass filter to 
 d_{\bar{d}}=\frac{1}{2}\Big(\epsilon Q + A^{4c}_{0} + \lambda^{4c} I \Big) + N^{\mathrm{Re}}_{w} + \frac{i}{2}\Big(\epsilon U + A^{4s}_{0} + \lambda^{4s} I \Big) + iN^{\mathrm{Im}}_{w}.
 \end{equation}
 
-The optical action of single layer birifringent material HWP or achromatic metamaterial HWP can be described by the Mueller matrix:
+The optical action of a single layer birifringent material or achromatic metamaterial HWP can be described by the Mueller matrix:
 \begin{equation}
 M=\begin{bmatrix}
    t  &\rho  &0  &0\\
@@ -30,11 +30,11 @@ M=\begin{bmatrix}
 \label{eq:Mueller_Matrix}
 \end{equation}
 
-The $t$ term is proportional to the total unpolarized intensity transmitted by the HWP, the $\rho$ term is proportional to the differential transmission of the HWP. The $c$ and $s$ terms are responsible for the modulation of the polarized components, the $\rho$ term for the unpolarized ones. For an ideal HWP: $t=1$, $\rho=0$, $c=-1$, $s=0$. Deviations from these values are due, e.g., to the spectral behavior of the birifringent material/metamaterial (as we will will deeply investigate in the next sections).
+The $t$ term is proportional to the total unpolarized intensity transmitted by the HWP, the $\rho$ term to the differential transmission of the HWP. The $c$ and $s$ terms are responsible for the modulation of the polarized components, the $\rho$ term for the unpolarized ones. For an ideal HWP: $t=1$, $\rho=0$, $c=-1$, $s=0$. Deviations from these values are due, e.g., to the spectral behavior of the birifringent material/metamaterial (as we will deeply investigate in the next sections).
 
-For an achromatic HWP, made of stacks of birifringent material, the Mueller matrix presents further non-zero terms with respect to the ones in eq.\,\ref{eq:Mueller_Matrix} (see Sec.\,\ref{subsec:modeff}). 
+For an achromatic HWP, made of stacks of birifringent material, the Mueller matrix presents further non-zero terms with respect to the ones in eq.\,(\ref{eq:Mueller_Matrix}), see Sec.\,\ref{subsec:modeff}. 
 
-The HWP is a device able to create a non $c$ and $s$ terms. Because this does not depend on the direction of the incoming radiation (upwards or downwards), the HWP Mueller matrix has the same shape, eq.\,(\ref{eq:Mueller_Matrix}), both in transmission and in reflection; the value of the corresponding Mueller matrix components changes according to the amplitudes of the electric field transmitted and reflected by the HWP.
+The HWP optical action creates a non zero $c$ and $s$ terms. Because this does not depend on the direction of the incoming radiation (upwards or downwards), the HWP Mueller matrix has the same shape, eq.\,(\ref{eq:Mueller_Matrix}), both in transmission and in reflection; the value of the corresponding Mueller matrix components changes according to the amplitudes of the electric field transmitted and reflected by the HWP.
 
 
 
