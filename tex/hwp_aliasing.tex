@@ -1,18 +1,30 @@
 \subsection{HWP Aliasing}
-\label{IP downstream of HWP}
+
 \paragraph{Description:}
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+%Description of systematic effect, including relevant equations and
+%parameterization for TWGs. Note that each variable in each equation should be
+%defined. This should include where we expect to get the value of this variable
+%from (TWG, literature, etc.)
+HWP aliasing occurs when aliases from the lower harmonics of the $A(\chi)$ signal (0$f$ and 2$f$) leak into the CMB singal band at 4$f$. This is measured as polarization leakage in the 
+\textbf{Need more details about this}
 
 \paragraph{Plan to model and/or measure:}
-Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. Is there a good null test that we could use to catch this effect?
+%Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. 
+%Is there a good null test that we could use to catch this effect?
+To model this effect we can use the Mueller matrix to estimate the size of the intensity to $2f$ leakage. (More details, how does this give you the aliasing?)
+
+We can characterize the level of this leakage by observing an unpolarized source. However, this will give the overall polarization leakage of the full instrument and not just the aliasing.
+
+Explain what we can do to mitigate this in the design of the instrument...
+
+This effect directly contaminates the science band, so it is critical that we model it. Thus it has an SRF of 4.
 
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+%This section should include the uncertainty of
+%known parameters and/or the expected range of parameters for consideration
+\textbf{Do we have values of how large this is for the SO SAC? If not, do we have sims that can estimate it? How does it vary with frequency and other parameters? Does it vary with HWP position in the instrument?}
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+%This section should include the parameterization of figures of
+%merit and the output to the SWGs.
+We can parameterize this effect as an intensity to polarization leakage level in the 4$f$ signal.
