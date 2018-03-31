@@ -5,7 +5,7 @@
 
 \paragraph{Description:}
 Due to the birefringence of the HWP, there are different transmission, absorption, and reflection coefficients along the fast and slow axes of the crystal. Because of this, any light that is transmitted, reflected, or emitted may be partially polarized. The polarization direction rotates at the same frequency as the HWP, so this signal mostly couples to the detectors at 2$f$.
-However a small amount can be modulated into the 4$f$ science band. This occurs when reflection-induced polarization caused by irregularies in the AR coating is rotated by the HWP. This leakage is more prominent at non-normal incidence, due to the Muller Matrix's non-trivial dependence on incidence angle \cite{Essinger-Hileman2013, Essinger-Hileman2016, ABS_HWP}.  Since this effect is from reflections between optical elements and the HWP, it can result from optical elements both upstream and downstream of the HWP.
+However a small amount can be modulated into the 4$f$ science band. This occurs when reflection-induced polarization caused by irregularies in the AR coating is rotated by the HWP. This leakage is more prominent at non-normal incidence, due to the Muller Matrix's non-trivial dependence on incidence angle \cite{Essinger-Hileman2013, Essinger-Hileman2016, ABS_HWP}.  This leakage can be induced from optical elements both upstream and downstream of the HWP.
 
 \paragraph{Plan to model and/or measure:}
 To model this effect, we require the HWP Mueller matrix and inforation about the optical chain of the telescope.
@@ -17,17 +17,17 @@ Using the transmission, reflection, and absorption coefficients of each optical 
 
 To calculate the values of $A^{(2)}$ and $A^{(4)}$, we multiply the sky-side power by the transmission Mueller matrix, and the detector-side power by the reflection Mueller matrix for a range of HWP rotation angles. 
 We then fit the first 8 harmonic amplitudes and phases to the modulated signal, and multiply by the efficiency of all optical elements between the HWP and the detectors. 
-\textbf{I updated the modelling to what we have been most recently doing. I didn't add the most recent version of the propagation equations because I didn't think it is that important. Is this ok or should I describe the propogation in more detail? } 
 
 The leakage into $4f$ from $2f$ can be modelled with a transfer-matrix model of the HWP, and end-to-end optical simulations can be used to measure the total leaked polarization power. To measure the leakage, one can measure 4$f$ as a function of sky intensity (which can be parameterized by the PWV and elevation angle). Alternatively, the polarization leakage can be directly measured by making maps of known unpolarized sources (like Jupiter) in the instrument Q/U frame. Both of these methods characterize the overall $I \rightarrow P$, which includes contributions from upstream of the HWP and the HWP $I \rightarrow P$. Any detector non-linearity will also contribute to this systematic effect (see Sec.\,\ref{det_nonlinearity}).
 
 Since this effect can leak into the science band, it is important to model and thus has an SRF of 4.
 
 \paragraph{Uncertainty/Range:} 
-\textbf{THESE ARE NOT THE MOST RECENT RESULTS.... I'll update this soon}
-For 145 GHz, this method gives values of $a_2 = .35\%$, and a value of 
-$A^{(2)} = .0165 \text{pW} = 238 \text{mK}_\text{CMB}$. 
-\textbf{We expect similar values for similar frequency values}.
+For 145 GHz at a $20^\circ$ incidence angle, 
+the percentage of unpolarized incident light modulated into the 2$f$ band is about  $a_2 = 0.331\%$. 
+This number is taken at the entrance of the telescope, and the total efficiency of the telescope is divided out.
+This causes a total HWPSS of $A^{(2)} = 306.73\; mK_\text{CMB}$ which can be divided into $267.36 \;mK_\text{CMB}$ from transmission through the HWP, $39.94 \;mK_\text{CMB}$ from reflection off the HWP, and $9.62 \;mK_\text{CMB}$ from emission of the HWP. We expect similar values for similar frequencies.
+
 The leakage into $4f$ is estimated to be small. In ABS, the monopole leakage is 0.01\% and higher order leakage < 0.07\% \cite{Essinger-Hileman2016}. The value depends on the differential emissivity and transmission of the sapphire, the reflection of radiation from the detectors to the HWP and back to detectors, and any misalignment of the HWP axes. The $I \rightarrow P$ leakage increases at non-normal incidence.
 
 \paragraph{Parameterization:}
