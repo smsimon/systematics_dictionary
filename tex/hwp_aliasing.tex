@@ -5,19 +5,54 @@
 %parameterization for TWGs. Note that each variable in each equation should be
 %defined. This should include where we expect to get the value of this variable
 %from (TWG, literature, etc.)
-HWP aliasing occurs when aliases from the lower harmonics of the $A(\chi)$ signal (0$f$ and 2$f$) leak into the CMB singal band at 4$f$. This is measured as polarization leakage in the 
-\textbf{Need more details about this}
+
+%HWP aliasing occurs when aliases from the lower harmonics of the $A(\chi)$ signal (0$f$ and 2$f$) leak into the CMB singal band at 4$f$. This is measured as polarization leakage in the 
+%\textbf{Need more details about this}
+
+The polarization modulation using a continuously rotating HWP shifts the frequency range of the large-angular-scale polarization signals to the higher frequencies in time streams. 
+Around the modulated frequency range, however, there could be contributions from the small-angular-scale temperature fluctuations, and they could contaminate the polarization signal.
+Since the small-angular-scale temperature fluctuations appear in the large-angular-scale polarization signals,
+we call the effect as \emph{HWP aliasing}.
+
+In addition, if we have the leakages of the intensity signals into the HWPSSs other than $4f$,
+each of them would cause similar HWP aliasing from different angular scales determined by the frequency difference from the modulation frequency, but the impact is suppressed from the original temperature fluctuations by the leakage coefficient.
+The most concerning HWPSS is the $2f$. It is expected from the differential transmission of the HWP, and the leakage coefficient could be $\sim 1\%$.
+The $3f$ and $5f$ due to the HWP non-uniformity are also concerning since they are close to the modulation frequency, $4f$.
+
+Here, it is important to note that the time streams including the aliasing are binned into the map,
+where we could expect some cancellation of the aliasing.
+One is the cancellation between the orthogonal detectors in the same pixel.
+Even with the polarization modulation, we implicitly take the difference between the two detectors to observe the polarization signal.
+Thus, if the aliasing signal is unpolarized, the contribution should be canceled in the map.
+Another is the cancellation among various polarization angles.
+Since the original modulation frequency of the aliasing is different from that of the polarization signal $4f$, the phase (or polarization angle) of the contamination changes depending on the temporal HWP angle.
+If we observe the same sky many times with many detectors with many HWP angles, the aliasing should be averaged with randomly flipping sign and would become zero finally.
+
 
 \paragraph{Plan to model and/or measure:}
 %Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. 
 %Is there a good null test that we could use to catch this effect?
-To model this effect we can use the Mueller matrix to estimate the size of the intensity to $2f$ leakage. (More details, how does this give you the aliasing?)
 
-We can characterize the level of this leakage by observing an unpolarized source. However, this will give the overall polarization leakage of the full instrument and not just the aliasing.
+This effect can be directly modeled in the TOD simulation.
+The contamination from the original temperature fluctuations, i.e.\ the $0f$ aliasing, 
+can be simulated by scanning the temperature only map with sufficient sampling rate and running the map making for polarization signals including the demodulation.
+We could use both the CMB and foregrounds as the input temperature map.
+Also, the aliasing from HWPSSs, such as the $2f$, can be implemented in the TOD simulation by modulating the scanned time streams at the corresponding frequency.
 
-Explain what we can do to mitigate this in the design of the instrument...
+%To model this effect we can use the Mueller matrix to estimate the size of the intensity to $2f$ leakage. (More details, how does this give you the aliasing?)
+The leakage coefficients for the HWPSSs could be estimated by the optics simulations.
+We can also measure the leakage coefficient by taking the correlation between the time streams demodulated around each of the HWPSS and the intensity signal $0f$.
+We have already demonstrated the measurement of the $4f$ leakage coefficients~\cite{Essinger-Hileman2016,Didier_Thesis,PB1_WHWP}.
+The same methods could be applied to the other harmonics.
+
+%We can characterize the level of this leakage by observing an unpolarized source. However, this will give the overall polarization leakage of the full instrument and not just the aliasing.
+%@SatoruT: By demodulating each of the HWPSS, we can separate them.
+
+%Explain what we can do to mitigate this in the design of the instrument...
+%@SatoruT: See the DESCRIPTION and PARAMETRIZATION paragraphs.
 
 This effect directly contaminates the science band, so it is critical that we model it. Thus it has an SRF of 4.
+(@SatoruT: Because of the cancellations, I think this effect is not so critical...)
 
 \paragraph{Uncertainty/Range:}
 %This section should include the uncertainty of
@@ -27,4 +62,9 @@ This effect directly contaminates the science band, so it is critical that we mo
 \paragraph{Parameterization:}
 %This section should include the parameterization of figures of
 %merit and the output to the SWGs.
-We can parameterize this effect as an intensity to polarization leakage level in the 4$f$ signal.
+%We can parameterize this effect as an intensity to polarization leakage level in the 4$f$ signal.
+The main parameters related to this effect are the beam size of the telescope $\sigma$, the scan speed $v$, and the rotation speed of the HWP $\omega$.
+The larger beam size smears the small-angular-scale temperature fluctuations and reduces the aliasing.
+On the other hand, the faster scan speed expands the frequency range of the signals and increase the aliasing.
+The faster HWP rotation, which directly corresponds to the frequency spacing of the HWPSSs, reduces the aliasing.
+Therefore, we would be able to find a requirement on the combination $\sigma\omega/v$, which would be dependent on the amplitude of the HWPSS leakage coefficients. 
