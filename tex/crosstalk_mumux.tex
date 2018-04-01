@@ -1,18 +1,13 @@
-\subsection{Crosstalk for $\mu$Mux (Brad)}
+\subsection{Crosstalk for $\mu$Mux (Brad, KTC editing)}
 
 \paragraph{Description:}
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+In the $\mu$mux readout system, we expect cross-talk from the overlap of the Lorentzian resonator profiles in the frequency domain. In the particular case of flux ramp demodulation, this effect should scale as $\frac{1}{2 \pi \times 16 n^2}$, where $n$ is the resonator spacing in units of the resonator bandwidth [Ben Mates thesis] \cite{Mates_thesis}. Reported measurements in [Dober et al. 2017] indicate that the expected 0.025\% for the $n = 20$ system under test is approximately correct for a majority of channels in the system, while 0.3\% forms an upper bound for all channels studied.
 
 \paragraph{Plan to model and/or measure:}
-Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. Is there a good null test that we could use to catch this effect?
+SRF = 3, since there are methods to investigate the effects of crosstalk across entire arrays in various contexts. In the lab, the effect can be measured by introducing small signals into detector channels and looking for the appearance of those signals in other channels. In the field, we can study microwave signal crosstalk using detecor covariances during CMB scans and ``ghost images'' of bright point sources in channels not meant to point at the source itself.
 
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+Measurements in [Dober et al. 2017] place a rough upper bound of 0.3\%. Simulations of DfMUX crosstalk show that this level of signal leakage should not affect science results, but that care is needed to determine what the relationship of nearest-neighbor channels is with regard to frequency band, polarization, etc.
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+TBA
