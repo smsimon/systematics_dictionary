@@ -1,19 +1,21 @@
 \subsection{Bandpass Mismatch}
 
 \paragraph{Description:}
-Different detectors can have different bandpasses from effects like fabrication variations. The total power received by a detector is the sum of each source of light coming from the sky integrated over the bandpass of the detector. Given that each component of the signal has a different spectrum, the calibration of the detector is component dependent. For each component $k$ and bolometer $b$, we can define a transmission coefficient
-\begin{equation}
-C_k^b = \frac{\int S_k(\nu) F(\nu)}{\int S_{CMB}(\nu) F(\nu)}.
-\end{equation}
-These correction factors to the gain should be applied whenever the signal has a different frequency dependance than the CMB.
-If not accounted for, this will result in a mis-calibration like effect for all of the foregrounds, producing temperature-to-polarization and polarization-to-polarization leakage.
+Different detectors can have different bandpasses from effects like fabrication variations. 
 
-Power spectra leakages also manifest when two detectors with non-identical spectra are pair-differenced to get a poalrized signal. \textbf{any more on this?}
+%The total power received by a detector is the sum of each source of light coming from the sky integrated over the bandpass of the detector. Given that each component of the signal has a different spectrum, the calibration of the detector is component dependent. For each component $k$ and bolometer $b$, we can define a transmission coefficient
+%\begin{equation}
+%C_k^b = \frac{\int S_k(\nu) F(\nu)}{\int S_{CMB}(\nu) F(\nu)}.
+%\end{equation}
+%These correction factors to the gain should be applied whenever the signal has a different frequency dependance than the CMB. If not accounted for, this will result in a mis-calibration like effect for all of the foregrounds, producing temperature-to-polarization and polarization-to-polarization leakage.
+
+Power spectra leakages also manifest when two detectors with non-identical spectra are pair-differenced to get a polarized signal. \textbf{expand on this a bit}
 
 \paragraph{Plan to model and/or measure:}
 The only way to mitigate this effect is with spectral measurements of the detector bandpasses using a Fourier Transform Spectrometer (FTS). For these measurements to be effective, we must have wide coverage across each array so that we can characterize any wafer variations and better understand idividual detector bandpasses. FTS measurements for each detector should be performed in the lab prior to deployment and in situ in the field.
 
-Using external foregrounds maps as templates, the leakage maps can be computed and subtracted. However, this method is limited by our knowledge of the foregrounds, and the external available data. Simulations to estimate the level of leakage and set a constraint on the differential bandpasses should be performed.
+\textbf{Discuss how the size of a mismatch can be modeled by changing the dielectric thickness in the filter to model fabrication variance. Describe how with this, we can model the maximal band offset, with that, we can tell how well we need to know the detector bandpasses. Discuss how this can then be used to set FTS calibration requirements and also for requirements on detector fab array uniformity.}
+%Using external foregrounds maps as templates, the leakage maps can be computed and subtracted. However, this method is limited by our knowledge of the foregrounds, and the external available data. Simulations to estimate the level of leakage and set a constraint on the differential bandpasses should be performed.
 
 This effect can cause polaization leakage and requires thorough instrumental calibration, making its SRF a 4. This effect is less worrying when pair-differencing is not used, as in the case of a HWP, which brings its SRF down to 3.
 
