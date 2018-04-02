@@ -4,9 +4,7 @@
 With the lenslet coupled antenna technology, there is a possibility that the lenslets will not be aligned with an antennae. This can occur with individual pixels or the entire wafer. In the case of individual pixels, this offset would be in random directions across the wafer and thus average out across the array. In the case of entire of wafer, misalignment can be caused cause by how well the wafer and lenslet array are clamped together and thermal contraction between the wafer holder and the wafer. An entire wafer offset would create a systematic pointing error.
 
 \paragraph{Plan to model and/or measure:}
-We can create a model in HFSS to simulate the effect on beam parameters from a systematic misalignment between a lenslet and an antenna. We can then use a ray-tracing program such as Zemax to estimate how much this effect contributes to the pointing error on the sky.
-
-\textbf{Say something about how we can calibrate the pointing offset.}
+We can create a model in HFSS to simulate the effect on beam parameters from a systematic misalignment between a lenslet and an antenna. We can then use Zemax/Grasp to propagate the beam to the sky and estimate how much this effect contributes to the pointing error. If the location of the wafer and its orientation relative to a beam mapper, the pointing offset could be measured in lab, but this could be difficult in practice. In the field, the pointing offset can be characterized with point source observations (either on a tower/drone in the farfield or celestial) as described in the previous sections as part of the full pointing model.
 
 PB2 models of this effect show a linear relationship between the pointing error and the offset between the lenslet and antenna (see Figure~\ref{poitingoffsetFromWaferslipped}). The direction of thepointing offset is in the same direction as the wafer slip. 
   
