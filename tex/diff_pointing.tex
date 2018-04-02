@@ -1,18 +1,17 @@
 \subsection{Differential Pointing}
 
 \paragraph{Description:}
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+In order to fully characterize the polarized signal from the sky, every spatial pixel contains two orthogonal linear polarization-sensitive antennas. Ideally the two antennas should be pointing at the same exact angular location on the sky at all times, but due to imperfections in the detector antennas, antenna couplings, and optical elements the pointing between the two can differ and is called differential pointing. When extracting the polarized signal using analysis techniques such as pixel pair differencing and common mode subtraction, this can create temperature to polarization systematic leakage in the resulting measured CMB polarization signal.
+
+The temperature to polarization leakage into the CMB polarization spectra can be analytically calculated as modeled in Shimon et al. 2008 \cite{Shimon_2008} and Miller et al. 2009 \cite{Miller2009Lensing,Miller2009CB} for the case of pair differencing analyses. It is also known that this systematic leakage can be partially mitigated with sufficient cross-linking in the scan strategy. If the differential pointing is well characterized for all the focal plane pixels, the leakage can also be de-projected in analysis. 
+
+This systematic leakage is typically characterized as a dipole leakage term and can be generalized to cases not explicit to the pair differencing analysis technique. For example if a polarization modulator is used in the optical chain such as a half-wave plate, it is known that as the modulator rotates, the pointing of a single detector can also vary as a function of the modulator rotation angle. This systematic change of a single detector's pointing is also equivalent in effect to differential pointing even though pair differencing is not used.
 
 \paragraph{Plan to model and/or measure:}
-Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. Is there a good null test that we could use to catch this effect?
+The differential pointing can typically be characterized by measuring the relative pointing of all focal plane detectors using point-like sources (e.g. planets) on the sky or potentially using a ground/drone based point-like source calibrator placed in the telescope's far field. Based off the pointing of each individual detector, the differential pointing systematic leakage in the spectra can be calculated using the above analytical model as well as simulated using Monte-Carlo simulations. Also top vs bottom null tests can be effective ways to test the impact of differential pointing in analysis.
 
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+Differential pointing systematic leakages increases for large $\ell$ and has larger effect for smaller angular scale science. Typically the differential pointing needs to be minimized to arcsecond and sub-arcsecond levels for accurate B-mode lensing science, but the actual level of leakage is very dependent on beam size (telescope aperture size and observation frequency), scan strategy, and the existence of polarization modulators. Also if de-projection analysis techniques are used the requirement can be potentially loosened.
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+In order to simulate the effect in power spectra, the detector pointing on the sky across the focal plane $\boldsymbol{\rho}_{i} = (\rho_{i},\theta_{i})$ will be the main parameter. Also the scan strategy will also need to be known to accurately calculate the leakage. If there is any variation of $\boldsymbol{\rho}_{i}$ with time and telescope orientation exists, this will also need to be measured and taken into account carefully with the scan strategy.
