@@ -1,18 +1,28 @@
-\subsection{Detector Gain Drift (Kevin)}
+\subsection{Detector Gain Drift}
 
 \paragraph{Description:}
-Description of systematic effect, including relevant equations and
-parameterization for TWGs. Note that each variable in each equation should be
-defined. This should include where we expect to get the value of this variable
-from (TWG, literature, etc.)
+For TES bolometers, we expect the gain of the device (written as $dP/dI$ to convert measured current to microwave fluctuation power) at frequencies below the detector time constant to be:
+
+\begin{equation}
+|dP/dI| = V \frac{L+1}{L},
+\label{bolo_gain}
+\end{equation}
+where $V$ is the bias voltage on the detector and $L$ is the open loop gain, which depends on the sensitivity of the transition-edge sensors (TESes)  to changes in temperature, thermal parameters $G$ and $T_{\mbox{\scriptsize c}}$, and the bias power on the detector, $P_{\mbox{\scriptsize b}} = V^2/R$.
+
+We expect that the gain to convert TES current to CMB temperature fluctation has constant components (detector optical efficiency, or the flat field) and time-varying components, usually due to atmosphere. To a good approximation (going as $R_{\mbox{\scriptsize sh}}/R \ll 1$), the bias voltage on the TES is constant. However, we expect the bias power $P_{\mbox{\scriptsize b}}$ to fluctuate over long timescales due to changes in the incoming microwave power or other local effects. The sum of these two powers must equal the saturation power of the TES. These changes drive gain drifts, and may be caused directly by atmosphere or other sources, including fluctuations of the bath temperature in the array. Unmodeled gain drifts thus pose the dangers of:
+
+\begin{itemize}
+\item producing biased estimates of signal size during observation periods between calibration measurements;
+\item leaking temperature to polarization as TES bolometers recording microwave power in opposite polarizations record different estimates for unpolarized emission
+\end{itemize}
 
 \paragraph{Plan to model and/or measure:}
-Plan to model/measure effect. Use SRFs to describe how well we understand/can model the effect. Is there a good null test that we could use to catch this effect?
+SRF = 4, this is a known systematic which is difficult to model to high accuracy on fast ($\sim <$ 1 minute) timescales. Performing studies on these timescales, and removing the danger of temperature-to-polarization leakage, is assisted by the presence of a HWP as in the case of the SO small-aperture camera. 
+
+For modellng this systematic in the pair-differenced regime relevant for the large-aperture telescope, one option is to assume that measured variation of gains between calibrating measurements in Advanced ACTPol and POLARBEAR represent a true sampling of the gain drift effect that extends to shorter timescales. We then determine the effect of such gain drifts with a model which interpolates between ``calibration times'' on the order of 10 minutes. Thus far, such simulations have not taken into account time-varying gain changes between opposite-polarization TES bolometers within a given detector pair. We plan to simulate just these effects with various interpolation methods as well, and compare to the case of correlated noise+nonlinearity.%However, gain mismatch studies have been completed in the same simulation framework. These indicate subpercent accuracy in gain mismatch between detectors in a polarization pair is required. 
 
 \paragraph{Uncertainty/Range:}
-This section should include the uncertainty of
-known parameters and/or the expected range of parameters for consideration
+We expect to refer to gain drift estimates as a percentage deviation from unity gain (after calibration) over timescales longer than some time $t_{\mbox{\scriptsize fluct}}$, where $t_{\mbox{\scriptsize fluct}} = 1 / f_{\mbox{\scriptsize knee}}$.
 
 \paragraph{Parameterization:}
-This section should include the parameterization of figures of
-merit and the output to the SWGs.
+To particularly emphasize temperature-to-polarization leakage, we represent the effect of gain drift as a bias to the EE/BB power spectra.
