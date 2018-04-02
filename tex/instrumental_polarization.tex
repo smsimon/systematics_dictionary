@@ -34,9 +34,6 @@ a geometric factor determined by the incident angle:
 \end{equation}
 where $\rho$ is the conductivity of the mirror and $\chi$ the incident angle.
 
-Currently we use the mirror specifications of CCAT, which gives incident angles of $25.73^\circ$ for the primary mirror 
-and $19.59^\circ$ for the secondary. The IP of both mirrors together ends up around $0.04\%$ at 145 degrees. \textbf{Are there updated values for the LAT and SA designs?}
-
 
 For the SAT, we only must consider IP that is modulated by the HWP, which primarily comes from elements upstream of the HWP.
 The differential coefficients for each element are calculated using the transfer matrix method.
@@ -46,7 +43,7 @@ at $\sim.09\%$ for a $20^\circ$ incidence angle.
 A detailed summary of how we calculate the IP for the SAT is given in sections \ref{HWP Differential Optical Properties},
 \ref{IP upstream of HWP} and \ref{IP downstream of HWP}. 
 
-\textbf{Can we measure individual elements with a reflectometer/holography system and compare to simulations? Say more about how we can characterize and remove this with measurements/calibration.}
+To help understand the source of and mitigate this leakage, we can measure individual elements with a reflectometry system ad different angles of incidence and compare the results to the simulations. Additionally, full optics tubes can be placed in a beam mapping setup to determine if the polarization leakage of the full optical system is as expected. The total polarization leakage of the telescope can be measured in the field by observing unpolarized sources and determining the polarized signal. These sources could be tower or drone mounted or celestial.
 
 This effect is difficult to model and has a direct impact on the achievable science. Its SRF is thus a 4.
 
@@ -57,6 +54,10 @@ In a more detailed study, we will integrate over all incident angles over each o
 For the Small Aperture Telescope, after adding IP from all elements and taking into account the HWP modulation efficiency,
 the percent of unpolarized power ending up in the 2$f$ and 4$f$ bands at 145 GHz is given by $a_2 = 0.331\%$ and $a_4 = 0.326\%$ 
 at the start of the telescope for a $20^\circ$ incidence angle.
+
+
+Currently we use the mirror specifications of CCAT, which gives incident angles of $25.73^\circ$ for the primary mirror 
+and $19.59^\circ$ for the secondary. The IP of both mirrors together ends up around $0.04\%$ at 145 degrees. \textbf{Add updated values for the LAT and SAC designs once available.}
 
 \paragraph{Parameterization:}
 We parameterize this effect with the instrument Mueller matrix elements $m_{qi}$ and $m_{ui}$ as a function of frequency and incident angle. We use these to make Q and U maps that can be used to estimate the power spectrum leakage and thus the impact on our science objectives.
