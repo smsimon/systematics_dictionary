@@ -11,7 +11,9 @@ At non-normal incidence, the HWP optical properties change. This effect is small
 For a birefringent HWP, how the optical properties change with the incidence angle can be modeled if you know the optical properties of the birefringent material as a function of frequency and include the AR coating. This can be estimated with numerical simulations and crystallography properties. Fourier Trasform Spectrometer (FTS) and reflectometery measurements with the angle of incoming light at different, non-normal, incident angles with respect to the HWP can be used to measure the dependence of the optical properties as a function of the incident angle.
 
 \textbf{Using the modeled/measured values, how do we model the impact of this response on the science?}
-These measurements can be used to build the Mueller matrix under slant incident incoming radiation. However, the better approach would be, instead, directly measuring the HWP Mueller matrix components studying the output signal from an unpolarized and totally polarized incoming radiation crossing the HWP and followed by a fixed polarizer. The measurement should be performed for dfferent frequency values, to reconstruct the spectral trend of the components: see for example Figs.\,5 and 6 in \cite{Salatino17} which demonstrate how these trends change with respect to the incidence angle of the incoming radiation. The simulated trend of Fig.\,5 in \cite{Salatino17} agrees well with the ones measured from the Spider HWP \cite{Bryan10}.
+These measurements can be used to build the Mueller matrix under slant incident incoming radiation. Fig.~\ref{fig:Sa_elements} shows the Mueller matrix elements $M_{ij}$ in transmission of a single-layer HWP optimized for $150\,\mathrm{GHz}$. The behaviour of the elements is shown as a function of the HWP rotation angle $\chi$ in the case of normal incidence (blue curve), at $10^\circ$-incidence (orange) and at $20^\circ$-incidence (green). To highlight the small deviation of slant incidence from the case of normal incidence, the right panel of Fig.~\ref{fig:Sa_elements} reports the difference between $M_{ij}$ at slant incidence and $M_{ij}$ at normal incidence.  
+
+An alternative approach to model the behaviuor at slant incidence would be to directly measure the HWP Mueller matrix components studying the output signal from an unpolarized and totally polarized incoming radiation crossing the HWP and followed by a fixed polarizer. The measurement should be performed for dfferent frequency values, to reconstruct the spectral trend of the components: see for example Figs.\,5 and 6 in \cite{Salatino17} which demonstrate how these trends change with respect to the incidence angle of the incoming radiation. The simulated trend of Fig.\,5 in \cite{Salatino17} agrees well with the ones measured from the Spider HWP \cite{Bryan10}.
 
 
 This effect is not modeled in the literature, and could be large in some cases, so the SRF is 4.
@@ -38,7 +40,13 @@ From both the analytical approach and the experimental one (i.e. reconstruction 
 where $I(\nu)$ and $Q(\nu)$ is the Stokes vector of the incoming radiation (here as an example we assumed to be $(I(\nu), Q(\nu),0,0)$),
 $\rho(\nu), t(\nu)$ and $c(\nu)$ the Mueller matrix components (eq.\,\ref{eq:Mueller_Matrix}). The spectral trend of all the involved quantities is integrated on a given HWP band $\Delta\nu$. A more generic approach to quantify the coefficients $A_2$ and $A_4$ is detailed in Sec.~\ref{IP downstream of HWP}.
 
-
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{figures/Mueller_elements_0_10_20deg.pdf}\includegraphics[width=0.5\linewidth]{figures/Mueller_elements_diff.pdf}
+\caption{Left panel: Mueller matrix components $M_{ij}$ in transmission as a function of the HWP rotation angle $\chi$. The components are for a real Sapphire HWP
+optimized for 150 GHz (with AR coating). We have considered three incidence angles: $\theta_\mathrm{inc}=0^circ$ (blue), $\theta_\mathrm{inc}=10^circ$ (orange), and $\theta_\mathrm{inc}=20^circ$ (green). Right panel: To highlight the small deviation of the behaviour of the HWP from the case of normal incidence, the difference between Mueller matrix components at non-normal incidence and the Mueller matrix components at $0^circ$-incidence are shown as a function of the rotation angle $\chi$.
+}\label{fig:Sa_elements}
+\end{figure}
 
 %\begin{figure}
 %\centering
