@@ -2,43 +2,38 @@
 \label{det_nonlinearity}
 
 \paragraph{Description:}
-For transition-edge sensors (TESs), the inherent detector nonlinearity is masked by the formalism of Irwin \& Hilton \cite{Irwin_Hilton}. Since a detailed picture of the transition is not required to operate the TES in the strong feedback limit, we can treat the small-signal, strong-feedback case with explicitly linear equations. Detector response to changing temperature and current is parametrized with the parameters $\alpha$ and $\beta$.
+For transition-edge sensors (TESs), we expect inherent detector nonlinearity for incoming microwave power violating the ``small-signal'' limit. This limit is not defined absolutely in temperature fluctuations or microwave power units, but must be compared to the ability of the detector to ``linearize'' its response through a large loop gain $L$ (a function of detector parameters  like the logarithmic derivative $dlnR/dlnT = \alpha$ and the Joule power $ P_{\mbox{\scriptsize b}}$ on the bolometer) and negative feedback (provided by that same Joule power when the detector is stiffly voltage-biased). If a large enough input signal, over whatever timescale, can swamp the ability of the detector to maintain linearity, we are no longer able to assume a single well-calibrated gain for that detector to any important physical unit such as incoming microwave power or on-sky temperature fluctuations.
 
-However, it is well-known that the small-signal expansion around a ``bias point" (labeled with percent of normal resistance, bias current, and/or bath temperature) can be invalid in the field. Low-frequency modulation of the detector position in the transition (i.e. the bias point) is caused predominantly by atmospheric or instrumental loading changes, and, to a lesser extent, by fluctuations in the cryogenic bath temperature. This is the focus of the systematics entry on loop gain-driven gain drift (textbf{reference section here}). In some sense, gain drift refers to the walk through the detector transition during observation and the multiple bias points around which the detector can be treated as linear.
-
-Nonlinear response to large signals is a different topic, where the driving signal may swamp the feedback effect and drive the detector through the transition \cite{Rostem} \textbf{add reference to syst.bib file}. Careful study of this effect could allow handling failures of the linear-gain, small-signal model. Doing so on a per detector-observation basis would be excessive. However, understanding nonlinear response may improve noise models used in maximum-likelihood mapmaking, analysis of calibrating signals from planets, and handling of modulator signals (i.e. improving demodulated performance at low frequency). \textbf{You should mention here that this can matter more when you have a HWP modulating I to P from elements in front of it}
-
-\textbf{rework the wording here to make more sense. We donn't know what the entry is about until the third paragraph.}
-
-\textbf{Moved this from parameterization up to here because it is describing the effect, mak sure to describe the equation a bit more}
-
-Steady-state DC voltage bias produces
-\begin{equation}
-I_o = I_b ( 1+ \frac{R_o}{R_{sh}} )^{-1}
-\end{equation}
-where $I_b$ is the bias current, $I_o$ is the current at the TES, $R_o$ is the steady-state resistance of the TES, and $R_{sh}$ is the resistance of the shunt resistor.
-
-In this configuration, we can write the thermal differential equation of the TES as:
+There have been studies of TES nonlinear response excited by large transients or sinusoidal input signals \cite{Rostem} \textbf{add reference to syst.bib file}. This detailed model based on tracking time variation of TES parameters like $\alpha$ should be compared to the effective description which was found to be useful for data featuring a HWP in the POLARBEAR-1 experiment \cite{PB1_WHWP}. This result is further discussed in Section \ref{hwp_non_linearity}. A generic description of nonlinearity is Eq. 2.9 in that paper, where, for a detector timestream $d(t)$:
 
 \begin{equation}
-C \frac{d \delta T}{dt} = \delta P_{optical}(t) - \left[ G + \frac{dR}{dT} I_b^2 \left(\frac{R_{sh}}{R_o}\right)^2\right] \delta T(t) + I_b R_{sh} \delta I(t)
+d'(t) = [ 1 + g_1 d(t) ] d(t - \tau_1 d(t)).
+\label{nonlinearity}
 \end{equation}
 
-One can see the terms have very different behaviors in this limit, where the above assumes only $R_{sh} << R_o$.
+The nonlinearity parameters $g_1$ and $\tau_1$, when studied assuming perfectly-stiff voltage feedback (or voltage fluctuations $\delta V = 0$), reduce to ratios of linear model parameters multiplied by a quantity $C$ which contains all second-order derivatives of the TES resistance $R(T,I)$. In the particular case of the paper, the form of these parameters is derived and compared to data to determine the value of $C$. However, this derivation is for the specific case of incoming power at two distinct frequencies (where nonlinearity will couple the two) and sending the frequency of the lower to 0. Thus $g_1$ and $\tau_1$ are functions of some modulation frequency, which is not relevant for experiments without HWPs.
+
+Schematically, a complete result is the following, where, after attempting to calibrate measured current fluctuations using linear theory, we find:
+
+\begin{equation}
+\delta P_{\mbox{\scriptsize meas}} (t) = \delta P_{\mbox{\scriptsize opt}} (t) + \delta^2 I (t) * \delta P_{\mbox{\scriptsize opt}}/dI.
+\label{nonlinear_sum}
+\end{equation}
+In short, the nonlinearity in general represents a complicated signal biasing our recovered measurement of the microwave power fluctuations.
 
 \paragraph{Plan to model and/or measure:}
+Using only the bare detectors, we can directly estimate $g_1$ and $\tau_1$ as a function of input signal amplitude using test tones and looking at the amplitude and phase of the second harmonic relative to the first. This would be relevant for the model of Eq. \ref{nonlinearity}, and should be compared to those measured by the POLARBEAR-1 team using their distinct method.
 
-This effect can be understood in terms of basic TES ($\alpha$, $\beta$) and bias point ($P_o$, $I_o$) parameters, with a question about whether additional parameters are needed to handle the clipping effects of large-signal input. Frequency dependence is also an important factor, even in the definition of the problem.
+Modeling the possible biases induced by these parameters is being done within a complete systematics simulation framework, where the equation is used to ``reobserve'' detector timestreams which are then projected back into map space. Since the case in the presence of a HWP has been well commented upon in other sections, this simulation will specifically focus on correlated noise coupling to nonlinearity to induce uncalibrated, time-varying differential gain between polarization-pair detectors. This is a direct path for low-frequency correlated modes to enter polarization maps (Fig. \ref{QU leakage}). Given the magnitude of this effect for POLARBEAR-1 like devices, and the fact that we do not yet have full models of these effects, we rate this systematic as SRF = 5.
 
-Based on available small-signal detector data (i.e. $\alpha$, $\beta$ at different points on transition), we plan to institute a numerical solver for the coupled linear equations, with updating of the detector sensitivity to current and temperature based on time-dependent values of $R_{TES}$. In addition, further work on mapping out R(T,I) surfaces using many IVs at different bias points could allow similar updates to gradients, etc. \textbf{is this still true? You should describe the PB model and cite the memo/paper/thesis on this. You should mention $F$, the non-linearity parameter.}
-
-\textbf{mention how we can measure amplitude of nonlinearity in experimental setups and minimize it be minimizing I->P in front of the HWP.}
-
-This effect has needs further study to be better understood and has been problematic in past experiments, so it has an SRF of 5.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/040218_s4cmb_corr_NL.pdf}
+\caption{Pure T->P leakage maps generated with s4cmb for an example instrument and experiment. The middle column is pure CMB+white noise (minimal leakage), the right column is CMB+white+correlated noise, and the left is the same as the right but observed through the nonlinearity equation. Random draws of $g_1$ and $\tau_1$ were performed for each detector in the focal plane.}
+\end{figure}
 
 \paragraph{Uncertainty/Range:}
-\textbf{How large does NL have to be for it to be a problem? Are there any stats from PB?}
+Current results from \cite{PB1_WHWP} quote rough estimates of $g_1 \sim$ 0.8 \%/K and $\tau_1 \sim$ 0.1 ms/K, where we assume $d(t)$ have been calibrated to CMB temperature using a conversion factor. Data for Advanced ACTPol detectors in the field with no sky loading show XX\% ratio of second-harmonic to first-harmonic amplitude.
 
 \paragraph{Parameterization:}
-\textbf{Describe that we parameterize it with $F$, which can be measured or (not yet totallyreliably) modeled. Describe how this feeds into the systematics pipeline and the plans for estimating its effects}
-
+We currently plan to use the simpler equation to determine what acceptable limits on $g_1$ and $\tau_1$ are demanded by science goals. When summarized in terms of TES design parameters, we can then feed these requirements back to the detector design group.
