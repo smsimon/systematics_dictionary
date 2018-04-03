@@ -30,9 +30,16 @@ M=\begin{bmatrix}
 \label{eq:Mueller_Matrix}
 \end{equation}
 
-The $t$ term is proportional to the total unpolarized intensity transmitted by the HWP, the $\rho$ term to the differential transmission of the HWP. The $c$ and $s$ terms are responsible for the modulation of the polarized components, the $\rho$ term for the unpolarized ones. For an ideal HWP: $t=1$, $\rho=0$, $c=-1$, $s=0$. Deviations from these values are due, e.g., to the spectral behavior of the birifringent material/metamaterial (as we will deeply investigate in the next sections).
+The $t$ term is proportional to the total unpolarized intensity transmitted by the HWP, the $\rho$ term to the differential transmission of the HWP. The $c$ and $s$ terms are responsible for the modulation of the polarized components, the $\rho$ term for the unpolarized ones. For an ideal HWP: $t=1$, $\rho=0$, $c=-1$, $s=0$. Deviations from these values are due, e.g., to the spectral behavior of the birifringent material/metamaterial (as we will deeply investigate in the next sections). The left panel of Fig.~\ref{fig:Mueller_elements} shows the Mueller matrix elements $M_{ij}$ for a single-layer HWP as a function of the frequency of the incoming radiation. 
 
-For an achromatic HWP, made of stacks of birifringent material, the Mueller matrix presents further non-zero terms with respect to the ones in eq.\,(\ref{eq:Mueller_Matrix}), see Sec.\,\ref{subsec:modeff}. 
+\begin{figure}
+\begin{center}
+\includegraphics[0.5\linewidth]{plot/1layer_AHWP_120.pdf}\includegraphics[0.5\linewidth]{plot/3layer_AHWP_120.pdf}
+\end{center}
+\caption{Mueller matrix elements $M_{ij}$ for a single-layer HWP (left panel) and a three-layer AHWP (right panel) as a function of the frequency of the incident radiation. Each layer is a made of Sapphire crystal and it is optimized for a central frequency of $120\,\mathrm{GHz}$. The AHWP is optimized to cover the broad-band range including the $90\,\mathrm{GHz}$ and $150\,\mathrm{GHz}$ frequency bands. The behaviour of $M_{ij}$ with the frequency for the single-layer HWP agrees with the description in eq.~(\ref{eq:Mueller_Matrix}). The behaviour of $M_{ij}$ for the AHWP is more complicated and agrees with the combination of three Mueller matrices as in eq.~(\ref{eq:Mueller_Matrix}) and rotated with respect to each other. Further details are provided in Sec.~\ref{subsec:modeff}. In both panels, the black dashed-dotted lines correspond to the elements of an ideal HWP.}\label{fig:Mueller_elements}
+\end{figure}
+
+For an achromatic HWP, made of stacks of birifringent material, the Mueller matrix presents further non-zero terms with respect to the ones in eq.\,(\ref{eq:Mueller_Matrix}), see Sec.\,\ref{subsec:modeff}. The right panel of Fig.~\ref{fig:Mueller_elements} shows the Mueller matrix elements $M_{ij}$ for a three-layer AHWP as a function of the frequency of the incoming radiation. The presence of additional non-zero elements with respect to the single-layer HWP is clearly visible. 
 
 The HWP optical action creates a non zero $c$ and $s$ terms. Because this does not depend on the direction of the incoming radiation (upwards or downwards), the HWP Mueller matrix has the same shape, eq.\,(\ref{eq:Mueller_Matrix}), both in transmission and in reflection; the value of the corresponding Mueller matrix components changes according to the amplitudes of the electric field transmitted and reflected by the HWP.
 
