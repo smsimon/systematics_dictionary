@@ -24,18 +24,19 @@ In most cases the optical properties (refraction indices, absorption angle) come
 \paragraph{Parameterization:}
 Analytically, this effect can be estimated building the Mueller matrix of the birifringent HWP considering how the refraction index along the extraordinary axis depends on the incidence angle, $i$:
 \begin{equation}
-n(i)=((\frac{\cos{i}}{n_e(\nu))^2}+(\frac{\sin{i}}{n_o(\nu)})^2)^{(-0.5)};
+%n(i)=((\frac{\cos{i}}{n_e(\nu))^2}+(\frac{\sin{i}}{n_o(\nu)})^2)^{(-0.5)};
+n(i)=n_e\sqrt{1+(n_e^{-2}(\nu)-n_o^{-2}(\nu))n_1^2\sin^2(i)\cos^2(\chi)};
 \end{equation}
-where $n_e(\nu)$ ($n_o(\nu)$) are the extraordinary (ordinary) refraction index and $\nu$ is the frequency. \textbf{How do we parametrize the science impact}
+where $n_e(\nu)$ ($n_o(\nu)$) are the extraordinary (ordinary) refraction index, $\nu$ is the frequency of the incoming radiation, $n_1$ is the index of refraction of the medium where the incoming radiation propagates ($n_1=1$ as we usually assume air), and $\chi$ is the HWP rotation angle. \textbf{How do we parametrize the science impact}
 
-From both the analytical approach and the experimental one (i.e. reconstruction of the Mueller matrix components from the measurement described above), the amplitude of the resulting 2$\,f$ and 4$\,f$ signals, i.e. $A_2$ and $A_4$, can be estimated as:
+In the simple case of normal incidence, from both the analytical approach and the experimental one (i.e. reconstruction of the Mueller matrix components from the measurement described above), the amplitude of the resulting 2$\,f$ and 4$\,f$ signals, i.e. $A_2$ and $A_4$, can be estimated as:
 
 \begin{eqnarray}
   A_2 &=& \int_{\Delta\nu} \frac{I(\nu)+Q(\nu)}{2} \rho(\nu) d\nu\\ \label{A2}
   A_4 &=& \int_{\Delta\nu} \frac{t(\nu)-c(\nu)}{4} Q(\nu) d\nu; \label{A4}
 \end{eqnarray}
 where $I(\nu)$ and $Q(\nu)$ is the Stokes vector of the incoming radiation (here as an example we assumed to be $(I(\nu), Q(\nu),0,0)$),
-$\rho(\nu), t(\nu)$ and $c(\nu)$ the Mueller matrix components (eq.\,\ref{eq:Mueller_Matrix}). The spectral trend of all the involved quantities is integrated on a given HWP band $\Delta\nu$.
+$\rho(\nu), t(\nu)$ and $c(\nu)$ the Mueller matrix components (eq.\,\ref{eq:Mueller_Matrix}). The spectral trend of all the involved quantities is integrated on a given HWP band $\Delta\nu$. A more generic approach to quantify the coefficients $A_2$ and $A_4$ is detailed in Sec.~\ref{sec:}.
 
 
 
