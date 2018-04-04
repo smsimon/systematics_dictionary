@@ -1,26 +1,27 @@
 \subsection{Bandpass Mismatch}
-
 \paragraph{Description:}
-Different detectors can have different bandpasses from effects like fabrication variations. 
+A pair-differenced polarization signal can contain leakage as a result of bandpass mismatch between two detector filters. A mismatch is most likely to occur due to variations in the detector fabrication, particularly the thickness and index of the dielectric substrate. When such a mismatch exists, the resulting passbands may differ in center frequency or bandwidth leading to systematic differences in the frequency-dependent paired signals.
 
-%The total power received by a detector is the sum of each source of light coming from the sky integrated over the bandpass of the detector. Given that each component of the signal has a different spectrum, the calibration of the detector is component dependent. For each component $k$ and bolometer $b$, we can define a transmission coefficient
-%\begin{equation}
-%C_k^b = \frac{\int S_k(\nu) F(\nu)}{\int S_{CMB}(\nu) F(\nu)}.
-%\end{equation}
-%These correction factors to the gain should be applied whenever the signal has a different frequency dependance than the CMB. If not accounted for, this will result in a mis-calibration like effect for all of the foregrounds, producing temperature-to-polarization and polarization-to-polarization leakage.
-
-Power spectra leakages also manifest when two detectors with non-identical spectra are pair-differenced to get a polarized signal. \textbf{expand on this a bit}
+Additionally, this can have an effect on detector gain due to a frequency mismatch between the bandpasses and atmospheric absorption windows (discussed more in Section ???).
 
 \paragraph{Plan to model and/or measure:}
-The only way to mitigate this effect is with spectral measurements of the detector bandpasses using a Fourier Transform Spectrometer (FTS). For these measurements to be effective, we must have wide coverage across each array so that we can characterize any wafer variations and better understand idividual detector bandpasses. FTS measurements for each detector should be performed in the lab prior to deployment and in situ in the field.
+Modeling the effect of dielectric variations on the detector passbands can be done using Sonnet to simulate bandpass filters over a range of various dielectric parameters, namely thickness and the dielectric constant. These simulations can then give us the maximum range that a pair of identical passbands can vary by in their center frequency and bandwidth. These results will allow us to place fabrication requirements on the uniformity of detector arrays.
 
-\textbf{Discuss how the size of a mismatch can be modeled by changing the dielectric thickness in the filter to model fabrication variance. Describe how with this, we can model the maximal band offset, with that, we can tell how well we need to know the detector bandpasses. Discuss how this can then be used to set FTS calibration requirements and also for requirements on detector fab array uniformity.}
-%Using external foregrounds maps as templates, the leakage maps can be computed and subtracted. However, this method is limited by our knowledge of the foregrounds, and the external available data. Simulations to estimate the level of leakage and set a constraint on the differential bandpasses should be performed.
+The only way to mitigate this effect is with spectral measurements of the detector bandpasses using a Fourier Transform Spectrometer (FTS). For these measurements to be effective, we must have wide coverage across each array so that we can characterize any wafer variations and better understand idividual detector bandpasses. FTS measurements for each detector should be performed in the lab prior to deployment and in situ in the field.
 
 This effect can cause polaization leakage and requires thorough instrumental calibration, making its SRF a 4. This effect is less worrying when pair-differencing is not used, as in the case of a HWP, which brings its SRF down to 3.
 
 \paragraph{Uncertainty/Range:}
-\textbf{How well do we need to know each detector bandpass for the spectral effect? for pair differencing? What requirements do these put on FTS calibration? Do we need R and D to reach these levels of calibration or are we already there? How much of an array do we need to understand? Do we need FTS measurements of every array?}
+The systematic uncertainty on the pair-differenced signal depends on the variance of the SiNx dielectric properties over the size of a single pixel, about 5 mm. For these uncertainties we use dielectric uniformity data from a 2015 NIST study. The change in dielectric thickness over a 5 mm radius ranges from 0.1\% to 2\%. The change in index ranges from 0.1\% to 0.25\%.
+
+The effects on overall gain between different detectors depend on the change in dielectric properties over a 65 mm radius detector array. The corresponding dielectric thickness changes up to 10\% at the edge of the array, while index change goes up 1.5\%.
 
 \paragraph{Parameterization:}
-This effect can be parameterized as an uncertainty on the center frequency and bandwidth of the detectors, which can be used to estimate the limitations on the proposed science, particularly on how well we can constrain $r$.
+This effect can be parameterized as an uncertainty on the center frequency and bandwidth of the detectors, which can be used to estimate the limitations on the proposed science, particularly on how well we can constrain $r$. The relevant equations are
+\begin{equation}
+\textrm{Center frequency} = \frac{\int \nu f(\nu) \sigma(\nu) d\nu}{\int f(\nu) \sigma(\nu) d\nu}
+\end{equation}
+\begin{equation}
+\textrm{Bandwidth} = \frac{(\int f(\nu) d\nu)^2}{\int f(\nu) ^2 d\nu}
+\end{equation}
+where $\nu$ is frequency, $f(\nu$) is the passband spectrum and $\sigma (\nu)$ is the frequency dependence of the source.
